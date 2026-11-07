@@ -1,0 +1,36 @@
+# Decision Log
+
+**Last updated:** 2026-11-06. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
+
+| ID | Decision | Status / rationale |
+| --- | --- | --- |
+| D01 | Use an extensible C#/.NET 10 mod for Vintage Story 1.22.x; verify actual APIs before coding. | **Agreed.** Incremental workflow and one PowerShell command at a time. |
+| D02 | Public name remains changeable; do not hardcode Cabbage Carnage or another temporary title into internal identifiers. | **Agreed.** Repository name is `Ventage-Story`; no final game-facing mod ID is set. |
+| D03 | Each entity holds versioned, saved digestive state instead of an external historical database. | **Agreed principle; exact 1.22 storage hook to verify.** |
+| D04 | Each consumed portion contributes upper/lower gas potential over its own digestive schedule. Overlapping meals accumulate; new meals never reset older meals or reservoir values. | **Agreed.** Limited active contributions; no unbounded meal history or lost potential on merge. |
+| D05 | Separate production, upper/lower accumulation and release; background production can cause rare natural floofers without a recent special food. | **Agreed.** Earlier cabbage-only/no-cabbage-no-gas premise is superseded. |
+| D06 | Investigate all vanilla foods including raw/cooked/prepared variants and species-specific responses. | **Agreed.** Exact food values unresolved; research before balance commitments. |
+| D07 | Ground-dwelling animals and players included; birds/flyers, aquatic and nonbiological creatures excluded at first. | **Agreed.** Exact census and eligibility mechanism unresolved. |
+| D08 | Species rules defined through extensible data profiles; absent third-party mod profiles safely ignored. | **Agreed.** Optional modded creatures can be added without mandatory dependencies. |
+| D09 | Provide a safe creature metadata export as JSON/plain text to make community support requests easy to post to GitHub Issues/ModDB comments. | **Agreed design requirement.** Exact data fields/command pending verification. |
+| D10 | Fear/chasing/jumping/movement moderately increases chance of releasing stored gas; this is still rare, cooldown-limited and impossible if reservoir is empty. | **Agreed.** Test in survival; user confirms creative suppresses fear/aggro and is useful for calm tests. |
+| D11 | Calm animals may retain gas until a substantial release; do not let a 30–40 goat herd become a constant cacophony. | **Agreed.** Separate audio budget from gas accounting. |
+| D12 | Optional delayed postmortem gas release may occur a few seconds after an entity's death, once only. | **Agreed concept.** Mechanism and real-world timing to test; dung postponed. |
+| D13 | Diagnostic commands should inspect loaded animals by ID/type/radius/herd without requiring aim or proximity to the individual animal. | **Agreed.** Command syntax examples are not final. |
+| D14 | Begin with native JSON configuration; optionally provide in-game mod settings using a compatible library or custom UI, without assuming main-menu Mod Manager support. | **Agreed direction.** UI technology to evaluate. |
+| D15 | Use shared placeholder sounds during development; classify by release quality (squeak, flutter, gravelly, poof, etc.), allow shared/species sound profiles. | **Agreed.** Final sound selection and credits nearer release. |
+| D16 | Lore will be included in the **first public release**, not entirely deferred. | **Agreed.** Scrolls/books first, possible resonator recordings if practical; tapestries later. |
+| D17 | Great Silence old-world cause: upper-class embarrassment and prestige medicine, **not fear**. Underground refuge admission later made suppression obligatory amid plague/Rot. | **Agreed story direction.** Historical fictional interpretation, not claim of vanilla canon. |
+| D18 | Renewed surface diets and acclimation may undo suppression; returning gas first frightens unfamiliar settlers, then medical reassurance and laughter follow. | **Agreed story arc.** Avoid asserting all humanity spent generations underground; Seraph history differs. |
+| D19 | Write lore seriously but with clear, lightly veiled fart references; keep story segments, chronology, authors and placement coherent. | **Agreed.** Future lore spreadsheet/document useful. |
+| D20 | Put documentation on GitHub, with one root `AIMAIN.md` pointing to architecture, decisions, roadmap and lore. Remind user of documentation checkpoints and commit changes. | **Agreed and partially implemented.** `AIMAIN.md` committed earlier; this log records next steps. |
+| D21 | Do not play sounds for events with no possible listener, nor replay an offscreen backlog after chunk reload. | **Agreed design direction.** Loaded entities can simulate state even out of hearing range. |
+
+## Important open questions
+- Select neutral permanent Mod ID and storage namespace before the first real build.
+- Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
+- Exact food effects, digestion curves, gas capacity, overflow behavior, release probability and cooldown defaults are not chosen.
+- Validate persistent storage and behavior attachment to vanilla and third-party entities; investigate multiplayer/client/server separation.
+- Confirm exact library and packaging steps for settings UI, lore loot/journal registration, custom resonator sounds.
+- Determine privacy-safe export content, UI/commands and permissions.
+- Clarify initial included species list from actual installed game assets.
