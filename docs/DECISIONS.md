@@ -5,7 +5,7 @@
 | ID | Decision | Status / rationale |
 | --- | --- | --- |
 | D01 | Use an extensible C#/.NET 10 mod for Vintage Story 1.22.x; verify actual APIs before coding. | **Agreed.** Incremental workflow and one PowerShell command at a time. |
-| D02 | Public name remains changeable; do not hardcode Cabbage Carnage or another temporary title into internal identifiers. | **Agreed.** Repository name is `Ventage-Story`; no final game-facing mod ID is set. |
+| D02 | Public name remains changeable; do not hardcode Cabbage Carnage, Ventage Story, or another temporary title into permanent identifiers. | **Agreed.** The approved internal mod ID is `lingamsdigestivesim` (2026-11-08); the repo remains `Ventage-Story` unless separately renamed. |
 | D03 | Each entity holds versioned, saved digestive state instead of an external historical database. | **Agreed principle; exact 1.22 storage hook to verify.** |
 | D04 | Each consumed portion contributes upper/lower gas potential over its own digestive schedule. Overlapping meals accumulate; new meals never reset older meals or reservoir values. | **Agreed.** Limited active contributions; no unbounded meal history or lost potential on merge. |
 | D05 | Separate production, upper/lower accumulation and release; background production can cause rare natural floofers without a recent special food. | **Agreed.** Earlier cabbage-only/no-cabbage-no-gas premise is superseded. |
@@ -35,8 +35,11 @@
 | D25 | Explore per-ingredient, portion-aware gas modeling for mixed meals (including egg/vegetable combinations and legumes), plus neutral and potential gas-reducing food effects. | **Research direction (2026-11-08), not settled values.** Verify native meal `contents`, partial servings and feeding hooks. Do not reset prior gas or equate nutrition category with fermentability. |
 | D26 | Defer hunger-driven stomach growling for Seraphs to a later update, separate from digestive gas reservoirs. | **Agreed deferral (2026-11-08).** Not part of the initial release. If revisited, tie to satiety with rare audio/cooldowns and no damage, debuff or gas production. |
 
+| D27 | Brand original, full-size mods consistently with **Lingam's ...** in the public display name; `Ventage Story` may no longer be best as the published title. | **Preferred direction (2026-11-08).** Exact title still under discussion; *Lingam's* is the creator brand, not a reason to change technical IDs or the GitHub repository immediately. |
+| D28 | Adopt `lingamsdigestivesim` as the stable internal Mod ID for the digestive mod's initial project template. | **User approved (2026-11-08).** Verify registry uniqueness before publishing; no source project generated yet. |
+
 ## Important open questions
-- Select neutral permanent Mod ID and storage namespace before the first real build.
+- Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
 - Exact food effects, digestion curves, gas capacity, overflow behavior, release probability and cooldown defaults are not chosen.
 - Validate persistent storage and behavior attachment to vanilla and third-party entities; investigate multiplayer/client/server separation.
