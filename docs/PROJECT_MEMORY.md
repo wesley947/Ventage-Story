@@ -1,10 +1,10 @@
 # Project Memory — Vintage Story Digestive-Gas Mod
 
 **Last updated:** 2026-11-08  
-**Status:** Planning; GitHub documentation initialization. No confirmed compiled mod, finalized internal mod ID, or public release.
+**Status:** Planning/bootstrap; no confirmed compiled mod or public release. Approved internal Mod ID: `lingamsdigestivesim`; public display title remains undecided.
 
 ## Purpose
-Create a humorous but carefully engineered digestive-gas simulation for Vintage Story 1.22.x (C#/.NET 10). Include players and eligible ground animals, vanilla and optional third-party species; keep player effects cosmetic. The public title is unsettled. *Cabbage Carnage* was a previous working title; the repository is named `Ventage-Story`. Do not conflate repository name, mod ID, and final display name.
+Create a humorous but carefully engineered digestive-gas simulation for Vintage Story 1.22.x (C#/.NET 10). Include players and eligible ground animals, vanilla and optional third-party species; keep player effects cosmetic. The creator wants a consistent **Lingam's ...** public naming identity for original full mods. The exact display title is unsettled; *Cabbage Carnage* and *Ventage Story* were previous working titles. The existing GitHub repository is named `Ventage-Story` and the approved permanent internal Mod ID is `lingamsdigestivesim`. Do not conflate repository name, mod ID, and final display name.
 
 The first public release should include some well-crafted in-world *Great Silence* lore. Audio samples can be placeholders during development but should be revisited before release.
 
