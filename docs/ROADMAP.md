@@ -54,6 +54,7 @@
 - [ ] Add entity/area/herd diagnostics and bounded event logging.
 
 ### M5 — Audio and settings
+- [ ] **Audition procedural musical fart effects from built-in Vintage Story instrumental voice samples** (pitch/duration/volume envelopes) before sourcing external recordings. Verify game asset paths, 1.22 audio API, independent player and animal sound routing, and whether users actually find them convincing/funny. Do not copy proprietary game audio into our mod package.
 - [ ] Begin with short common placeholder audio effects, appropriately labeled and credited.
 - [ ] Add sound categories/tagged selection and positional playback.
 - [ ] Add concurrency/cooldowns so 30–40 goats create elevated activity but not nonstop sound.
