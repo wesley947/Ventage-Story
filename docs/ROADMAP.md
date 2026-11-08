@@ -59,6 +59,7 @@
 - [ ] Add concurrency/cooldowns so 30–40 goats create elevated activity but not nonstop sound.
 - [ ] Support native JSON settings; evaluate optional ConfigKit/Config Lib or custom in-game UI.
 - [ ] Validate client/server ownership and multiplayer hearing.
+- [ ] **Multiplayer installation matrix:** test server+modded client, server+unmodded client, and **only one player/client has the mod installed** (server does not). Document what can and cannot be replicated to unmodded clients; never assume client-only mods can authoritatively change world behavior.
 
 ### M6 — Great Silence lore (required for first release)
 - [ ] Plan coherent chronology/sections/authors in `LORE_INDEX.md`.
@@ -78,6 +79,7 @@
 - [ ] Check docs and GitHub sync before releasing.
 
 ## Later / feature-creep queue
+- **Visual gas cues (multiplayer):** investigate brief, tastefully restrained **rear-end vanilla particle puffs** aligned with real release events. Prefer effects all clients can see **when server-side support permits**; first verify built-in particle networking and whether unmodded clients can see server-emitted vanilla particles. Treat client-only installation as a separate, likely limited case. Visuals are deferred from sound-first release unless cheap and safe.
 - Rich species-specific sound libraries and audio tuning.
 - More custom modded fauna support.
 - Additional lore books, scrolls, historical figures, resonator recordings, and collectible tapestry fragments.
