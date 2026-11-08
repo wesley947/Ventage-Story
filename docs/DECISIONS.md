@@ -81,6 +81,8 @@
 
 | D51 | Include an in-world **cave/refuge dairy-scarcity → Seraph lactose-intolerance** thread in Great Silence lore, and prioritize **milk, cheese/other dairy, eggs, cabbage and legumes** as high-impact digestive foods. | **Explicit user direction (2026-11-08), narrative mechanism and per-food weights not finalized.** Don't assert universal cave ancestry as vanilla canon. Eggs have **no lactose**, and aged cheese has **less lactose** than milk: implement egg sensitivity separately (e.g. sulfur/other fictional gut sensitivity) rather than mislabeling it lactose intolerance. Mixed recipes combine actual ingredients/portions. No v1 burps/damage. |
 
+| D52 | Treat cave refuge food supply, preservation of cheese-making and animal husbandry after the catastrophe, and any Seraph dairy intolerance **origin story as unproven**. Keep Great Silence lore limited to a particular shelter/author's account, with plausible but uncertain grain/nut/meat hypotheses, not universal canon. | **User correction and wiki lore review (2026-11-08).** Canon Quartermaster's Ledger mentions dried wolf/rabbit and desperate small-game supplies in one shelter; Tobias later relayed farming knowledge, but dairy reconstruction is unspecified. Seraphs were transformed/time-lost humans, not necessarily generations of cave descendants. No claim that skipping dairy genetically causes lactose intolerance. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
