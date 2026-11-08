@@ -35,6 +35,39 @@ public sealed class FoodProfileRegistry
     public bool TryGetByItemCode(AssetLocation itemCode, out DigestiveFoodProfile profile) =>
         byItemCode.TryGetValue(itemCode.ToString(), out profile!);
 
+    /// <summary>
+    /// Bind several real in-game collectible codes to one stable food profile.
+    /// Validate the whole mapping first so an invalid row cannot partially apply.
+    /// The caller must load the separate audited JSON during asset initialization.
+    /// This does NOT mean a food was actually eaten.
+    /// </summary>
+    public void AddVerifiedNativeCodes(FoodCodeBindingCatalog catalog)
+    {
+        if (catalog.SchemaVersion != 1)
+            throw new InvalidOperationException($"Unsupported food-code binding schema {catalog.SchemaVersion}.");
+
+        var proposed = new Dictionary<string, DigestiveFoodProfile>(StringComparer.OrdinalIgnoreCase);
+        foreach (FoodCodeBinding binding in catalog.Bindings ?? new List<FoodCodeBinding>())
+        {
+            if (string.IsNullOrWhiteSpace(binding.NativeCode) ||
+                string.IsNullOrWhiteSpace(binding.ProfileId) ||
+                !binding.NativeCode.Contains(':'))
+            {
+                throw new InvalidOperationException("Food-code mapping has an invalid native code or profile ID.");
+            }
+
+            if (!byId.TryGetValue(binding.ProfileId, out DigestiveFoodProfile? profile))
+                throw new InvalidOperationException($"Unknown profile ID {binding.ProfileId} for code {binding.NativeCode}.");
+
+            if (byItemCode.ContainsKey(binding.NativeCode) ||
+                !proposed.TryAdd(binding.NativeCode, profile))
+                throw new InvalidOperationException($"Duplicate native food-code mapping: {binding.NativeCode}.");
+        }
+
+        foreach (var entry in proposed)
+            byItemCode.Add(entry.Key, entry.Value);
+    }
+
     public static FoodProfileRegistry FromCatalog(DigestiveFoodCatalog catalog)
     {
         if (catalog.SchemaVersion != 1)
