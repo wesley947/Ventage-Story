@@ -42,6 +42,23 @@ At game startup, build a compact index of registered **vanilla edible content**,
 
 **Accepted user clarification (2026-11-08):** Once the player's resettable 30-second intake session closes, it records one timestamp for the mixed meal. For each consumed ingredient, lookup its actual eaten amount and food profile, then create a **delayed intestinal-gas contribution** with `startHour = mealClosedHour + digestiveDelayGameHours`, `durationGameHours` and `totalGasPotential`. There is **no progressive stomach transit**, stomach reservoir or burping: “stomach” is the waiting period only. Contributions accumulate gas gradually into one persistent shared reservoir; completed contributions expire without removing gas already generated. Animal direct feeding uses equivalent delayed contributions; background animal production runs independently.
 
+## User-reviewed gas-profile values — draft revision (2026-11-08)
+
+The first-pass **214-row food-profile CSV** was shared for editing. User said the estimates were largely good, but specifically wanted **milk/cheese raised close to cabbage's 24 gas units/portion** (Seraph lactose-intolerance fiction), and **bell peppers raised**. Keep all unrelated numeric values unchanged. A revised CSV was created in the conversation as `Ventage_Story_Vanilla_Food_Gas_Profiles_REVISED.csv`; the user is to fine-tune locally and send it back. It is **not yet checked into the GitHub repository** and the values remain proposals until the user's reviewed file returns.
+
+| Food (draft ID) | Before | Revised gas units / defined portion |
+| --- | ---: | ---: |
+| Cabbage F005 | 24 | 24 (unchanged) |
+| Milk F085 | 4.5 | 20 / 0.1 liter |
+| Cottage cheese F086 | 3.4 | 18 / 0.1 liter |
+| Cheddar cheese slice F087 | 16 | 22 / slice |
+| Blue cheese slice F088 | 18 | 24 / slice |
+| Waxed cheddar cheese slice F089 | 16 | 22 / slice |
+| Bell pepper F007 | 3.2 | 12 / item |
+| Pickled bell pepper F017 | 2.72 | 10.2 / item |
+
+**Critical unit warning:** A full **1-liter** serving of milk at 20 units per **0.1 L** creates **200 gas units**. This may be far more intense than the user envisions when comparing to one cabbage item (24 units). Preserve and surface the portion-unit distinction before committing values to code; don't silently normalize unlike volumes. User expressly asked for highly gassy Seraph dairy, but actual acceptable per-serving size remains for their review. Lactose intolerance explains milk; real aged cheeses have little lactose, so the very high cheese effects are intentional fictional Seraph sensitivity. Pickled bell pepper uses the original ~85% preservation multiplier. All food IDs/item codes still need validation against installed game.
+
 ## Next engineering slice
 
 **Meaningful integrated proof** (not isolated 1-line logger): Implement a lightweight food event capture + normalization + diagnostics for plain item, multi-ingredient meal and liquid/slice, with deduplication and actual portion handling. Load the runtime vanilla edible-content registry and print a one-shot diagnostic audit for unmatched foods; do *not* build gas/sound simulation until basic captured intake is validated. Then assign initial gastro profiles and integrate stomach queue.
