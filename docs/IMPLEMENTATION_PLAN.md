@@ -21,6 +21,10 @@
 Official setup guide: https://wiki.vintagestory.at/Modding:Setting_up_your_Development_Environment
 Official examples (beware version drift): https://github.com/anegostudios/vsmodexamples
 
+## Digestion/time model checkpoint — 2026-11-08
+
+**Updated user scope:** stomach = progressive **time-buffer/transit phase**, **no first-release burping/upper-gas sounds or mechanics**. Keep it extensible. One food consumption event creates its **own portion- and ingredient-aware digestive contribution**; multiple meals overlap. Use `api.World.Calendar.TotalHours` as the world-time source and calculate elapsed game hours, so custom day lengths/speeds are honored automatically (default 48 real min/day). Don't tie to vanilla satiety loss or reset when another meal is eaten. Gut fermentation after stomach+extra lag gradually adds gas. Suggested gastric 2–4 game h and overall fermentation onset 5–8+ game h are **illustrative placeholders**, not approved balancing. Test time speed, sleep/time skips, unload, additive meal overlap, and no backlogged sound replay. See `PROJECT_MEMORY.md` and D39–D40.
+
 ## Intended logical responsibilities (folders can evolve with the template)
 - `src/Core/`: minimal `ModSystem`, service registration/lifecycle, feature flags, logging, native config.
 - `src/Simulation/`: **pure C#** logic: digestion contributions, gas generation over game time, upper/lower reservoirs, cooldown decisions and release events. Keep unit-testable without needing the game to run.
