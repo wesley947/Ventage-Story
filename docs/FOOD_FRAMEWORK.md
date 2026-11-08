@@ -1,6 +1,8 @@
 # Food Framework: Reusing Vintage Story Nutrition Events and Ingredient Resolvers
 
-**Design investigation — November 8, 2026.** No C# implementation yet. Target Vintage Story 1.22.7, mod ID `lingamsdigestivesim`. Exact gas potential, transit and fermentation parameters not approved.
+**Design and partial implementation — November 8, 2026.** JSON registry and C# asset loader added on GitHub; no food-capture gameplay yet. Target Vintage Story 1.22.7, mod ID `lingamsdigestivesim`. Exact gas potential, transit and fermentation parameters not approved.
+
+**Committed implementation:** The editable 214-row CSV lives in `data/Ventage_Story_Vanilla_Food_Gas_Profiles_IMPLEMENTATION_BASELINE.csv`. The runtime JSON lives in `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodprofiles.json`, with 195 gas-valued ingredients, 13 composite rules and 6 excluded intermediates. C# loaders are in `mod/lingamsdigestivesim/src/Foods/`; build copies JSON via `mod/lingamsdigestivesim/Directory.Build.targets`. See [FOOD_REGISTRY_INTEGRATION.md](FOOD_REGISTRY_INTEGRATION.md). The food mapping/consumption hooks and in-game compile remain outstanding.
 
 ## New insight: the game already performs useful classification
 
