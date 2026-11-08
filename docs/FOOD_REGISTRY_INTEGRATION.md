@@ -24,9 +24,13 @@ The permanent `modid` remains `lingamsdigestivesim` and the normal one-mod packa
 
 ## Building with the user's local template
 
-From the existing working PowerShell directory inside `mod/lingamsdigestivesim`, after pulling the remote changes, run `dotnet build`. The target should copy the JSON asset into `bin/Debug/Mods/mod/assets/lingamsdigestivesim/config/foodprofiles.json`. No need to manually add a reference to Newtonsoft.Json; the loader uses the API's built-in `IAsset.ToObject<T>()`. In the game log, look for `Loaded 195 food profiles, 13 composite meal rules and 6 excluded intermediates (0 verified item-code bindings).`
+From the existing working PowerShell directory inside `mod/lingamsdigestivesim`, after pulling the remote changes, run `dotnet build`. The target should copy the JSON asset into `bin/Debug/Mods/mod/assets/lingamsdigestivesim/config/foodprofiles.json`. The first compilation exposed a `CS0012` dependency on Newtonsoft.Json through `IAsset.ToObject<T>()`. Fixed by reading `IAsset.ToText()` and deserializing with .NET 10's built-in `System.Text.Json.JsonSerializer.Deserialize<T>()` and case-insensitive property names. **No extra DLL or `.csproj` reference is required** for the catalog loader; the fix is committed but still needs re-compilation on the user's machine. In the game log, look for `Loaded 195 food profiles, 13 composite meal rules and 6 excluded intermediates (0 verified item-code bindings).`
 
 **Important:** GitHub currently does not track the user's *existing locally generated* `.csproj`, `modinfo.json` or template starter `ModSystem` file. Pulling these new, noncolliding files should not overwrite that generated local skeleton, but a subsequent `git status` should confirm there are no conflicts. The local `.csproj` and starter files should be staged/committed separately when the user is ready. Avoid replacing their local mod template with a newly invented skeleton.
+
+## Compilation issue resolved in source (2026-11-08)
+
+The first `dotnet build` with the new loader failed with two `CS0012` errors (missing `Newtonsoft.Json` assembly for the types `JsonSerializerSettings` and `JToken`) at the call to `asset.ToObject<DigestiveFoodCatalog>()`. This is a transitive compile-time dependency of the API helper despite Newtonsoft not being named in our code. The loader now uses `asset.ToText()` plus `System.Text.Json.JsonSerializer.Deserialize<DigestiveFoodCatalog>(..., new JsonSerializerOptions { PropertyNameCaseInsensitive = true })` in `FoodProfilesModSystem.cs`. That accepts the JSON's camelCase fields with PascalCase C# properties; it has no need to modify the user's locally generated `.csproj` or add a Newtonsoft reference. **Source fix committed; not yet recompiled or tested on user machine.** User should pull `main` and rerun the same build command.
 
 ## Next real implementation
 
