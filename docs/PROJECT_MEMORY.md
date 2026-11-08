@@ -36,6 +36,24 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 - Profiles are data, not hardcoded if/else by cabbage; species can adjust relative food effects. Some foods are neutral; no speculative numeric values are finalized.
 - Investigate existing vanilla foods that may provide relief without introducing extra items.
 
+## Mixed meals and hunger gurgles — research directions (2026-11-08)
+
+**Status:** User-suggested ideas to research and tune; **not implemented** and no gas values, hunger thresholds or reduction mechanisms have been finalized.
+
+### Multiple ingredients and portion-aware digestion
+- Evaluate the **actual ingredients and quantities in a consumed meal**, not just its displayed recipe name or vanilla nutrition category. Eggs plus cabbage can differ from eggs alone; soybeans and peanuts are legumes even though vanilla may categorize them as `protein`.
+- Vintage Story's [meal-container modding guide](https://wiki.vintagestory.at/Modding:Meal_Container) indicates a meal's ingredient item stacks are saved as `contents` attributes on its container (pot, bowl, crock), so inspecting them is plausible. [Cooking documentation](https://wiki.vintagestory.at/Cooking/en) includes scrambled eggs with optional vegetables and stews containing legumes. Verify exact 1.22 APIs for each container type, partial serving size and moment of successful consumption; **do not infer that a person swallowed all ingredients remaining in a pot**.
+- For food profiles consider upper/lower gas potential, timing, cooking/process modifier and a per-ingredient portion weight; sum or otherwise combine these into one **additive digestion contribution for the portion eaten** without erasing other active meals or existing reservoirs. Any realistic interactions/synergies between foods are a later optional refinement, not a required special 'eggs + cabbage' hardcoded recipe.
+- User's proposed rough classes: cabbage and legumes high gas potential; ordinary meat low/none; some neutral foods; possible foods/herbs that **reduce** digestive load. Eggs may alter smell characteristics more than quantity—speculative and unnecessary for an initial sound-only release. Food-to-gas relationships depend on digestive physiology and individual variability; avoid presenting table values as medical facts.
+- **Separate two effects of a 'reducing' food:** (a) reduce only *future, unproduced potential* of that meal/active digestion, without retroactively wiping prior meals, versus (b) a limited, biologically-plausible easing/absorption of *existing* gas over time. Both are proposals requiring research; no instant magically negative gas reservoir.
+- Preserve vanilla nutrition, satiety, food consumption, safety, and other gameplay mechanics unchanged. Modded recipe ingredients should use data-driven fallbacks.
+
+### Hunger-based stomach rumbling (player)
+- **Explore** rare stomach rumbling/gurgling when the Seraph becomes increasingly hungry, independently of upper/lower stored gas. The game's [satiety documentation](https://wiki.vintagestory.at/Satiety) reports a 1,500-point default scale and [EntityBehaviorHunger](https://apidocs.vintagestory.at/json-docs/jsondocs/Vintagestory.GameContent.EntityBehaviorHunger.html) exposes hunger/saturation properties; verify per-player runtime access on the authoritative side.
+- Proposed curve: at high satiety no or almost no hunger growls; occasional subtle sound at moderate hunger; modestly more likely when very hungry. Use random intervals and cooldowns—not a repetitive sound every time the bar decreases, not any damage/debuff, and not an automatic fart/belch.
+- Do not consume gas reservoirs for hunger growls. Choose appropriate non-comic stomach audio distinct from intestinal sounds. Investigate whether existing ambient/idle audio or mods already cover this to avoid overlap; allow settings to disable or attenuate it.
+- Hunger gurgling can coexist with active digestion but should not directly manufacture gas.
+
 ## Species registry and third-party support
 - Compile a **complete list of vanilla creatures from the installed entity assets**; discuss each one before final classification. Initial proposed classes: excluded, fallback-default, shared profile, and custom profile.
 - Relevant terrestrial mammals and rideable land animals are candidates, not just goats. Players use their own profile. Birds/flying species (including modded crows), fish/aquatic species, and mechanical/temporal creatures should be excluded initially.
