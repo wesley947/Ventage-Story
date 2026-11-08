@@ -76,6 +76,7 @@
 - Additional lore books, scrolls, historical figures, resonator recordings, and collectible tapestry fragments.
 - Animal dung, pellets/pies, decay, farm fertilizer and potential manure-mod integration.
 - Advanced digestive interactions, relief foods, complex settings interface and more specialized AI.
+- **Bear upright stance (possible organic trigger):** inspect active bear standing/lookout animation or AI task in VS 1.22; consider slight reservoir-dependent release probability at the natural posture transition, without forcing a release or scripting an event. See `PROJECT_MEMORY.md`.
 - **Emergent herd reactions, not an event feature:** ordinary audible releases might independently startle nearby animals, which may then release existing gas under normal individual rules. Do not script a cascade or implement a special herd-frenzy system. Test only after general animal sound response and digestion are working. See `PROJECT_MEMORY.md`.
 
 ## Highest-priority technical unknowns
