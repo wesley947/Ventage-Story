@@ -74,6 +74,19 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 - Possible controls: enable effects, audio volume/distance, herd concurrency budget, probability of background release, digestion multipliers, death release, logging/export/privacy, species settings. Expose few options initially; expand gradually.
 - Simulation/config authority belongs on server; private sound playback preferences can remain client-side. Do not require an optional UI library for the mod to function unless consciously chosen.
 
+## Multiplayer visibility and vanilla particle effects (future research, 2026-11-08)
+
+**User request:** Account for a multiplayer world where **only one player has this mod installed**, while a gas release should ideally be **visually observable by nearby players who do not have the mod**. Proposed visual cue: a brief, appropriate **burst of particles originating at the player's rear end**, proportional to the actual gas release. This is a gameplay/visual concept, **not yet implemented**; users may want to tell who farted even when they do not have client-side mod assets.
+
+**Architecture and deployment cases to investigate before promising compatibility:**
+1. **Server has mod, some/all clients do not:** Determine whether the server can cause a **vanilla particle effect** that reaches unmodded clients by using only built-in particle textures/types and a server-to-client method supported by Vintage Story 1.22. Verify event replication, visibility, and sound for players without the mod. Avoid custom mod-only assets for that optional effect. A server-side authoritative release event includes entity identity/position/direction and intensity, not fabricated events.
+2. **Only one client has mod; multiplayer server does not:** Do **not assume** a client-only mod can persistently simulate all players/animals or broadcast particles, audio or release events to other unmodded clients. Determine official networking restrictions and deployment requirements. It may be impossible to meet global-visibility goals without a cooperating server mod; document limitations honestly.
+3. **Server and all clients have mod:** Full effects may be possible, subject to compatibility, network budgets and correct server/client separation.
+
+**Visual design proposal:** A short, modest particle puff located behind the correct player/entity (direction tracks their actual orientation/posture), only on **an actual reservoir-backed release**; scale burst for squeaker vs large release. Do not use suggestive anatomy, overpower the screen, or make an always-on emission. Ensure other viewers can distinguish a release without turning the mod into particle spam. Check per-player settings, visibility range, event replication and multiplayer performance, including a 30–40-goat pen.
+
+**Scope:** First planned release prioritized audio and simulation, with particles deferred unless implementation proves simple and safe. The user now wants **vanilla-client-visible** effects considered as a future enhancement and design constraint; this does **not** constitute a promise that client-only installation will produce shared effects. The core server-authoritative state should be architected to permit broadcast of presentation events later, without simulating twice.
+
 ## Sound design
 - Placeholder shared audio first: soft/small, medium, large, and belch. A release size and species profile select a **tagged sound type**, not a hardcoded file count per species.
 - Vocabulary to assess: floofer, poof, pop, putt, squeaker, flutter, gravelly, sputter, rumbler, trumpeter, bubbler, and silent. Larger animals may favor bassy sounds; smaller ones higher/shorter.
