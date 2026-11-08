@@ -61,6 +61,8 @@
 - [ ] Support native JSON settings; evaluate optional ConfigKit/Config Lib or custom in-game UI.
 - [ ] Validate client/server ownership and multiplayer hearing.
 - [ ] **Multiplayer installation matrix:** test server+modded client, server+unmodded client, and **only one player/client has the mod installed** (server does not). Document what can and cannot be replicated to unmodded clients; never assume client-only mods can authoritatively change world behavior.
+- [ ] **Zero-client-install auditory proof of concept:** on a server with the mod, broadcast a built-in `game:sounds/voice/oboe` (or another confirmed voice instrument) using `PlaySoundAt` with controlled pitch; verify a **server mod + entirely unmodded listener** hears it. Optionally test vanilla `EntityTalkUtil.Talk(EnumTalkType.Shrug)` as a native rising-voice packet, noting its eye-height position and fixed type envelope. No player voice selector required.
+- [ ] **Optional interactive audio experiment:** during an already active gas release, let timely crouch/stand change pitch/duration without generating extra gas. Check whether server-only staggered short sound events are acceptable for vanilla clients, or whether smooth `ILoadedSound.SetPitch` needs an optional client mod. Avoid spam/overlap, reject empty reservoir and honor release bounds.
 
 ### M6 — Great Silence lore (required for first release)
 - [ ] Plan coherent chronology/sections/authors in `LORE_INDEX.md`.
