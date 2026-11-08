@@ -72,6 +72,8 @@
 
 | D46 | **Hard conservation invariant for players and terrestrial animals:** Stored intestinal gas continuously accumulates from delayed food fermentation and/or background gas, without pausing or disappearing due to cooldown, source expiry, elapsed time, save/reload or capacity. **Only actual flatulence releases remove part or all of the gas reservoir.** | **Explicit user requirement (2026-11-08).** Release cooldowns apply to release frequency, never production. High-pressure thresholds must not silently clamp/delete excess; gas-lowering foods may only change *future generation* in v1, not absorb already-stored gas. Persist precisely across state transitions and test conservation. |
 
+| D47 | Define **100% as normal "Full" pressure, not a storage cap**. Allow overflow, but sharply increase the chance of a **large/explosive actual fart** after 100%, aiming for **nearly certain by ~125%**; a big overpressure release should expel **>=50% of the current reservoir**, often more. Avoid practical accumulation far above 125% while conserving gas strictly. | **Explicit user target (2026-11-08), detailed curve/cadence not finalized.** Proposed failsafe: at >=125% prioritize/guarantee a genuine large release, possibly bypassing ordinary cooldown. No silent clamp, disappearance, per-frame chance artifacts, or unlogged removal. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
