@@ -89,7 +89,17 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 
 ## Native instrumental voice sound design research (2026-11-08)
 
-**Voice choice (user-approved, 2026-11-08):** Players should be able to select a **separate digestive instrument/voice** used for their own fart sounds. **Default is `Follow current Seraph voice`**: dynamically use the player's currently selected speaking instrument and pitch (not a one-time copied default), so changing their usual voice also changes the digestive voice unless overridden. An independent override should use its own selected instrument; changing it must never change the player's regular speech. Bears and other terrestrial animals receive **mod-defined species voice profiles**, not player-configurable individual instruments by default. This concerns cosmetic presentation only, never how much gas an entity has or releases. Check the accessible client-side voice selection/watched attributes in actual 1.22.7; handle multiplayer and unmodded clients separately. **No audio prototype or UI implemented yet.**
+**Voice policy REVISION (2026-11-08; provisional user preference):** Rather than binding one instrument to each player or offering a separate fart voice selector, **choose different built-in instrument voice samples based on the type of fart**. User is reconsidering and currently prefers *omitting* player customization to reduce complexity and preserve surprise. The earlier agreed `Follow current Seraph voice` default and independent override are **superseded for current planning** (D33 now superseded by D34). Do not implement player fart-voice selection in v1 unless explicitly revisited. Bears and other animals retain mod-defined species release/sound profiles.
+
+**User's preliminary categorization by listening to local vanilla OGG samples (2026-11-08; subjective, processed sounds not yet tested):**
+
+| Release type | Candidate game-owned source files | Concept |
+| --- | --- | --- |
+| Squeakers | `altoflute.ogg`, `clarinet.ogg`, `oboe.ogg` | Small and short, including deliberate low-pressure crouch relief |
+| Loose farts | `harmonica.ogg`, `tuba.ogg` | Softer/wavier or low notes, perhaps altered by envelopes |
+| Loud farts | `sax.ogg`, `trumpet.ogg`, `accordion.ogg` | Stronger noticeable events |
+
+This uses all eight local samples. The model should choose an appropriate **release type** based on actual reservoir, quantity of gas released, event mechanics and (if useful) species; **audio chooses a randomly weighted source within the category and varies pitch/duration/envelope** to avoid repetition. Audio selection must never generate gas or dictate biological releases. The current source-to-category mapping is not final until pitch-bent processed examples have been auditioned. No audio code or UI exists yet.
 
 **Local install finding (2026-11-08):** User's `%APPDATA%\Vintagestory\assets` contains `creative`, `game`, `survival`, and `version-1.22.7.txt`. The actual local `assets\game\sounds\voice` directory contains **eight `.ogg` samples**: `accordion.ogg` (32,147 bytes), `altoflute.ogg` (19,823), `clarinet.ogg` (24,921), `harmonica.ogg` (26,167), `oboe.ogg` (30,299), `sax.ogg` (43,606), `trumpet.ogg` (48,187), and `tuba.ogg` (23,331). Crucially, the installed saxophone voice sample is called **`sax.ogg`**, although the upstream EntityTalkUtil default declares `sounds/voice/saxophone`; resolve actual AssetLocation via installed asset paths and voice selections rather than blindly copying that default. **The audio has not been auditioned or pitch-modulated yet.** Next: listen to an unmodified sample and test pitch/volume envelopes in a dedicated prototype.
 
