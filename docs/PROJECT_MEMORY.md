@@ -96,19 +96,21 @@ At the level of a *single* animal:
 
 This possibility should be tested *after* ordinary gas/AI behavior works, in a controlled survival pen containing 1, 5, then ~40 goats. Test for believable rare responses and performance, without tuning to guarantee any particular comedic outcome. No special mechanic is committed to first release.
 
-## Player crouch posture and pressure release (design idea, 2026-11-08)
+## Player crouch as natural pressure relief (revised proposal, 2026-11-08)
 
-**User request:** If a player holds crouch for **more than about one real-time second**, and their *lower/intestinal* gas reservoir is sufficiently **loaded**, there should be a **high chance** of an ordinary fart. This is intended as an organic posture-sensitive release, **not a guaranteed scripted sound**, new gas production, or a separate minigame. Specific pressure threshold and probability remain to be balanced after core simulation works.
+**Latest user request (supersedes the previous one-second-only crouch idea):** The player can deliberately relieve intestinal gas by crouching, with the outcome driven by **current lower-reservoir pressure** rather than a scripted two-part sequence. No need to have farted previously to use the quiet-relief path. User's 75% / 25% figures refer to **amount of gas in the reservoir**, not a 75% release probability.
 
-Potential implementation (not yet API-verified):
-- Observe player crouch/sneak input or the authoritative game state; on the transition from not crouching to crouching, start a one-second timer.
-- If still crouching after the delay, perform **one pressure- and cooldown-dependent release check per continuous crouch**, not a repeated roll every tick. Standing before the deadline cancels that opportunity.
-- A heavily loaded player has a high (but less than certain) chance of release; an empty reservoir **always yields silence**. A successful release consumes stored gas according to the normal simulation.
-- Preserve vanilla crouch/sneak, player movement and nutrition; do not fabricate gas or turn this into a forced stealth penalty. Any nearby animal reaction would be a consequence of the **existing** general audible-stimulus mechanics, never a bespoke chain-reaction event.
-- Maintain ordinary cooldowns so repeatedly tapping crouch cannot trigger rapid-fire releases. Test especially while crouching for long periods, repeated crouch attempts and multiplayer.
-- Verify whether crouch state is reliably observable on the server under Vintage Story 1.22 before implementing.
+- **Heavily loaded:** Holding crouch for **more than about 1 real-time second** creates a **high but non-guaranteed** chance of a normal fart. If it succeeds, release roughly **75% of the available lower-reservoir gas** at that time, leaving roughly 25% remaining; update the authoritative gas state. What constitutes heavily loaded and the precise probability remain to be tuned.
+- **Lightly loaded (around 25% of capacity):** Crouching for **at least about 2 real-time seconds** lets the player **deliberately squeeze out the currently stored low amount** with a small randomly selected **squeaker** sound, without requiring an earlier full-pressure fart. If someone previously released 75% and has around 25% left, they may stand, crouch again for 2 seconds and clear it in exactly the same way.
+- **No available gas:** No emission or fake sound at any crouch duration. Even after emptying the reservoir, digestion may later generate new gas normally.
+- **One physical release per continuous crouch** is the initial proposed rule; no roll each frame and no immediate second squeaker on the same sustained crouch following the initial large release. If the heavy-pressure chance fails, behavior on extended crouching is to be balanced rather than silently auto-triggering a second event.
+- **Cooldown / abuse:** Sensible regular cooldowns and minimum gas threshold; a deliberately held second crouch used to clear residual gas should be feasible without forcing players to wait an excessively long time. Do not let rapid repeated crouch tapping generate gas or spam sounds.
+- **Server state:** Verify Vintage Story 1.22 supports authoritative detection of player crouch start, continuous duration, stand/cancel and multiplayer replication. Preserve the ordinary crouch/sneak function and avoid stealth debuffs. Any nearby-animal reaction follows the same *general audible-event perception* as all fart sounds; never script herd mayhem.
+- **Player awareness:** Provide an unobtrusive way to judge whether the player is loaded enough to seek privacy. Start with a qualitative pressure status / diagnostic command, and consider optional lightweight UI or in-game cues later. No mandatory permanent meter or final pressure thresholds decided.
 
-**Naming:** The technical ID `lingamsdigestivesim` is approved; the public display title **remains a variable/placeholder** pending a later naming decision. Do not confuse display title with code IDs or the GitHub repo name.
+**Naming:** The technical ID `lingamsdigestivesim` is approved; the public display title **remains a variable/placeholder** until chosen.
+
+**Status:** Design clarification only. None of these mechanics is yet implemented, and the game input/state APIs still require verification.
 
 ## Bear upright idle posture and gas-release opportunity (idea, 2026-11-08)
 
