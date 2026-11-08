@@ -89,6 +89,12 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 
 ## Native instrumental voice sound design research (2026-11-08)
 
+**Voice choice (user-approved, 2026-11-08):** Players should be able to select a **separate digestive instrument/voice** used for their own fart sounds. **Default is `Follow current Seraph voice`**: dynamically use the player's currently selected speaking instrument and pitch (not a one-time copied default), so changing their usual voice also changes the digestive voice unless overridden. An independent override should use its own selected instrument; changing it must never change the player's regular speech. Bears and other terrestrial animals receive **mod-defined species voice profiles**, not player-configurable individual instruments by default. This concerns cosmetic presentation only, never how much gas an entity has or releases. Check the accessible client-side voice selection/watched attributes in actual 1.22.7; handle multiplayer and unmodded clients separately. **No audio prototype or UI implemented yet.**
+
+**Local install finding (2026-11-08):** User's `%APPDATA%\\Vintagestory\\assets` contains `creative`, `game`, `survival`, and `version-1.22.7.txt`. Next inspect `assets/game/sounds/voice` to identify actual built-in instrument files before designing test pitch envelopes.
+
+
+
 **User idea:** Instead of starting with downloaded fart recordings, investigate the **musical gibberish / Peanuts-like voice** used for Vintage Story Seraphs and traders. Could instrument sample(s) be pitch-bent, shortened, layered, or repeated to create stylized **squeakers, little poots, rumbles, and flutters**, with a coherent vanilla audio aesthetic? This is a preferred **prototype to audition**, not a confirmed sound-quality result or decision to eliminate all prerecorded effects.
 
 **Verified source facts (from upstream public source, not yet tested against local installed 1.22 DLL/assets):**
