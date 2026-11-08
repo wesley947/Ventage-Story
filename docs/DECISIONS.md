@@ -38,6 +38,9 @@
 | D27 | Brand original, full-size mods consistently with **Lingam's ...** in the public display name; `Ventage Story` may no longer be best as the published title. | **Preferred direction (2026-11-08).** Exact title still under discussion; *Lingam's* is the creator brand, not a reason to change technical IDs or the GitHub repository immediately. |
 | D28 | Adopt `lingamsdigestivesim` as the stable internal Mod ID for the digestive mod's initial project template. | **User approved (2026-11-08).** Verify registry uniqueness before publishing; no source project generated yet. |
 
+| D29 | A player who holds crouch for about one second may have a **high but non-guaranteed** chance of an ordinary fart **only when intestinal gas is sufficiently loaded**; one roll per crouch, respecting normal cooldown and reservoir depletion. | **User-requested design direction (2026-11-08), not implemented.** Pressure threshold/probability and game API for crouch need verification. No custom crouch event/fear sequence. |
+| D30 | Keep public-facing mod name **variable/unsettled** during bootstrap while preserving approved internal `lingamsdigestivesim` and Lingam's naming preference. | **Reaffirmed (2026-11-08).** Do not hardcode a provisional title in persistent identifiers. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
