@@ -38,7 +38,7 @@
 - [ ] Build JSON/plain-text species metadata exporter, suitable for issue submissions. See `CREATURE_EXPORT_SPEC.md`.
 - [ ] Survey raw, cooked and prepared vanilla foods and define preliminary profiles.
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
-- [ ] **Hunger gurgle prototype (optional):** find player satiety property, test subtle hunger-scaled stomach sounds with cooldowns independent of gas state; verify client/server sound ownership and no overlap with existing ambient audio.
+
 - [ ] Verify actual successful-feeding pathways for animals and players; record limitations.
 
 ### M4 — Functional simulation
@@ -79,6 +79,7 @@
 - Animal dung, pellets/pies, decay, farm fertilizer and potential manure-mod integration.
 - Advanced digestive interactions, relief foods, complex settings interface and more specialized AI.
 - **Bear upright stance (possible organic trigger):** inspect active bear standing/lookout animation or AI task in VS 1.22; consider slight reservoir-dependent release probability at the natural posture transition, without forcing a release or scripting an event. See `PROJECT_MEMORY.md`.
+- **Later update only — hunger gurgles:** if revisited, investigate player satiety, subtle hunger-scaled stomach sounds with cooldowns independent of gas state, and client/server sound ownership. Explicitly excluded from initial release scope.
 - **Emergent herd reactions, not an event feature:** ordinary audible releases might independently startle nearby animals, which may then release existing gas under normal individual rules. Do not script a cascade or implement a special herd-frenzy system. Test only after general animal sound response and digestion are working. See `PROJECT_MEMORY.md`.
 
 ## Highest-priority technical unknowns
