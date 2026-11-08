@@ -1,8 +1,8 @@
 # Development Roadmap
 
 **Last updated:** 2026-11-08  
-**Project stage:** local mod template generated, built and loaded in a Creative test world; GitHub food JSON/loader integration added but not yet compiled locally.  
-**Next step:** User's local generated mod (not yet committed to GitHub) compiled and loaded. Pull the newly committed food registry into `$HOME\\Ventage-Story` with `git -C "$HOME\\Ventage-Story" pull --ff-only` (one PowerShell command at a time), then build and check that 195 profiles load. See `docs/FOOD_REGISTRY_INTEGRATION.md`. No automatic ingredient capture or gas calculation wired to gameplay yet.
+**Project stage:** Verified Vintage Story 1.22.7 test-world load: JSON asset packaged and 195 food profiles + 13 composite rules + 6 exclusions loaded on both server and client. Native collectible audit is source-committed but untested.  
+**Next step:** Pull GitHub main with `git -C "$HOME\\Ventage-Story" pull --ff-only` (one PowerShell command per turn); compile, copy to Mods, and launch once to generate `VintagestoryData\\ModData\\lingamsdigestivesim\\vanilla-food-code-audit.csv` via debug-only audit. Then use real game codes to validate/match food profiles before wiring successful player eating. Local generated `.csproj` and template remain untracked; don't overwrite.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
@@ -24,7 +24,7 @@
 ### M1 — Minimum viable working shell
 - [ ] Inspect the user's actual Vintage Story 1.22.x installation and installed code-mod template, following `docs/IMPLEMENTATION_PLAN.md`.
 - [ ] Create `modinfo.json`, project file, minimal ModSystem and neutral asset namespace.
-- [x] Build and load the empty official-template mod successfully in a **separate test world** (user verified). The new food-loader code still needs its first local compilation.
+- [x] Build and load the empty official-template mod successfully in a **separate test world** (user verified), then compile and load the **new JSON food registry** successfully too: both client/server logs confirm 195 profiles, 13 composites, 6 exclusions and two active ModSystems.
 - [ ] Add a versioned, native JSON config file and basic logging.
 
 ### M2 — Entity data & lifecycle
@@ -42,7 +42,8 @@
 - [ ] Add data-driven optional domain-qualified third-party profiles; ignore missing mods.
 - [ ] Build JSON/plain-text species metadata exporter, suitable for issue submissions. See `CREATURE_EXPORT_SPEC.md`.
 - [ ] Survey raw, cooked and prepared vanilla foods and define preliminary profiles.
-- [x] Convert the 214-row reviewed food CSV into **195 runtime food JSON profiles, 13 composite recipe rules and 6 exclusions**; add a C# registry loader and MSBuild content-copy target. Source committed; local compilation/asset load not yet tested. See `docs/FOOD_REGISTRY_INTEGRATION.md`.
+- [x] Convert the 214-row reviewed food CSV into **195 runtime food JSON profiles, 13 composite recipe rules and 6 exclusions**; add a C# registry loader and MSBuild content-copy target. **Build/packaging and in-game client + server loading verified.** See `docs/FOOD_REGISTRY_INTEGRATION.md`.
+- [ ] **Native collectible audit:** debug-only source committed to automatically report all registered vanilla `game:` codes and tentative food profile matches to CSV; still requires pull/build/run/test and human review of suggestions.
 - [ ] Audit actual vanilla game item/block codes for the 195 profiles, then connect ingestion event resolution to profile lookup (current JSON deliberately has no unverified itemCode bindings).
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
 
