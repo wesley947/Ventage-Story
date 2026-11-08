@@ -82,6 +82,8 @@
 - [ ] Check docs and GitHub sync before releasing.
 
 ## Later / feature-creep queue
+- **Portable client-only presence experiment (optional, not first-release blocker):** can a lone modded client on an otherwise-unmodified multiplayer server invoke *permitted vanilla networked emotes* to create voice sounds that all vanilla clients hear? Test simple `/emote shrug` first; document sound-asset and curve restrictions. Do **not** claim animals/other players can acquire server-side digestive behavior from a client-only mod, or imply arbitrary sound injection into unmodified servers. Avoid spam, respect server configuration. Full multiplayer digestion remains server-side.
+
 - **Visual gas cues (multiplayer):** investigate brief, tastefully restrained **rear-end vanilla particle puffs** aligned with real release events. Prefer effects all clients can see **when server-side support permits**; first verify built-in particle networking and whether unmodded clients can see server-emitted vanilla particles. Treat client-only installation as a separate, likely limited case. Visuals are deferred from sound-first release unless cheap and safe.
 - Rich species-specific sound libraries and audio tuning.
 - More custom modded fauna support.
