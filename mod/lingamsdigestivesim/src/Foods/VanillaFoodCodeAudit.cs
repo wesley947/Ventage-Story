@@ -69,14 +69,14 @@ public static class VanillaFoodCodeAudit
                 if (suggestions.Count > 0) rowsWithSuggestions++;
             }
 
-            // Also include profiles with no matching name guess so missing foods are visible.
-            report.AppendLine();
-            report.AppendLine("UnmatchedProfileId,ProfileKey,ProfileName,Reason");
+            // Keep a single consistent CSV header, and make food profiles with no
+            // guessed match visible as special rows within the same table.
             foreach (var profile in profiles.Where(p => !suggestedProfileIds.Contains(p.Id)))
             {
                 report.AppendLine(string.Join(",",
-                    Escape(profile.Id), Escape(profile.Key),
-                    Escape(profile.Name), Escape("No suggested match in vanilla collectible code; manually audit")));
+                    Escape("UnmatchedProfile"), Escape(""), Escape(""), Escape(""),
+                    Escape(profile.Id), Escape(profile.Name),
+                    Escape("No suggested collectible code; manually inspect profile " + profile.Key)));
             }
 
             File.WriteAllText(path, report.ToString(), new UTF8Encoding(encoderShouldEmitUTF8Identifier: true));
