@@ -7,7 +7,7 @@
 - Repository: `wesley947/Ventage-Story` (repository spelling is intentional; do not rename it without asking).
 - Project: a Vintage Story digestive-gas simulation mod, with **Lingam's** as the intended public naming/creator brand. **Public display title remains undecided.** Previous names included *Cabbage Carnage* and *Ventage Story*.
 - Target: Vintage Story 1.22.x, C#/.NET 10.
-- Current stage (2026-11-08): planning/bootstrap; no compiled mod yet. **Approved stable internal Mod ID: `lingamsdigestivesim`** (subject to verifying no conflict before distribution). The repository still uses `Ventage-Story` until explicitly renamed.
+- Current stage (2026-11-08): the local official-template mod shell compiled and loaded successfully in a separate test world; the new JSON food registry and C# loader are committed on GitHub but are not yet locally pulled/built/tested. **Approved stable internal Mod ID: `lingamsdigestivesim`** (subject to verifying no conflict before distribution). The repository still uses `Ventage-Story` until explicitly renamed.
 - Keep permanent technical identifiers based on approved `lingamsdigestivesim`, not on any provisional public display name. The public name may change without changing saved-data namespaces or item codes.
 
 ## On every new chat
@@ -19,8 +19,9 @@
 5. Read `docs/ROADMAP.md` if present: completed work, next milestone, blockers, and deferred features. Consult `docs/IMPLEMENTATION_PLAN.md` when generating or extending code.
 6. Read `docs/CREATURE_EXPORT_SPEC.md` when working on modded animals, diagnostics, data exports, or community support requests.
 7. Read `docs/LORE_INDEX.md` when writing, integrating, or reviewing lore; read `docs/SOUND_CREDITS.md` before including third-party recordings.
-8. Inspect actual relevant source/data files before changes. If any referenced document is missing, say so; never invent its contents.
-9. Summarize current state and the **single next practical step**. Do not make the user reconstruct the project from memory.
+8. For food work, read `docs/FOOD_REGISTRY_INTEGRATION.md` and `docs/FOOD_FRAMEWORK.md`, then inspect `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodprofiles.json` and the CSV master in `data/`.
+9. Inspect actual relevant source/data files before changes. If any referenced document is missing, say so; never invent its contents.
+10. Summarize current state and the **single next practical step**. Do not make the user reconstruct the project from memory.
 
 ## Documentation map
 
