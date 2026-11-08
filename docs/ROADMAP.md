@@ -59,6 +59,7 @@
 - [ ] **Hello World persistence test:** spawn vanilla book/scroll with `title` and embedded `text` ItemStack attributes, save, store in inventory/chest/shelf/ground, disable mod on copied world, check readability and identity. Details: `docs/LORE_PERSISTENCE_RESEARCH.md`.
 - [ ] Draft readable, mildly irreverent ancient medical and social histories, not excessively opaque.
 - [ ] Implement at least some **rare discoverable scrolls/books**, and test journal and ruin loot behavior.
+- [ ] Investigate **journal-aware additional loot**: vanilla-lore discovery ratio per player, original vanilla roll priority, rising bonus Ventage lore odds late-game; verify cracked-vessel break hooks, pre-generated chests, multiplayer, and non-destructive drop behavior (see `LORE_INDEX.md`).
 - [ ] Explore one or two original resonator cylinder recordings if practical; not a blocker if disproportionate effort.
 
 ### M7 — Quality and first public release
