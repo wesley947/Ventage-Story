@@ -1,4 +1,5 @@
 using System;
+using System.Text.Json;
 using Vintagestory.API.Common;
 
 namespace lingamsdigestivesim.Foods;
@@ -24,7 +25,9 @@ public sealed class FoodProfilesModSystem : ModSystem
 
         try
         {
-            DigestiveFoodCatalog? catalog = asset.ToObject<DigestiveFoodCatalog>();
+            DigestiveFoodCatalog? catalog = JsonSerializer.Deserialize<DigestiveFoodCatalog>(
+                asset.ToText(),
+                new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (catalog == null) throw new InvalidOperationException("Catalog JSON is empty or invalid.");
             Registry = FoodProfileRegistry.FromCatalog(catalog);
             api.Logger.Notification(
