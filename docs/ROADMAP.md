@@ -29,6 +29,7 @@
 
 ### M2 — Entity data & lifecycle
 - [ ] Confirm server-side per-entity persistence APIs using installed game and/or current source.
+- [ ] **Separate animal intake from player intake:** players use sliding 30-second inactivity meal batches; animals use direct observed feeding events plus low species-based background intestinal gas, so un-fed vanilla penned animals can still occasionally release without inventing food records or changing survival/husbandry.
 - [ ] Add one test attribute to a vanilla animal, save/reload, unload/reload and verify preservation.
 - [ ] **No v1 burps:** stomach is progressive **time buffer** only, no upper-gas production; leave architectural extension for belching later. Base digestion on `IGameCalendar.TotalHours`; handle player multiple meals without reset, custom calendar speed, meal-type variations and sleep/unload catch-up.
 - [ ] Define `DigestiveState` and add upper/lower reservoirs with active contributions.
