@@ -16,7 +16,7 @@
 2. Read `AGENTS.md` if present: coding and collaboration rules.
 3. Read `docs/PROJECT_MEMORY.md` if present: current architecture, technical context, and major requirements.
 4. Read `docs/DECISIONS.md` if present: decisions and their rationales, including reversals.
-5. Read `docs/ROADMAP.md` if present: completed work, next milestone, blockers, and deferred features.
+5. Read `docs/ROADMAP.md` if present: completed work, next milestone, blockers, and deferred features. Consult `docs/IMPLEMENTATION_PLAN.md` when generating or extending code.
 6. Read `docs/CREATURE_EXPORT_SPEC.md` when working on modded animals, diagnostics, data exports, or community support requests.
 7. Read `docs/LORE_INDEX.md` when writing, integrating, or reviewing lore; read `docs/SOUND_CREDITS.md` before including third-party recordings.
 8. Inspect actual relevant source/data files before changes. If any referenced document is missing, say so; never invent its contents.
@@ -31,11 +31,12 @@
 | `docs/PROJECT_MEMORY.md` | Durable project specification, game/API findings, architecture, persistence, food and species model. |
 | `docs/DECISIONS.md` | Dated decisions, especially those changing earlier design assumptions. |
 | `docs/ROADMAP.md` | What is done, what is next, blockers, and feature-creep backlog. |
+| `docs/IMPLEMENTATION_PLAN.md` | Step-by-step construction and test gates for the first working .NET 10 code-mod skeleton and later features. |
 | `docs/LORE_INDEX.md` | Great Silence chronology, writers, discovery types, journal sections, planned and implemented lore entries. |
 | `docs/CREATURE_EXPORT_SPEC.md` | Design for opt-in, privacy-safe export of modded creature metadata to support GitHub issue requests without chasing animals. |
 | `docs/SOUND_CREDITS.md` | Eventually record sound sources, creators, licenses, and edits. |
 
-**Documentation status (2026-11-06):** All files listed in this table have been created and committed to GitHub. The actual C# mod shell and playable features have **not** been implemented. Recheck the repository before assuming this remains current.
+**Documentation status (2026-11-08):** All files listed in this table have been created and committed to GitHub. The actual C# mod shell and playable features have **not** been implemented. Recheck the repository before assuming this remains current.
 
 ## Current essential design decisions (bootstrap summary)
 
@@ -68,6 +69,6 @@ Small iterative changes do not require an interruption on every message.
 
 ## Immediate next step at repository bootstrap
 
-Review the existing documentation and select a neutral permanent internal mod ID. Then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
+Review the new implementation plan and verify the available Vintage Story mod templates on the development PC. Approve a neutral permanent internal mod ID before creating `modinfo.json`; then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
 
 Do not mistake a design mockup, hypothetical number, or untested snippet for an implemented feature.
