@@ -30,6 +30,7 @@
 ### M2 — Entity data & lifecycle
 - [ ] Confirm server-side per-entity persistence APIs using installed game and/or current source.
 - [ ] Add one test attribute to a vanilla animal, save/reload, unload/reload and verify preservation.
+- [ ] **No v1 burps:** stomach is progressive **time buffer** only, no upper-gas production; leave architectural extension for belching later. Base digestion on `IGameCalendar.TotalHours`; handle player multiple meals without reset, custom calendar speed, meal-type variations and sleep/unload catch-up.
 - [ ] Define `DigestiveState` and add upper/lower reservoirs with active contributions.
 - [ ] Support additive overlapping meals with correct cumulative elapsed-time accounting.
 - [ ] Research death/unload behavior before delayed one-off postmortem release implementation.
