@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** documentation and architectural bootstrap.  
-**Next step:** Official VS 1.22.0 template is installed, the `vsmod` options have been reviewed, and the game API DLL was found. Check the **local clone location and any uncommitted work**, then run a **dry-run** for a fresh `vsmod` project using approved Mod ID `lingamsdigestivesim` and a changeable display title. Follow `docs/IMPLEMENTATION_PLAN.md`, one PowerShell command at a time.
+**Next step:** User cloned this GitHub repo successfully to `$HOME\\Ventage-Story` on Windows (no local project generated yet; shell entry into folder not confirmed). Check local **working tree** with `git -C "$HOME\\Ventage-Story" status --short --branch`, then dry-run the official `vsmod` template using approved Mod ID `lingamsdigestivesim`, leaving display name provisional. Follow `docs/IMPLEMENTATION_PLAN.md`, one PowerShell command at a time. Multiplayer sound test deferred until user and son are together around Thanksgiving.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
@@ -61,6 +61,7 @@
 - [ ] Support native JSON settings; evaluate optional ConfigKit/Config Lib or custom in-game UI.
 - [ ] Validate client/server ownership and multiplayer hearing.
 - [ ] **Multiplayer installation matrix:** test server+modded client, server+unmodded client, and **only one player/client has the mod installed** (server does not). Document what can and cannot be replicated to unmodded clients; never assume client-only mods can authoritatively change world behavior.
+- [ ] **Minimum acceptance gate — unmodded listeners:** the modded player's actual releases must be audible to nearby **unmodded clients**. In particular test **only one modded client joining an unmodified server**; do not imply this is possible without native permitted actions or server support. Schedule hands-on test with user's son when together around Thanksgiving 2026. If only server-installed version meets the goal, flag the incompatibility explicitly before public release. Animal-wide portable effects and particles are stretch targets.
 - [ ] **Zero-client-install auditory proof of concept:** on a server with the mod, broadcast a built-in `game:sounds/voice/oboe` (or another confirmed voice instrument) using `PlaySoundAt` with controlled pitch; verify a **server mod + entirely unmodded listener** hears it. Optionally test vanilla `EntityTalkUtil.Talk(EnumTalkType.Shrug)` as a native rising-voice packet, noting its eye-height position and fixed type envelope. No player voice selector required.
 - [ ] **Optional interactive audio experiment:** during an already active gas release, let timely crouch/stand change pitch/duration without generating extra gas. Check whether server-only staggered short sound events are acceptable for vanilla clients, or whether smooth `ILoadedSound.SetPitch` needs an optional client mod. Avoid spam/overlap, reject empty reservoir and honor release bounds.
 
