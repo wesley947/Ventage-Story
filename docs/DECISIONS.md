@@ -74,6 +74,8 @@
 
 | D47 | Define **100% as normal "Full" pressure, not a storage cap**. Allow overflow, but sharply increase the chance of a **large/explosive actual fart** after 100%, aiming for **nearly certain by ~125%**; a big overpressure release should expel **>=50% of the current reservoir**, often more. Avoid practical accumulation far above 125% while conserving gas strictly. | **Explicit user target (2026-11-08), detailed curve/cadence not finalized.** Proposed failsafe: at >=125% prioritize/guarantee a genuine large release, possibly bypassing ordinary cooldown. No silent clamp, disappearance, per-frame chance artifacts, or unlogged removal. |
 
+| D48 | Include natural random **flatulence opportunities during standing/ordinary activity** plus **extra distinct event-driven rolls** for meaningful motion, particularly jumping, crouching and standing transitions, when there is real accumulated reservoir gas (proposed threshold ~25% of normal full). No failed roll consumes gas. | **User requirement (2026-11-08), details not yet tuned.** Proposed implementation: coarse time-based opportunities per entity (not per frame), movement/activity weighting, debounced one-off action events, existing deliberate squat relief respected, cooldown limits actual release only; use independent probability and release-amount selection. Example rates and amounts in `PROJECT_MEMORY.md` are nonbinding illustrations. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
