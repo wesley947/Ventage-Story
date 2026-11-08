@@ -48,7 +48,7 @@
 - [ ] Implement background gas production, delayed meal-derived upper/lower production, reservoir caps.
 - [ ] Implement small sporadic and larger threshold releases, movement/jump/fear influences.
 - [ ] Prototype **pressure-aware crouch relief**: at high pressure a >1s crouch can expel ~75% of stored lower gas with high but non-guaranteed chance; at low pressure (e.g. 25%) an independent >=2s sustained crouch can squeeze out current gas as a small random squeaker. No prior fart required; empty stays silent. Verify 1.22 crouch state, cooldowns and multiplayer.
-- [ ] Provide a first **qualitative player digestive-pressure status** (e.g. diagnostic command) before considering an optional in-game cue/HUD; tune thresholds through actual tests.
+- [ ] Provide a first **qualitative player digestive-pressure status** (e.g. diagnostic command), then investigate **the built-in Character Stats panel as first-choice UI** (opened via C). Test whether it can be extended safely via 1.22 API; if not, use a compact companion character panel. Avoid a permanent gas HUD/meter by default.
 - [ ] Add death hook and delayed one-off release if viable.
 - [ ] Handle long elapsed game-time intervals and save/unload/reload, without audio backlog.
 - [ ] Add entity/area/herd diagnostics and bounded event logging.
