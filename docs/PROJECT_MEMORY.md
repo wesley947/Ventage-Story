@@ -36,9 +36,9 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 - Profiles are data, not hardcoded if/else by cabbage; species can adjust relative food effects. Some foods are neutral; no speculative numeric values are finalized.
 - Investigate existing vanilla foods that may provide relief without introducing extra items.
 
-## Mixed meals and hunger gurgles — research directions (2026-11-08)
+## Mixed meals and deferred hunger gurgles (2026-11-08)
 
-**Status:** User-suggested ideas to research and tune; **not implemented** and no gas values, hunger thresholds or reduction mechanisms have been finalized.
+**Status:** Mixed-meal ingredient effects remain in core research; **hunger gurgling is explicitly deferred to a later update** (user decision, 2026-11-08). Neither feature is implemented; no gas values, hunger thresholds or reduction mechanisms have been finalized.
 
 ### Multiple ingredients and portion-aware digestion
 - Evaluate the **actual ingredients and quantities in a consumed meal**, not just its displayed recipe name or vanilla nutrition category. Eggs plus cabbage can differ from eggs alone; soybeans and peanuts are legumes even though vanilla may categorize them as `protein`.
@@ -48,7 +48,7 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 - **Separate two effects of a 'reducing' food:** (a) reduce only *future, unproduced potential* of that meal/active digestion, without retroactively wiping prior meals, versus (b) a limited, biologically-plausible easing/absorption of *existing* gas over time. Both are proposals requiring research; no instant magically negative gas reservoir.
 - Preserve vanilla nutrition, satiety, food consumption, safety, and other gameplay mechanics unchanged. Modded recipe ingredients should use data-driven fallbacks.
 
-### Hunger-based stomach rumbling (player)
+### Later enhancement only: hunger-based stomach rumbling (player)
 - **Explore** rare stomach rumbling/gurgling when the Seraph becomes increasingly hungry, independently of upper/lower stored gas. The game's [satiety documentation](https://wiki.vintagestory.at/Satiety) reports a 1,500-point default scale and [EntityBehaviorHunger](https://apidocs.vintagestory.at/json-docs/jsondocs/Vintagestory.GameContent.EntityBehaviorHunger.html) exposes hunger/saturation properties; verify per-player runtime access on the authoritative side.
 - Proposed curve: at high satiety no or almost no hunger growls; occasional subtle sound at moderate hunger; modestly more likely when very hungry. Use random intervals and cooldowns—not a repetitive sound every time the bar decreases, not any damage/debuff, and not an automatic fart/belch.
 - Do not consume gas reservoirs for hunger growls. Choose appropriate non-comic stomach audio distinct from intestinal sounds. Investigate whether existing ambient/idle audio or mods already cover this to avoid overlap; allow settings to disable or attenuate it.
