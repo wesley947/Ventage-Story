@@ -30,6 +30,8 @@
 
 | D23 | Allow duplicate lore books and scrolls to remain collectible; repeated physical items can decorate shelves or be traded and should not automatically be excluded. Distinguish new-to-journal status from validity of a physical repeat item. | **Agreed correction (2026-11-08).** Ordinary vanilla world lore can repeat; the Resonance Archives' special player-aware selection does not establish universal duplicate prevention. Do not add an anti-duplicate mechanism without later user agreement. |
 
+| D24 | Any apparently contagious goat-fart commotion must **emerge from independent animal hearing/fear and reservoir-driven release mechanics**. Do not design scripted mayhem, special cascade events or herd frenzy modes. | **Agreed clarification (2026-11-08).** Normal sound perception, temperament, current gas amount and each entity's cooldowns determine outcome; occasional chains are incidental, not a feature-specific sequence. See `PROJECT_MEMORY.md`. |
+
 ## Important open questions
 - Select neutral permanent Mod ID and storage namespace before the first real build.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
