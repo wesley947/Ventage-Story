@@ -68,7 +68,11 @@
 - [ ] **Zero-client-install auditory proof of concept:** on a server with the mod, broadcast a built-in `game:sounds/voice/oboe` (or another confirmed voice instrument) using `PlaySoundAt` with controlled pitch; verify a **server mod + entirely unmodded listener** hears it. Optionally test vanilla `EntityTalkUtil.Talk(EnumTalkType.Shrug)` as a native rising-voice packet, noting its eye-height position and fixed type envelope. No player voice selector required.
 - [ ] **Optional interactive audio experiment:** during an already active gas release, let timely crouch/stand change pitch/duration without generating extra gas. Check whether server-only staggered short sound events are acceptable for vanilla clients, or whether smooth `ILoadedSound.SetPitch` needs an optional client mod. Avoid spam/overlap, reject empty reservoir and honor release bounds.
 
+- [ ] **Dairy and eggs high-impact profiles (2026-11-08):** Profile milk, cottage cheese, cheddar, blue cheese, eggs, cabbage and legumes (peanuts/soybeans), including mixed dishes such as cheese pie and scrambled eggs with cheese. Keep quantities/delays adjustable. Milk/dairy lactose mechanism must not be incorrectly applied to eggs; user wants intentionally strong Seraph reactions. Test game 1.22.7 item IDs before coding.
+
 ### M6 — Great Silence lore (required for first release)
+- [ ] Add a **fictional dairy-scarcity/lactase-intolerance lore thread** to the Great Silence: underground refuge food restrictions, rediscovered surface dairy, the physician's investigations, and egg-related phenomena as a separate mechanism. Don't imply all Seraphs canonically descended from cave-dwellers.
+
 - [ ] Plan coherent chronology/sections/authors in `LORE_INDEX.md`.
 - [ ] Compare tone and asset structure with verified vanilla lore books/scrolls.
 - [ ] **Hello World persistence test:** spawn vanilla book/scroll with `title` and embedded `text` ItemStack attributes, save, store in inventory/chest/shelf/ground, disable mod on copied world, check readability and identity. Details: `docs/LORE_PERSISTENCE_RESEARCH.md`.
