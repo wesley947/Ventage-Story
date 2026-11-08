@@ -33,3 +33,15 @@ Prefer **referencing built-in game-owned assets at runtime**, not copying their 
 The user uploaded their installed Vintage Story `assets/game/sounds/voice/tuba.ogg` sample to ChatGPT and requested waveform/envelope analysis. **Measured on uploaded file, not a proposed asset:** mono 44.1 kHz audio, duration **1.279 s**, file obtained from VS 1.22.7, peak absolute sample amplitude about **0.637**. A 10 ms RMS envelope rises from near silence to high amplitude across roughly the first **0.15–0.23 s**, stays strong for the middle with some natural amplitude wavering and gradual decline, then drops rapidly to silence mostly in the last **0.1 s**. Harmonic energy suggests a fundamental of approximately **88 Hz (near F2)**, with strong harmonics around **176, 263, 351, 439 Hz**. Subjectively described by user as rapid attack and delayed 'release', corrected to 'decay'; measured result better described as attack, extended sustain/gradual decay, final quick release. **Recording alone cannot establish any hidden synthesis controls.** Audio has not yet been tested as a generated fart.
 
 Experimental opportunity: use an extracted/played fragment or (preferably) game-engine `ILoadedSound` envelopes to shorten sustain and control pitch glide/volume for squeaker vs rumbler. A 1.28-second sustained sample is too long for many small gas sounds if played unmodified. Actual pitch shifting or clipping must be checked for naturalness and artifacts. Do not copy game's `.ogg` into distributed mod; runtime reference only. The user's source file was provided solely for analysis. 
+
+## Proposed sound-type instrument pools — user audition (2026-11-08)
+
+User listened to local eight built-in voice sounds and prefers choosing instruments according to **release category**, not giving each player a fixed or configurable fart voice. **Current preferred experiment**; custom player 'fart instrument' menu is deliberately **deprioritized** as added complexity that might detract from the humor. Exact mapping is provisional and sound processing is untested.
+
+| Release category | Game sample filenames |
+| --- | --- |
+| Squeakers | `altoflute.ogg`, `clarinet.ogg`, `oboe.ogg` |
+| Loose farts | `harmonica.ogg`, `tuba.ogg` |
+| Loud farts | `sax.ogg`, `trumpet.ogg`, `accordion.ogg` |
+
+The core release event should choose a category using actual stored/released intestinal gas and event characteristics (with suitable variations); the audio utility may choose a sample within that category with some randomness and varying pitch, duration and envelope. Mod-defined animal profiles may weight categories/instruments without requiring extra client UI. All remain runtime references to vanilla sounds; user listening impressions are not yet approved processed sound effects.
