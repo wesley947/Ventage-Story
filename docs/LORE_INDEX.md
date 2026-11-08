@@ -38,6 +38,16 @@ Surviving written fragments and perhaps a resonator recording help connect the s
 - Our gas-suppression story, treatment mandate, invented physician, and loss-of-laughter theory are mod fiction—not Vanilla-confirmed facts.
 - Use deliberately vague or local-community dates if necessary to avoid contradictions.
 
+## Canon research update — shelter diets are incomplete records (2026-11-08)
+
+**Important correction, from user and canon review:** We **don't know the regular diet of subterranean refuges**, nor exactly how cheesemaking, dairy herds or animal-husbandry skills were preserved/reintroduced afterward. The user's examples of grain stores, salted meat and peanuts are hypotheses, **not facts to put in a narrator's objective voice**.
+
+Existing [Vintage Story Quartermaster's Ledger, Part 1](https://wiki.vintagestory.at/Lore_book) reports **dried wolf and rabbit meat**, captured small game and near-starvation in one shelter; this is the strongest concrete dietary evidence found, **but it doesn't cover all underground communities**. [Lore guide](https://wiki.vintagestory.at/Guide:Lore_(spoiler_lite)) says Tobias passed on farming/building/metallurgy knowledge after resurfacing, without specifying cheese-making instruction. [Other canonical lore passages](https://wiki.vintagestory.at/Lore_book) recount dairy cows before the catastrophe; those don't prove fresh dairy in underground refuges.
+
+**Seraph ancestry:** Tobias identifies Seraphs as transformed humans lost beyond time and later returned, so **do not represent modern Seraphs as a multigenerational cave-born population**. The fictitious Great Silence treatment and restricted diets can instead concern a documented/local *human refugee community*, with later Seraphs experiencing dairy-specific digestive effects for an uncertain reason. Proposed scientists' testimony/rumors must be labeled as tentative in-world theory, not authoritative canon. No lore claim that lack of milk **causes loss of genetically determined lactase persistence**; distinct possible food sensitivity/altered biology is fictional.
+
+**Narrative opportunity:** A torn food ledger mentioning preserved meat, a disputed note about a lost milk herd, or a physician arguing about why milk now causes 'disturbances' could fit the chronology without declaring what all caves ate. Preserve original game's mystery.
+
 ## New lore thread — the dairyless lower chambers (2026-11-08)
 
 **User's proposed in-world premise:** Seraphs and/or their ancestral refuge populations went without animal milk and dairy products while sheltered underground. After the return to the surface, encounters with **milk and cheese** cause unusually vigorous intestinal gas, connected in an old physician's writings to lost or reduced lactase function/tolerance. This is a **fictional extension** of Great Silence lore, **not verified vanilla canon**; avoid asserting all Seraphs are literal cave-descended humans (see 'Canon checks' above). The refuge story might apply specifically to one settlement/population and present day observers may misgeneralize it.
