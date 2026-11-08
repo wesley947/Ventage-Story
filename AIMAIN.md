@@ -67,6 +67,10 @@
 
 Small iterative changes do not require an interruption on every message.
 
+## Current checkpoint (2026-11-08)
+
+The local GitHub repo was successfully cloned under `$HOME\\Ventage-Story`. User has **not yet confirmed navigating into it**, but the clone command reported success. Research of game-owned voice samples and sound APIs has advanced, and the user has declared a minimum multiplayer acceptance goal: unmodded nearby players hear the modded player's fart. Only-client-modded/unmodified-server delivery is **unverified and potentially unsupported**; defer hands-on multiplayer test to when the user's son visits around Thanksgiving. Continue local template bootstrap now. The immediate next one-command PowerShell instruction is `git -C "$HOME\\Ventage-Story" status --short --branch`, then dry-run generation if clean.
+
 ## Immediate next step at repository bootstrap
 
 Official `VintageStory.Mod.Templates@1.22.0` is installed, `dotnet new vsmod --help` reviewed, and the game API DLL was found in the development PC's expected location. Next: inspect local clone/working directory and dry-run the `vsmod` template using stable Mod ID `lingamsdigestivesim`, while leaving the public display title changeable. Then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
