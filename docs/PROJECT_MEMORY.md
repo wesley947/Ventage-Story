@@ -63,20 +63,20 @@ Persist under a neutral namespace/tree on each relevant entity, with versioned s
 - Investigate properly licensed third-party libraries with author, source, license and edit notes in `SOUND_CREDITS.md`. Sound audition should be done when user is home, not at work without headphones.
 - Use sensible positional sound, output distance, concurrency limits; never play a backlog of missed wilderness farts.
 
-## Experimental herd startle cascade (idea, 2026-11-08)
+## Emergent reactions to audible releases (user clarification, 2026-11-08)
 
-**Status: interesting feature idea, not approved for first release, not implemented.** Player or animal makes an **audible, sufficiently loud release** while near a group of eligible terrestrial animals; some may startle, which temporarily increases their chance of releasing any gas already in their reservoir. A secondary release might startle a few more nearby creatures, creating short-lived, emergent herd chaos. As the herd's reservoir pressure drops and agitation dissipates, events self-extinguish. The aim is **rare, surprising mayhem**, not constant unavoidable noise or animal damage.
+**Confirmed design principle:** Any temporary herd commotion must arise **organically from existing individual creature mechanics**. There must be **no preplanned/special 'mayhem event', scripted chain reaction, goat-frenzy mode, cascade trigger, forced sequence, group-wide fear effect or artificial finale.** A player release and animal release are treated as the same kind of ordinary audible stimulus, subject to physical loudness/distance and species sensitivity.
 
-Important invariants:
-- A startled creature **never receives gas from fear**; fear changes *release probability* only. Upper/lower stores still deplete with each actual emission and never go negative.
-- Treat a release as a semantic server-side event with position, intensity and an optional `startleEligible` quality; playing a positional sound alone must not be assumed to make vanilla animal AI hear/react.
-- Affected creatures should have species temperament/sensitivity, distance attenuation, reservoir fraction and individual chance; some remain oblivious. A small release can be too quiet to trigger anything.
-- Include per-entity *startle refractory period*, global/local cascade budget, short event lifetime and maximum propagation depth; never recursively dispatch indefinitely or amplify fear merely because the same event was heard twice. Apply an event ID to prevent feedback reprocessing.
-- Distinguish subtle startle (turn, twitch, brief movement) from real fleeing. **Do not automatically hijack animal AI or make penned livestock escape**; verify game emotion/AI hooks. Stronger physical reactions should be rare, configurable and tested in survival (creative fear AI behaves differently).
-- No chain reaction from animals with empty gas; sound concurrency limits can suppress playback without falsifying server-side gas accounting. Do not create offscreen 'replay storms' on chunk load.
-- Test with 1, 5, and the user's 30–40 penned goats, then modded animals. Preserve performance with bounded spatial queries and event queues.
-- Future options might be `enableStartleCascade`, `startleRadius`, `maxCascadeDepth`, `maxStartledAnimalsPerEvent`, `cooldownSeconds`; parameter values are **not selected**.
-- Official Vintage Story entity documentation describes emotion states and AI tasks including `fleeentity`; engine API supports `PlaySoundAt`, but there is **no established generic sound-to-fear linkage** in our research. Confirm hooks before coding.
+At the level of a *single* animal:
+- Normal digestion and food history build gas in upper/lower reservoirs according to game time. An animal with no stored gas cannot release it merely because it is startled.
+- Any sound that the animal is actually configured to notice may cause an ordinary startled response, according to **its own** hearing radius, temperament, current fear/agitation, chance and ordinary AI state. A tiny/quiet fart should often attract no attention.
+- Fear/startle/movement may increase that individual's chance of releasing **already stored** gas, using the same regular gas-release mechanics used everywhere; a release consumes its own reservoir and respects ordinary per-animal cooldowns.
+- If that release is audible, nearby animals may each evaluate it independently under the **same** generic rules. If none responds, the chain ends; if others respond, further sounds are just ordinary sounds, not 'next stages' of a planned cascade.
+- As each individual's gas depletes and normal fear dissipates, the herd naturally calms. All outcomes are contingent on current state, proximity, temperament and chance; there is no target count or desired crescendo.
+
+**Technical constraint:** Vintage Story positional audio playback may not itself be sensed by animal AI. If needed, we can expose an ordinary local sound/stimulus notification from a gas release, handled by the same animal perception logic as any other relevant stimulus. This is an implementation signal, **not** a scheduled 'mayhem' gameplay event. Do not build a separate cascade manager, propagation-depth cap, global herd-frenzy meter, cascade budget or special `enableStartleCascade` mode. Rely on general per-entity reaction thresholds/cooldowns and bounded spatial/perception work for performance. Keep the distinction between sound being muted for client audio budget and an actual physical event available for server-side sensing.
+
+This possibility should be tested *after* ordinary gas/AI behavior works, in a controlled survival pen containing 1, 5, then ~40 goats. Test for believable rare responses and performance, without tuning to guarantee any particular comedic outcome. No special mechanic is committed to first release.
 
 ## Lore and release
 - *The Great Silence* is part of the first public release, though collectible tapestry fragments, complex manure/fertilizer integration and large sound libraries belong on later roadmap.
