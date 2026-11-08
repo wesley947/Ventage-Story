@@ -46,6 +46,7 @@
 - [x] **Native collectible audit:** compiled, installed and generated CSV from the user's test world. 18,614 rows; 158 high-confidence exact code matches for 122 profiles, 73 profiles still need special handling. See `docs/FOOD_CODE_AUDIT_REVIEW.md`.
 - [ ] **Secondary binding file:** added `config/foodcodebindings.json` and loader (158 codes to 122 profiles); requires local pull/build/test before claiming it loads.
 - [ ] Audit actual vanilla game item/block codes for the 195 profiles, then connect ingestion event resolution to profile lookup (current JSON deliberately has no unverified itemCode bindings).
+- [ ] **Future mushroom potency (deferred):** Eventually give selected hallucinogenic mushroom foods, such as liberty caps, higher gas potential than ordinary mushrooms while preserving all native special effects. Verify exact edible codes and consumption amounts first; see `docs/FOOD_FRAMEWORK.md`.
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
 
 - [ ] Verify actual successful-feeding pathways for animals and players; record limitations.
