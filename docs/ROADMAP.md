@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** documentation and architectural bootstrap.  
-**Next step:** validate the existing GitHub documentation (especially creature exporter, overlapping food contributions, and lore plan), choose a neutral permanent mod ID, then create the smallest compilable Vintage Story 1.22.x mod shell.
+**Next step:** run `dotnet new list | Select-String -Pattern 'Vintage'` on the development PC to check installed official Vintage Story mod templates, approve a neutral permanent internal mod ID, then generate and test the smallest .NET 10 code-mod shell. Follow `docs/IMPLEMENTATION_PLAN.md`.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
@@ -16,10 +16,11 @@
 - [x] Record collaboration workflow, decisions, current architecture, lore and animal-export requirements.
 - [ ] Confirm documentation inventory and ensure AIMAIN reflects actual file paths.
 - [ ] Review unresolved assumptions/possible contradictions; update and commit.
+- [x] Write stepwise implementation/test-gate plan in `docs/IMPLEMENTATION_PLAN.md`.
 - [ ] Choose stable neutral mod ID (name displayed to players can change later).
 
 ### M1 — Minimum viable working shell
-- [ ] Inspect the user's actual Vintage Story 1.22.x installation and known good C#/.NET 10 mod build pattern.
+- [ ] Inspect the user's actual Vintage Story 1.22.x installation and installed code-mod template, following `docs/IMPLEMENTATION_PLAN.md`.
 - [ ] Create `modinfo.json`, project file, minimal ModSystem and neutral asset namespace.
 - [ ] Build and load successfully in a **separate test world**; record exact successful steps.
 - [ ] Add a versioned, native JSON config file and basic logging.
