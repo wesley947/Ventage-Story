@@ -5,10 +5,10 @@
 ## Project identification
 
 - Repository: `wesley947/Ventage-Story` (repository spelling is intentional; do not rename it without asking).
-- Project: a Vintage Story digestive-gas simulation mod, working title **Cabbage Carnage**. The **public name is NOT final**.
+- Project: a Vintage Story digestive-gas simulation mod, with **Lingam's** as the intended public naming/creator brand. **Public display title remains undecided.** Previous names included *Cabbage Carnage* and *Ventage Story*.
 - Target: Vintage Story 1.22.x, C#/.NET 10.
-- Current stage (2026-11-06): planning the architecture; no compiled mod or established internal mod ID yet.
-- Keep the permanent internal mod ID, namespaces, serialized attribute keys, and source comments neutral. Do not hard-code a provisional display name into them.
+- Current stage (2026-11-08): planning/bootstrap; no compiled mod yet. **Approved stable internal Mod ID: `lingamsdigestivesim`** (subject to verifying no conflict before distribution). The repository still uses `Ventage-Story` until explicitly renamed.
+- Keep permanent technical identifiers based on approved `lingamsdigestivesim`, not on any provisional public display name. The public name may change without changing saved-data namespaces or item codes.
 
 ## On every new chat
 
@@ -69,6 +69,6 @@ Small iterative changes do not require an interruption on every message.
 
 ## Immediate next step at repository bootstrap
 
-Review the new implementation plan and verify the available Vintage Story mod templates on the development PC. Approve a neutral permanent internal mod ID before creating `modinfo.json`; then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
+Official `VintageStory.Mod.Templates@1.22.0` is installed, `dotnet new vsmod --help` reviewed, and the game API DLL was found in the development PC's expected location. Next: inspect local clone/working directory and dry-run the `vsmod` template using stable Mod ID `lingamsdigestivesim`, while leaving the public display title changeable. Then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
 
 Do not mistake a design mockup, hypothetical number, or untested snippet for an implemented feature.
