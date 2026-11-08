@@ -64,3 +64,7 @@ The first-pass **214-row food-profile CSV** was shared for editing. User said th
 ## Next engineering slice
 
 **Meaningful integrated proof** (not isolated 1-line logger): Implement a lightweight food event capture + normalization + diagnostics for plain item, multi-ingredient meal and liquid/slice, with deduplication and actual portion handling. Load the runtime vanilla edible-content registry and print a one-shot diagnostic audit for unmatched foods; do *not* build gas/sound simulation until basic captured intake is validated. Then assign initial gastro profiles and integrate stomach queue.
+
+## Deferred mushroom special cases
+
+**Future mushroom potency (deferred, user idea 2026-11-08):** Certain in-game hallucinogenic mushrooms (e.g., liberty caps) should eventually have unusually strong digestive gas potential compared with ordinary mushrooms. This is a whimsical, configurable mod-balancing choice, not a claim about real-world pharmacology. Identify actual mushroom codes and vanilla effect behavior first; preserve native hallucination/poison effects, consume only the actual edible serving, and avoid double-counting food or changing health effects. Do not implement or tune until basic food intake and gas reservoir work.
