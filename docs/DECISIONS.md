@@ -53,6 +53,8 @@
 
 | D37 | Research a **portable client-only** version that a user could bring to otherwise-unmodified Vintage Story multiplayer servers so funny sounds might be audible to others, ending when that player leaves. | **Aspirational user idea (2026-11-08), not implemented or verified.** Existing vanilla emote/voice events may be shareable, but an unmodded server will not run our animal digestion or accept arbitrary broadcast sound/envelope commands. Distinguish local-only effects, native permitted emote actions, and full server-installed simulation; respect server policies/rate limits. |
 
+| D38 | **Minimum user-facing multiplayer requirement:** Nearby players without the mod must be able to **hear fart sounds emitted by the player who has the mod**. User especially wants client-only installation on otherwise-unmodified servers; save multiplayer tests until son is available around Thanksgiving 2026. | **Acceptance goal, NOT yet verified as feasible in that deployment.** Server-installed mod can plausibly broadcast vanilla sound assets to unmodded clients; client-only mod cannot assume arbitrary sound RPC to vanilla server. Explore permitted native emote/voice path, then clearly report limitations and revisit deployment requirement if impossible. No guarantee or bypass of server controls. Animal-wide effects and particles are stretch goals. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
