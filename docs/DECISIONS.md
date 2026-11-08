@@ -65,6 +65,9 @@
 
 | D44 | **Revised eating-session batching proposal:** reset a single 30-real-second inactivity timer after **every** successfully eaten food. When the player stops eating for 30 seconds, finalize one mixed-food meal and timestamp its entry into the stomach queue at **window close**, rather than first bite; preserve distinct food types/quantities inside the batch. | **Current user preference under discussion (2026-11-08); supersedes D43 fixed window and assistant's per-bite starting-clock suggestion.** Very long uninterrupted snacking can postpone initial food digestion; optional maximum-session duration is a suggested safeguard **not yet agreed**. Save/quit must not drop pending portions. |
 
+
+**Countdown clarification (2026-11-08):** The 30-second ingestion timer is a **resettable inactivity countdown, not an additive extension**. Each successful bite while a session is open sets `deadline = currentRealTime + 30 seconds` (equivalently, `remaining = 30s`), NOT `deadline += 30 seconds`. Thus 12 carrots cannot create a 6-minute *remaining* timer; the maximum remaining countdown at any instant is 30s. Continuous eating can still keep a session active for many minutes. When 30s of silence elapse, close and timestamp the entire meal at that closure. Keep per-food identities and quantities. This is a user-explicit correction; avoid conflating long total session duration with additive timer behavior.
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
