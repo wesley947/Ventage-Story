@@ -1,6 +1,7 @@
 using System;
 using System.Text.Json;
 using Vintagestory.API.Common;
+using Vintagestory.API.Server;
 
 namespace lingamsdigestivesim.Foods;
 
@@ -11,6 +12,19 @@ namespace lingamsdigestivesim.Foods;
 public sealed class FoodProfilesModSystem : ModSystem
 {
     public FoodProfileRegistry? Registry { get; private set; }
+
+    // Diagnostic only. Debug builds generate an audit of the actual registered vanilla
+    // item/block codes so no one has to guess thousands of native food identifiers.
+    public override void StartServerSide(ICoreServerAPI api)
+    {
+        base.StartServerSide(api);
+#if DEBUG
+        if (Registry != null)
+        {
+            VanillaFoodCodeAudit.Write(api, Registry);
+        }
+#endif
+    }
 
     public override void AssetsLoaded(ICoreAPI api)
     {
