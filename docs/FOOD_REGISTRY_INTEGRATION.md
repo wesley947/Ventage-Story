@@ -42,6 +42,12 @@ The report contains every registered **vanilla-domain `game:` item/block code** 
 
 **One command per user turn.** To test: Git pull; compile; copy Debug output to installed mod; launch test world; inspect audit summary and CSV. The next development milestone is successful food-consumption interception (actual stack + serving) and precise name/code binding; avoid fake consumption inferred from saturation alone.
 
+## Native food-code binding integration (2026-11-08)
+
+**In-game audit worked.** The user ran DEBUG with the audit C# and shared `vanilla-food-code-audit.csv` (18,614 entries; 18,160 distinct vanilla codes, 400 duplicate item/block codes). After discarding false-positive substring guesses (e.g., orange armor ≠ oranges), 158 code-to-profile links were validated by exact native code structure and the game's own nutrition-family metadata, covering **122 of 195** profiles. The remaining **73** profiles have quantity, liquid, ingredient or special-form questions. See [FOOD_CODE_AUDIT_REVIEW.md](FOOD_CODE_AUDIT_REVIEW.md).
+
+**Source newly committed, not yet compiled in the user's game:** `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodcodebindings.json` holds **158** audited native-code links; `src/Foods/FoodCodeBindingCatalog.cs` defines typed models; `FoodProfileRegistry.AddVerifiedNativeCodes` adds them to the existing lookup by native `AssetLocation` code without changing gas values; `FoodProfilesModSystem` loads it alongside the 195-profile catalog. The binding reader uses the same `System.Text.Json` as the primary file, and is error-isolated so a malformed secondary asset doesn't prevent primary food profiles from loading. The `Directory.Build.targets` already includes all assets recursively. After pull/build/install, expected startup log changes from **0** to **158** native-code bindings. This is **identity lookup only**, not proof of eating detection. Milk/cottage cheese/honey, other liquids, multi-slice cheese, raw ingredient-only foods and fish chunks stay unbound until serving amounts are demonstrated.
+
 ## Next real implementation
 
 1. Inspect the user's installed Vintage Story 1.22.7 item/block assets to bind real vanilla `game:...` collectible codes and possible variants to these keys; create an audit for uncertain food matches.
