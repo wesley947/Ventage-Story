@@ -1,0 +1,639 @@
+{
+  "schemaVersion": 1,
+  "auditVersion": "Vintage Story 1.22.7 (in-game test, 2026-11-08)",
+  "note": "Verified identity and native nutrition only. Not proof successful consumption. Do not infer edible directly from mere name matching. Deliberately excludes liquids, variable-size servings, raw ingredients, and uncertain variants.",
+  "bindings": [
+    {
+      "nativeCode": "game:bread-amaranth-charred",
+      "profileId": "F063"
+    },
+    {
+      "nativeCode": "game:bread-amaranth-perfect",
+      "profileId": "F062"
+    },
+    {
+      "nativeCode": "game:bread-cassava-charred",
+      "profileId": "F072"
+    },
+    {
+      "nativeCode": "game:bread-cassava-perfect",
+      "profileId": "F071"
+    },
+    {
+      "nativeCode": "game:bread-flax-charred",
+      "profileId": "F066"
+    },
+    {
+      "nativeCode": "game:bread-flax-perfect",
+      "profileId": "F065"
+    },
+    {
+      "nativeCode": "game:bread-rice-charred",
+      "profileId": "F054"
+    },
+    {
+      "nativeCode": "game:bread-rice-perfect",
+      "profileId": "F053"
+    },
+    {
+      "nativeCode": "game:bread-rye-charred",
+      "profileId": "F057"
+    },
+    {
+      "nativeCode": "game:bread-rye-perfect",
+      "profileId": "F056"
+    },
+    {
+      "nativeCode": "game:bread-spelt-charred",
+      "profileId": "F060"
+    },
+    {
+      "nativeCode": "game:bread-spelt-perfect",
+      "profileId": "F059"
+    },
+    {
+      "nativeCode": "game:bread-sunflower-charred",
+      "profileId": "F069"
+    },
+    {
+      "nativeCode": "game:bread-sunflower-perfect",
+      "profileId": "F068"
+    },
+    {
+      "nativeCode": "game:bushmeat-cooked",
+      "profileId": "F074"
+    },
+    {
+      "nativeCode": "game:cheese-blue-1slice",
+      "profileId": "F088"
+    },
+    {
+      "nativeCode": "game:cheese-cheddar-1slice",
+      "profileId": "F087"
+    },
+    {
+      "nativeCode": "game:fat",
+      "profileId": "F024"
+    },
+    {
+      "nativeCode": "game:fat-rendered",
+      "profileId": "F025"
+    },
+    {
+      "nativeCode": "game:fish-cooked",
+      "profileId": "F082"
+    },
+    {
+      "nativeCode": "game:fish-cured",
+      "profileId": "F083"
+    },
+    {
+      "nativeCode": "game:fish-raw",
+      "profileId": "F081"
+    },
+    {
+      "nativeCode": "game:fruit-beautyberry",
+      "profileId": "F049"
+    },
+    {
+      "nativeCode": "game:fruit-blackberry",
+      "profileId": "F045"
+    },
+    {
+      "nativeCode": "game:fruit-blackcurrant",
+      "profileId": "F043"
+    },
+    {
+      "nativeCode": "game:fruit-blueberry",
+      "profileId": "F040"
+    },
+    {
+      "nativeCode": "game:fruit-breadfruit",
+      "profileId": "F037"
+    },
+    {
+      "nativeCode": "game:fruit-cherry",
+      "profileId": "F035"
+    },
+    {
+      "nativeCode": "game:fruit-cloudberry",
+      "profileId": "F048"
+    },
+    {
+      "nativeCode": "game:fruit-cranberry",
+      "profileId": "F044"
+    },
+    {
+      "nativeCode": "game:fruit-lychee",
+      "profileId": "F036"
+    },
+    {
+      "nativeCode": "game:fruit-mango",
+      "profileId": "F033"
+    },
+    {
+      "nativeCode": "game:fruit-orange",
+      "profileId": "F032"
+    },
+    {
+      "nativeCode": "game:fruit-peach",
+      "profileId": "F030"
+    },
+    {
+      "nativeCode": "game:fruit-pear",
+      "profileId": "F031"
+    },
+    {
+      "nativeCode": "game:fruit-pinkapple",
+      "profileId": "F028"
+    },
+    {
+      "nativeCode": "game:fruit-pomegranate",
+      "profileId": "F034"
+    },
+    {
+      "nativeCode": "game:fruit-raspberry",
+      "profileId": "F046"
+    },
+    {
+      "nativeCode": "game:fruit-redapple",
+      "profileId": "F027"
+    },
+    {
+      "nativeCode": "game:fruit-redcurrant",
+      "profileId": "F041"
+    },
+    {
+      "nativeCode": "game:fruit-saguaro",
+      "profileId": "F038"
+    },
+    {
+      "nativeCode": "game:fruit-strawberry",
+      "profileId": "F047"
+    },
+    {
+      "nativeCode": "game:fruit-whitecurrant",
+      "profileId": "F042"
+    },
+    {
+      "nativeCode": "game:fruit-yellowapple",
+      "profileId": "F029"
+    },
+    {
+      "nativeCode": "game:grain-amaranth",
+      "profileId": "F061"
+    },
+    {
+      "nativeCode": "game:grain-flax",
+      "profileId": "F064"
+    },
+    {
+      "nativeCode": "game:grain-rice",
+      "profileId": "F052"
+    },
+    {
+      "nativeCode": "game:grain-rye",
+      "profileId": "F055"
+    },
+    {
+      "nativeCode": "game:grain-spelt",
+      "profileId": "F058"
+    },
+    {
+      "nativeCode": "game:grain-sunflower",
+      "profileId": "F067"
+    },
+    {
+      "nativeCode": "game:honeycomb",
+      "profileId": "F051"
+    },
+    {
+      "nativeCode": "game:insect-termite",
+      "profileId": "F023"
+    },
+    {
+      "nativeCode": "game:legume-peanut",
+      "profileId": "F019"
+    },
+    {
+      "nativeCode": "game:mushroom-almondmushroom-normal",
+      "profileId": "F094"
+    },
+    {
+      "nativeCode": "game:mushroom-beardedtooth-normal-east",
+      "profileId": "F116"
+    },
+    {
+      "nativeCode": "game:mushroom-beardedtooth-normal-north",
+      "profileId": "F116"
+    },
+    {
+      "nativeCode": "game:mushroom-beardedtooth-normal-south",
+      "profileId": "F116"
+    },
+    {
+      "nativeCode": "game:mushroom-beardedtooth-normal-west",
+      "profileId": "F116"
+    },
+    {
+      "nativeCode": "game:mushroom-bitterbolete-normal",
+      "profileId": "F121"
+    },
+    {
+      "nativeCode": "game:mushroom-blacktrumpet-normal",
+      "profileId": "F099"
+    },
+    {
+      "nativeCode": "game:mushroom-bluemeanie-normal",
+      "profileId": "F106"
+    },
+    {
+      "nativeCode": "game:mushroom-chanterelle-normal",
+      "profileId": "F098"
+    },
+    {
+      "nativeCode": "game:mushroom-chickenofthewoods-normal-east",
+      "profileId": "F117"
+    },
+    {
+      "nativeCode": "game:mushroom-chickenofthewoods-normal-north",
+      "profileId": "F117"
+    },
+    {
+      "nativeCode": "game:mushroom-chickenofthewoods-normal-south",
+      "profileId": "F117"
+    },
+    {
+      "nativeCode": "game:mushroom-chickenofthewoods-normal-west",
+      "profileId": "F117"
+    },
+    {
+      "nativeCode": "game:mushroom-commonmorel-normal",
+      "profileId": "F103"
+    },
+    {
+      "nativeCode": "game:mushroom-deathcap-normal",
+      "profileId": "F124"
+    },
+    {
+      "nativeCode": "game:mushroom-deerear-normal-east",
+      "profileId": "F113"
+    },
+    {
+      "nativeCode": "game:mushroom-deerear-normal-north",
+      "profileId": "F113"
+    },
+    {
+      "nativeCode": "game:mushroom-deerear-normal-south",
+      "profileId": "F113"
+    },
+    {
+      "nativeCode": "game:mushroom-deerear-normal-west",
+      "profileId": "F113"
+    },
+    {
+      "nativeCode": "game:mushroom-devilbolete-normal",
+      "profileId": "F122"
+    },
+    {
+      "nativeCode": "game:mushroom-devilstooth-normal",
+      "profileId": "F128"
+    },
+    {
+      "nativeCode": "game:mushroom-dryadsaddle-normal-east",
+      "profileId": "F119"
+    },
+    {
+      "nativeCode": "game:mushroom-dryadsaddle-normal-north",
+      "profileId": "F119"
+    },
+    {
+      "nativeCode": "game:mushroom-dryadsaddle-normal-south",
+      "profileId": "F119"
+    },
+    {
+      "nativeCode": "game:mushroom-dryadsaddle-normal-west",
+      "profileId": "F119"
+    },
+    {
+      "nativeCode": "game:mushroom-earthball-normal",
+      "profileId": "F125"
+    },
+    {
+      "nativeCode": "game:mushroom-elfinsaddle-normal",
+      "profileId": "F129"
+    },
+    {
+      "nativeCode": "game:mushroom-fieldmushroom-normal",
+      "profileId": "F100"
+    },
+    {
+      "nativeCode": "game:mushroom-flyagaric-normal",
+      "profileId": "F123"
+    },
+    {
+      "nativeCode": "game:mushroom-foolsconecap-normal",
+      "profileId": "F130"
+    },
+    {
+      "nativeCode": "game:mushroom-funeralbell-normal-east",
+      "profileId": "F134"
+    },
+    {
+      "nativeCode": "game:mushroom-funeralbell-normal-north",
+      "profileId": "F134"
+    },
+    {
+      "nativeCode": "game:mushroom-funeralbell-normal-south",
+      "profileId": "F134"
+    },
+    {
+      "nativeCode": "game:mushroom-funeralbell-normal-west",
+      "profileId": "F134"
+    },
+    {
+      "nativeCode": "game:mushroom-goldcap-normal",
+      "profileId": "F107"
+    },
+    {
+      "nativeCode": "game:mushroom-golddropmilkcap-normal",
+      "profileId": "F126"
+    },
+    {
+      "nativeCode": "game:mushroom-greencrackedrussula-normal",
+      "profileId": "F092"
+    },
+    {
+      "nativeCode": "game:mushroom-honeymushroom-normal",
+      "profileId": "F108"
+    },
+    {
+      "nativeCode": "game:mushroom-indigomilkcap-normal",
+      "profileId": "F101"
+    },
+    {
+      "nativeCode": "game:mushroom-jackolantern-normal",
+      "profileId": "F127"
+    },
+    {
+      "nativeCode": "game:mushroom-kingbolete-normal",
+      "profileId": "F091"
+    },
+    {
+      "nativeCode": "game:mushroom-laughingjim-normal",
+      "profileId": "F131"
+    },
+    {
+      "nativeCode": "game:mushroom-libertycap-normal",
+      "profileId": "F109"
+    },
+    {
+      "nativeCode": "game:mushroom-livermushroom-normal-east",
+      "profileId": "F112"
+    },
+    {
+      "nativeCode": "game:mushroom-livermushroom-normal-north",
+      "profileId": "F112"
+    },
+    {
+      "nativeCode": "game:mushroom-livermushroom-normal-south",
+      "profileId": "F112"
+    },
+    {
+      "nativeCode": "game:mushroom-livermushroom-normal-west",
+      "profileId": "F112"
+    },
+    {
+      "nativeCode": "game:mushroom-lobster-normal",
+      "profileId": "F105"
+    },
+    {
+      "nativeCode": "game:mushroom-orangeoakbolete-normal",
+      "profileId": "F090"
+    },
+    {
+      "nativeCode": "game:mushroom-paddystraw-normal",
+      "profileId": "F096"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkbonnet-normal-east",
+      "profileId": "F133"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkbonnet-normal-north",
+      "profileId": "F133"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkbonnet-normal-south",
+      "profileId": "F133"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkbonnet-normal-west",
+      "profileId": "F133"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkoyster-normal-east",
+      "profileId": "F120"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkoyster-normal-north",
+      "profileId": "F120"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkoyster-normal-south",
+      "profileId": "F120"
+    },
+    {
+      "nativeCode": "game:mushroom-pinkoyster-normal-west",
+      "profileId": "F120"
+    },
+    {
+      "nativeCode": "game:mushroom-puffball-normal",
+      "profileId": "F097"
+    },
+    {
+      "nativeCode": "game:mushroom-redwinecap-normal",
+      "profileId": "F095"
+    },
+    {
+      "nativeCode": "game:mushroom-reishi-normal-east",
+      "profileId": "F114"
+    },
+    {
+      "nativeCode": "game:mushroom-reishi-normal-north",
+      "profileId": "F114"
+    },
+    {
+      "nativeCode": "game:mushroom-reishi-normal-south",
+      "profileId": "F114"
+    },
+    {
+      "nativeCode": "game:mushroom-reishi-normal-west",
+      "profileId": "F114"
+    },
+    {
+      "nativeCode": "game:mushroom-saffronmilkcap-normal",
+      "profileId": "F102"
+    },
+    {
+      "nativeCode": "game:mushroom-shiitake-normal-east",
+      "profileId": "F111"
+    },
+    {
+      "nativeCode": "game:mushroom-shiitake-normal-north",
+      "profileId": "F111"
+    },
+    {
+      "nativeCode": "game:mushroom-shiitake-normal-south",
+      "profileId": "F111"
+    },
+    {
+      "nativeCode": "game:mushroom-shiitake-normal-west",
+      "profileId": "F111"
+    },
+    {
+      "nativeCode": "game:mushroom-sickener-normal",
+      "profileId": "F132"
+    },
+    {
+      "nativeCode": "game:mushroom-tinderhoof-normal-east",
+      "profileId": "F118"
+    },
+    {
+      "nativeCode": "game:mushroom-tinderhoof-normal-north",
+      "profileId": "F118"
+    },
+    {
+      "nativeCode": "game:mushroom-tinderhoof-normal-south",
+      "profileId": "F118"
+    },
+    {
+      "nativeCode": "game:mushroom-tinderhoof-normal-west",
+      "profileId": "F118"
+    },
+    {
+      "nativeCode": "game:mushroom-violetwebcap-normal",
+      "profileId": "F093"
+    },
+    {
+      "nativeCode": "game:mushroom-wavycap-normal",
+      "profileId": "F110"
+    },
+    {
+      "nativeCode": "game:mushroom-whiteoyster-normal-east",
+      "profileId": "F115"
+    },
+    {
+      "nativeCode": "game:mushroom-whiteoyster-normal-north",
+      "profileId": "F115"
+    },
+    {
+      "nativeCode": "game:mushroom-whiteoyster-normal-south",
+      "profileId": "F115"
+    },
+    {
+      "nativeCode": "game:mushroom-whiteoyster-normal-west",
+      "profileId": "F115"
+    },
+    {
+      "nativeCode": "game:mushroom-witchhat-normal",
+      "profileId": "F104"
+    },
+    {
+      "nativeCode": "game:pickledlegume-soybean",
+      "profileId": "F020"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-bellpepper",
+      "profileId": "F017"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-cabbage",
+      "profileId": "F012"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-olive",
+      "profileId": "F016"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-onion",
+      "profileId": "F015"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-parsnip",
+      "profileId": "F013"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-pumpkin",
+      "profileId": "F018"
+    },
+    {
+      "nativeCode": "game:pickledvegetable-turnip",
+      "profileId": "F014"
+    },
+    {
+      "nativeCode": "game:poultry-cooked",
+      "profileId": "F076"
+    },
+    {
+      "nativeCode": "game:poultry-cured",
+      "profileId": "F077"
+    },
+    {
+      "nativeCode": "game:redmeat-cooked",
+      "profileId": "F079"
+    },
+    {
+      "nativeCode": "game:redmeat-cured",
+      "profileId": "F080"
+    },
+    {
+      "nativeCode": "game:redmeat-vintage",
+      "profileId": "F026"
+    },
+    {
+      "nativeCode": "game:treeseed-walnut",
+      "profileId": "F022"
+    },
+    {
+      "nativeCode": "game:vegetable-bellpepper",
+      "profileId": "F007"
+    },
+    {
+      "nativeCode": "game:vegetable-cabbage",
+      "profileId": "F005"
+    },
+    {
+      "nativeCode": "game:vegetable-carrot",
+      "profileId": "F001"
+    },
+    {
+      "nativeCode": "game:vegetable-cassava",
+      "profileId": "F009"
+    },
+    {
+      "nativeCode": "game:vegetable-cookedcattailroot",
+      "profileId": "F010"
+    },
+    {
+      "nativeCode": "game:vegetable-cookedpapyrusroot",
+      "profileId": "F011"
+    },
+    {
+      "nativeCode": "game:vegetable-olive",
+      "profileId": "F006"
+    },
+    {
+      "nativeCode": "game:vegetable-onion",
+      "profileId": "F004"
+    },
+    {
+      "nativeCode": "game:vegetable-parsnip",
+      "profileId": "F002"
+    },
+    {
+      "nativeCode": "game:vegetable-turnip",
+      "profileId": "F003"
+    }
+  ]
+}
