@@ -38,6 +38,14 @@ Surviving written fragments and perhaps a resonator recording help connect the s
 - Our gas-suppression story, treatment mandate, invented physician, and loss-of-laughter theory are mod fiction—not Vanilla-confirmed facts.
 - Use deliberately vague or local-community dates if necessary to avoid contradictions.
 
+## New lore thread — the dairyless lower chambers (2026-11-08)
+
+**User's proposed in-world premise:** Seraphs and/or their ancestral refuge populations went without animal milk and dairy products while sheltered underground. After the return to the surface, encounters with **milk and cheese** cause unusually vigorous intestinal gas, connected in an old physician's writings to lost or reduced lactase function/tolerance. This is a **fictional extension** of Great Silence lore, **not verified vanilla canon**; avoid asserting all Seraphs are literal cave-descended humans (see 'Canon checks' above). The refuge story might apply specifically to one settlement/population and present day observers may misgeneralize it.
+
+**Story beat:** A physician notes that an austere cave ration lacked milk, and that some of the first surface settlers react poorly to new dairy farming. They mistake the 'return of wind' for a new plague or disturbance of the Rot before recognizing a digestive phenomenon. A later healer distinguishes milk-caused distress from cabbage and legumes, and notes eggs cause a *different* problem entirely. Narrate as solemn academic observation with an unmistakably funny conclusion, fitting GS-03, GS-05 and GS-06. Potential additional discoverable field note: **'On the Consequences of Milk'** (working title, optional). No text/loot generated yet.
+
+**Science/gameplay guardrails:** Eggs **contain no lactose**, and aged cheeses tend to contain less lactose than milk; eggs can still be high on the **mod's stylized gas impact list** through independent Seraph-specific sensitivity and/or later sulfur-odor profile. Never claim egg gas proves lactose intolerance or that aging preserves equal lactose. Treat dairy and eggs as distinct ingredient categories even in scrambled eggs with cheese or cheese pie. Sources: [NIDDK lactose intolerance diet](https://www.niddk.nih.gov/health-information/digestive-diseases/lactose-intolerance/eating-diet-nutrition) and [VS Dairy](https://wiki.vintagestory.at/Dairy). The user explicitly wants milk, cheese, eggs, cabbage and legumes notable in v1 fermentation/gas profiles, but exact gas multipliers not yet selected.
+
 ## Initial proposed entry catalog
 
 | ID | Arc | Draft title | Form | Voice / role | Narrative clue | Status |
