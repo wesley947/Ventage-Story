@@ -32,6 +32,9 @@
 
 | D24 | Any apparently contagious goat-fart commotion must **emerge from independent animal hearing/fear and reservoir-driven release mechanics**. Do not design scripted mayhem, special cascade events or herd frenzy modes. | **Agreed clarification (2026-11-08).** Normal sound perception, temperament, current gas amount and each entity's cooldowns determine outcome; occasional chains are incidental, not a feature-specific sequence. See `PROJECT_MEMORY.md`. |
 
+| D25 | Explore per-ingredient, portion-aware gas modeling for mixed meals (including egg/vegetable combinations and legumes), plus neutral and potential gas-reducing food effects. | **Research direction (2026-11-08), not settled values.** Verify native meal `contents`, partial servings and feeding hooks. Do not reset prior gas or equate nutrition category with fermentability. |
+| D26 | Explore occasional hunger-driven stomach growling for Seraphs, separate from digestive gas reservoirs. | **Research direction (2026-11-08), not committed for v1.** Tie to existing satiety, rare probabilistic audio and cooldowns; no new damage, debuff or gas production. |
+
 ## Important open questions
 - Select neutral permanent Mod ID and storage namespace before the first real build.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
