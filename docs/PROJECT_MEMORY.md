@@ -96,6 +96,20 @@ At the level of a *single* animal:
 
 This possibility should be tested *after* ordinary gas/AI behavior works, in a controlled survival pen containing 1, 5, then ~40 goats. Test for believable rare responses and performance, without tuning to guarantee any particular comedic outcome. No special mechanic is committed to first release.
 
+## Player crouch posture and pressure release (design idea, 2026-11-08)
+
+**User request:** If a player holds crouch for **more than about one real-time second**, and their *lower/intestinal* gas reservoir is sufficiently **loaded**, there should be a **high chance** of an ordinary fart. This is intended as an organic posture-sensitive release, **not a guaranteed scripted sound**, new gas production, or a separate minigame. Specific pressure threshold and probability remain to be balanced after core simulation works.
+
+Potential implementation (not yet API-verified):
+- Observe player crouch/sneak input or the authoritative game state; on the transition from not crouching to crouching, start a one-second timer.
+- If still crouching after the delay, perform **one pressure- and cooldown-dependent release check per continuous crouch**, not a repeated roll every tick. Standing before the deadline cancels that opportunity.
+- A heavily loaded player has a high (but less than certain) chance of release; an empty reservoir **always yields silence**. A successful release consumes stored gas according to the normal simulation.
+- Preserve vanilla crouch/sneak, player movement and nutrition; do not fabricate gas or turn this into a forced stealth penalty. Any nearby animal reaction would be a consequence of the **existing** general audible-stimulus mechanics, never a bespoke chain-reaction event.
+- Maintain ordinary cooldowns so repeatedly tapping crouch cannot trigger rapid-fire releases. Test especially while crouching for long periods, repeated crouch attempts and multiplayer.
+- Verify whether crouch state is reliably observable on the server under Vintage Story 1.22 before implementing.
+
+**Naming:** The technical ID `lingamsdigestivesim` is approved; the public display title **remains a variable/placeholder** pending a later naming decision. Do not confuse display title with code IDs or the GitHub repo name.
+
 ## Bear upright idle posture and gas-release opportunity (idea, 2026-11-08)
 
 **User observation:** Vintage Story bears sometimes rise onto hind legs and look around. If the pose or associated AI task can be observed, its ordinary postural transition could momentarily make the bear somewhat more likely to release **existing** gas, as an incidental release during a stretch; do not generate gas or demand a sound. The underlying appearance may be an alert lookout pose rather than a true stretch. Avoid forcing a fart every time the bear stands up or creating any new bear animation.
