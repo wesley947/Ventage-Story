@@ -44,6 +44,29 @@ public sealed class FoodProfilesModSystem : ModSystem
                 new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
             if (catalog == null) throw new InvalidOperationException("Catalog JSON is empty or invalid.");
             Registry = FoodProfileRegistry.FromCatalog(catalog);
+
+            // An optional, independently reviewed native-code lookup can attach
+            // many different game collectible variants to one digestive profile.
+            // A bad binding file must not prevent the base 195 profiles from loading.
+            IAsset? mappingAsset = api.Assets.TryGet(
+                new AssetLocation("lingamsdigestivesim", "config/foodcodebindings.json"));
+            if (mappingAsset != null)
+            {
+                try
+                {
+                    FoodCodeBindingCatalog? bindings = JsonSerializer.Deserialize<FoodCodeBindingCatalog>(
+                        mappingAsset.ToText(),
+                        new JsonSerializerOptions { PropertyNameCaseInsensitive = true });
+                    if (bindings == null) throw new InvalidOperationException("Empty native food-code bindings.");
+                    Registry.AddVerifiedNativeCodes(bindings);
+                }
+                catch (Exception bindingError)
+                {
+                    api.Logger.Error("[lingamsdigestivesim] Native food-code bindings were not applied: {0}",
+                        bindingError);
+                }
+            }
+
             api.Logger.Notification(
                 "[lingamsdigestivesim] Loaded {0} food profiles, {1} composite meal rules and {2} excluded intermediates ({3} verified item-code bindings).",
                 Registry.Count, catalog.CompositeMeals.Count, catalog.ExcludedIntermediates.Count,
