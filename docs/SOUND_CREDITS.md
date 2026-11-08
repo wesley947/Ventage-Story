@@ -24,3 +24,6 @@ Source research: [upstream EntityTalkUtil.cs](https://github.com/anegostudios/vs
 
 Prefer **referencing built-in game-owned assets at runtime**, not copying their .ogg files into our mod distribution. Verify local 1.22 file paths/asset domain and API compatibility. Potential technique: use short pitch/volume envelopes in an independent client playback utility, with a low-positioned spatial sound source and server-authorized release. A musical burp/fart aesthetic may be funny but might not actually sound like gas; audition with the user and compare with licensed recordings. Do **not** claim implementation, asset licensing for redistribution, or sound approval until tested.
 
+
+**Verified local VS 1.22.7 voice assets:** `%APPDATA%\Vintagestory\assets\game\sounds\voice\` includes `accordion.ogg`, `altoflute.ogg`, `clarinet.ogg`, `harmonica.ogg`, `oboe.ogg`, `sax.ogg`, `trumpet.ogg`, and `tuba.ogg`. Note `sax.ogg` (not `saxophone.ogg`, despite the API's default asset path). These are game-owned assets; refer to them through the game's asset system at runtime instead of bundling copies. Next audition an original sound, then try custom envelopes. No user-approved effects yet.
+
