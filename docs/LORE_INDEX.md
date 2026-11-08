@@ -1,6 +1,6 @@
 # The Great Silence — Lore Index and Continuity Notes
 
-**Last updated:** 2026-11-06  
+**Last updated:** 2026-11-08  
 **Status:** Structured story outline, not yet implemented as game assets. All proposed entry titles/characters are placeholders. Public mod title is undecided.
 
 ## Tone and purpose
@@ -53,6 +53,9 @@ Surviving written fragments and perhaps a resonator recording help connect the s
 | GS-T1+ | A-G | Lost Tapestry Fragments | Collectible fragments | Depiction / symbolism | Reveal 'whole picture' (and the obvious joke) | Deferred |
 
 These are **concepts, not finished vanilla-compatible assets**. Choose a subset for v1 after confirming what the game can register and loot. Record final in-game codes, category labels, rarity weights, and tested found-in-world behavior as they become known.
+
+## Physical lore item persistence — investigation (2026-11-08)
+See [LORE_PERSISTENCE_RESEARCH.md](LORE_PERSISTENCE_RESEARCH.md) for inspected vanilla C# source and the required **Hello World** uninstall test. Our preferred *unproven* approach is to distribute existing vanilla book/scroll items with embedded per-ItemStack `title` and `text`, rather than defining a new mod-specific collectible type for every story. Actual storage, journal registration, particles, chest/cracked-vessel loot and disable/re-enable behavior must be tested in Vintage Story 1.22 before settling the design. Note: signs keep text while placed but their ordinary drops do not carry that text.
 
 ## Proposed lore content workflow
 1. Research vanilla writings for length, grammar, perspective and consistency, without reproducing long copyrighted passages.
