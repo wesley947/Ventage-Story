@@ -1,6 +1,6 @@
 # Runtime Food Registry — Integration Notes
 
-**State (2026-11-08):** JSON catalog, C# reader and content-copy build target added as a **source integration slice**. Build/in-game load **not yet tested on the user's Windows Vintage Story 1.22.7 installation**. The existing generated mod template files were deliberately left untouched, because they are still uncommitted in the user's local clone.
+**State (2026-11-08):** **Verified working in Vintage Story 1.22.7:** compilation succeeded, JSON present in packaged `bin/Debug/Mods/mod`, client and server logs both confirmed 195 foods + 13 composites + 6 exclusions and **two registered ModSystems**. The new native food-code audit below is committed but **not yet pulled/compiled/tested locally**. The existing generated template files are still local-only; do not overwrite them.
 
 ## The working files
 
@@ -24,13 +24,23 @@ The permanent `modid` remains `lingamsdigestivesim` and the normal one-mod packa
 
 ## Building with the user's local template
 
-From the existing working PowerShell directory inside `mod/lingamsdigestivesim`, after pulling the remote changes, run `dotnet build`. The target should copy the JSON asset into `bin/Debug/Mods/mod/assets/lingamsdigestivesim/config/foodprofiles.json`. The first compilation exposed a `CS0012` dependency on Newtonsoft.Json through `IAsset.ToObject<T>()`. Fixed by reading `IAsset.ToText()` and deserializing with .NET 10's built-in `System.Text.Json.JsonSerializer.Deserialize<T>()` and case-insensitive property names. **No extra DLL or `.csproj` reference is required** for the catalog loader; the fix is committed but still needs re-compilation on the user's machine. In the game log, look for `Loaded 195 food profiles, 13 composite meal rules and 6 excluded intermediates (0 verified item-code bindings).`
+From the existing working PowerShell directory inside `mod/lingamsdigestivesim`, after pulling the remote changes, run `dotnet build`. The target should copy the JSON asset into `bin/Debug/Mods/mod/assets/lingamsdigestivesim/config/foodprofiles.json`. The first compilation exposed a `CS0012` dependency on Newtonsoft.Json through `IAsset.ToObject<T>()`. Fixed by reading `IAsset.ToText()` and deserializing with .NET 10's built-in `System.Text.Json.JsonSerializer.Deserialize<T>()` and case-insensitive property names. **No extra DLL or `.csproj` reference is required**. User pulled fix, recompiled successfully (0 errors), installed files, and verified both client and server JSON load messages. In the game log, look for `Loaded 195 food profiles, 13 composite meal rules and 6 excluded intermediates (0 verified item-code bindings).`
 
 **Important:** GitHub currently does not track the user's *existing locally generated* `.csproj`, `modinfo.json` or template starter `ModSystem` file. Pulling these new, noncolliding files should not overwrite that generated local skeleton, but a subsequent `git status` should confirm there are no conflicts. The local `.csproj` and starter files should be staged/committed separately when the user is ready. Avoid replacing their local mod template with a newly invented skeleton.
 
 ## Compilation issue resolved in source (2026-11-08)
 
 The first `dotnet build` with the new loader failed with two `CS0012` errors (missing `Newtonsoft.Json` assembly for the types `JsonSerializerSettings` and `JToken`) at the call to `asset.ToObject<DigestiveFoodCatalog>()`. This is a transitive compile-time dependency of the API helper despite Newtonsoft not being named in our code. The loader now uses `asset.ToText()` plus `System.Text.Json.JsonSerializer.Deserialize<DigestiveFoodCatalog>(..., new JsonSerializerOptions { PropertyNameCaseInsensitive = true })` in `FoodProfilesModSystem.cs`. That accepts the JSON's camelCase fields with PascalCase C# properties; it has no need to modify the user's locally generated `.csproj` or add a Newtonsoft reference. **Source fix committed; not yet recompiled or tested on user machine.** User should pull `main` and rerun the same build command.
+
+## First native food-code identification audit (2026-11-08)
+
+To stop guessing the 195 native identifiers, added `mod/lingamsdigestivesim/src/Foods/VanillaFoodCodeAudit.cs` and called it from `FoodProfilesModSystem.StartServerSide` **in DEBUG builds only**. It inspects `api.World.Collectibles` after registration and writes one report at the user's data directory:
+
+`%APPDATA%\\VintagestoryData\\ModData\\lingamsdigestivesim\\vanilla-food-code-audit.csv`
+
+The report contains every registered **vanilla-domain `game:` item/block code** and native food category/satiety where directly specified, plus **tentative string-based matching suggestions** from our JSON profile names/keys. Missing profiles are included as special rows in the same CSV. The suggestions are **NOT verified** and are deliberately **NOT bound** to `TryGetByItemCode`; manually inspect actual matches and choose a stable native code or pattern/variant mapping. The audit only writes a text file at server startup in a debug build, with a summary in `server-main.log`. It does not touch the game's eating, health, saves, existing items or fluids. Although the code was checked against current `vsapi` method signatures (`ICoreServerAPI`, `IWorldAccessor.Collectibles`, `CollectibleObject.NutritionProps`, `ICoreAPI.GetOrCreateDataPath`, `ModSystem.StartServerSide`), the code has **not yet been built and exercised on the user's PC**.
+
+**One command per user turn.** To test: Git pull; compile; copy Debug output to installed mod; launch test world; inspect audit summary and CSV. The next development milestone is successful food-consumption interception (actual stack + serving) and precise name/code binding; avoid fake consumption inferred from saturation alone.
 
 ## Next real implementation
 
