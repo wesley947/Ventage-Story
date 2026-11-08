@@ -85,6 +85,8 @@
 
 | D53 | **Simplify digestion to a pure stomach delay before intestinal gas production.** The “stomach phase” is only a game-time wait, with **no separate stomach compartment, transit model, upper-gas reservoir, burping, or future burp scaffolding**. After each ingredient's delay, it generates intestinal gas over a finite window into the **one persistent reservoir**, which only actual flatulence can drain. | **Explicit user clarification (2026-11-08); supersedes D04/D05 upper/lower wording, D39 future burp extensibility and D40 progressive stomach transit.** Eating sessions and individually profiled foods remain; overlap and persistence unchanged. |
 
+| D54 | Maintain a **human-editable 214-row review CSV** but compile/ship a lean **JSON asset** containing 195 gas profiles, 13 mixed-meal resolution rules and six exclusions. Load using a separate `FoodProfilesModSystem` within the existing one-DLL mod; no separate submod is needed. | **Implemented as committed source on GitHub, not yet built on the user machine (2026-11-08).** JSON in `assets/lingamsdigestivesim/config/foodprofiles.json`; loader in `src/Foods/`; `Directory.Build.targets` copies asset without overwriting the local uncommitted `.csproj`. Use 8 gas per 0.1 L milk and the other lighter dairy amounts proposed/accepted in discussion. Actual vanilla item-code bindings remain unverified; no gameplay intake hook yet. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
