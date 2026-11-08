@@ -9,6 +9,7 @@
 - Reader: `mod/lingamsdigestivesim/src/Foods/FoodProfileRegistry.cs` — dictionary lookup by stable ID (`F005`), key (`cabbage`) and **verified** native code (none bound yet); quantity scaling and simple cumulative-delay gas calculation.
 - Asset loader: `mod/lingamsdigestivesim/src/Foods/FoodProfilesModSystem.cs` — automatically loaded as an additional `ModSystem` in the one DLL, reads the standard game asset at `AssetsLoaded`. It **does not** alter hunger, produce gas, create sounds or patch item consumption.
 - `mod/lingamsdigestivesim/Directory.Build.targets` — MSBuild automatically imports this and copies `assets/**/*` into the mod build output **without editing the locally generated `.csproj`**.
+- `tools/build_food_profiles_json.py` — **reproducible standard-library Python CSV→JSON converter**. Rebuilds the runtime asset from the editable baseline with a single command: `python tools/build_food_profiles_json.py`. It validates duplicate keys, types, and nonnegative profile values, and never invents a native game item code. The converter was tested against the current CSV and reproduced exactly the existing JSON.
 
 The permanent `modid` remains `lingamsdigestivesim` and the normal one-mod packaging is unchanged.
 
