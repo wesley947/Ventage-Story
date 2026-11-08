@@ -38,6 +38,16 @@ Surviving written fragments and perhaps a resonator recording help connect the s
 - Our gas-suppression story, treatment mandate, invented physician, and loss-of-laughter theory are mod fiction—not Vanilla-confirmed facts.
 - Use deliberately vague or local-community dates if necessary to avoid contradictions.
 
+## Oral food traditions in the refuges — stories of the surface (2026-11-08)
+
+**User's new lore idea:** Enrich the *Great Silence* with **oral histories among people sheltering underground**: as they pass time in caves/refuges, survivors recount from memory the meals, crops, livestock and delicacies of the lost surface world. Others, especially children born after descent, may know foods only through descriptions and long to taste them if they ever escape the depths. Shared recipes may be remembered imperfectly, disputed, embellished or reinterpreted over time. This could *fictionally* help explain how **some** knowledge of cheesemaking, animal husbandry, growing grain, preserving food and preparing dishes persisted until resurfacing **without asserting a specific rediscovery is established vanilla canon**.
+
+**Tone and storytelling:** Start with tenderness, boredom, hunger, homesickness, inherited hope and the passing on of expertise; the joke should be earned much later through the dramatic return of foods and the equally dramatic return of intestinal wind. Present different narrators, not an objective history. A parent describes cheese or fruit to a child who has never seen the source animal/tree; an elderly cook recalls a recipe but nobody recalls the proper measurements; a hopeful refugee plans a surface feast; a young skeptic dismisses an old delicacy as a fairy tale. Different shelters may have different actual diets and levels of expertise. Survivors could still have known stories of milk/cheese without possessing actual fresh dairy underground.
+
+**Canon guardrails:** Do not assume every Seraph is the descendant of cave dwellers or that every cave remained inhabited for generations. Different shelter stories could come from human refugee witnesses, writings, or later recollections. The user explicitly says cave diet remains mysterious: grain stores, salted meat, nuts and other staples are speculative unless supported by specific original text. Keep factual claims scoped to credible in-world eyewitness testimony and distinguish them from rumors or memory.
+
+**Potential collectible writing:** *The Taste of Daylight* (working title): a handwritten transcription of an elder recalling foods to a younger listener; *The Supper That Waits* (working title): a food wish-list drafted by refugees hoping one day to emerge. These are pitches, not approved titles or finished lore. Could integrate with GS-02, GS-03 and GS-05, or become an independent early arc before the dairy-intolerance revelations.
+
 ## Canon research update — shelter diets are incomplete records (2026-11-08)
 
 **Important correction, from user and canon review:** We **don't know the regular diet of subterranean refuges**, nor exactly how cheesemaking, dairy herds or animal-husbandry skills were preserved/reintroduced afterward. The user's examples of grain stores, salted meat and peanuts are hypotheses, **not facts to put in a narrator's objective voice**.
