@@ -2,12 +2,12 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** documentation and architectural bootstrap.  
-**Next step:** run `dotnet new list | Select-String -Pattern 'Vintage'` on the development PC to check installed official Vintage Story mod templates, approve a neutral permanent internal mod ID, then generate and test the smallest .NET 10 code-mod shell. Follow `docs/IMPLEMENTATION_PLAN.md`.
+**Next step:** Official VS 1.22.0 template is installed, the `vsmod` options have been reviewed, and the game API DLL was found. Check the **local clone location and any uncommitted work**, then run a **dry-run** for a fresh `vsmod` project using approved Mod ID `lingamsdigestivesim` and a changeable display title. Follow `docs/IMPLEMENTATION_PLAN.md`, one PowerShell command at a time.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
 - `AGENTS.md` and `docs/` planning documents preserve decisions. Treat their existence as documentation, **not as evidence any feature works in the game**.
-- No known mod DLL, in-game test, established internal mod ID or release package.
+- No known mod DLL, in-game test or release package yet; approved internal Mod ID is `lingamsdigestivesim`. Public display title is undecided, but the intended creator-brand prefix is **Lingam's**.
 
 ## Milestones
 
@@ -17,7 +17,9 @@
 - [ ] Confirm documentation inventory and ensure AIMAIN reflects actual file paths.
 - [ ] Review unresolved assumptions/possible contradictions; update and commit.
 - [x] Write stepwise implementation/test-gate plan in `docs/IMPLEMENTATION_PLAN.md`.
-- [ ] Choose stable neutral mod ID (name displayed to players can change later).
+- [x] Approve stable internal Mod ID `lingamsdigestivesim`; keep public title separately changeable.
+- [x] Install official `VintageStory.Mod.Templates@1.22.0` and review `dotnet new vsmod --help`.
+- [x] Verify expected game API DLL exists on development PC.
 
 ### M1 — Minimum viable working shell
 - [ ] Inspect the user's actual Vintage Story 1.22.x installation and installed code-mod template, following `docs/IMPLEMENTATION_PLAN.md`.
