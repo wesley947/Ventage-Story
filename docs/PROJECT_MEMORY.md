@@ -96,6 +96,16 @@ At the level of a *single* animal:
 
 This possibility should be tested *after* ordinary gas/AI behavior works, in a controlled survival pen containing 1, 5, then ~40 goats. Test for believable rare responses and performance, without tuning to guarantee any particular comedic outcome. No special mechanic is committed to first release.
 
+## Player digestive status display — character screen (UI proposal, 2026-11-08)
+
+**Observation supplied by user:** Vintage Story 1.22's `C` Character screen has a persistent **Stats** panel on the right, showing Nutrition and Physical information in both the **Character** and the more-hidden **Traits** tab views. The visible Physical group includes satiety, health, temperature, etc. The user prefers exploring a low-intrusion indicator there over an always-visible gas bar near the hunger HUD.
+
+**Preferred direction under investigation, not approved/implemented:** A compact `Digestive` section in the existing right-hand Stats panel (perhaps just one readable line for `Intestinal pressure: Building`, optionally `Stomach pressure: Comfortable`). Present approximate, player-friendly **qualitative pressure levels** rather than precise percentages: e.g. `Comfortable`, `Building`, `Pressurized`, `Loaded`. Precise labels/thresholds still need balancing. The current upper and lower reservoirs are conceptually distinct; do not present inaccurate state when mixing them. Only reveal the player's own digestive status in multiplayer.
+
+**Feasibility and fallback:** [GuiDialogCharacterBase API](https://apidocs.vintagestory.at/api/Vintagestory.API.Client.GuiDialogCharacterBase.html) exposes extra GUI composition and extension points (`ComposeExtraGuis`, `Tabs`, `RenderTabHandlers`). The community [Full Stat GUI](https://mods.vintagestory.at/show/mod/47555) adds a separate live-updated panel to the C screen for VS 1.22, so a companion panel is feasible. **Direct insertion into vanilla Stats rows has not been confirmed** and could require patching. Prefer an API-supported extension first; if unsafe, use a restrained companion panel or a simple `/gas status` command during development. Avoid Harmony unless unavoidable and narrowly scoped.
+
+**Network/data consideration:** Simulation state remains authoritative and persisted server-side; any client Stats display should receive only necessary, appropriately throttled or on-open synced own-player pressure summaries. Do not make the presence of a client HUD control core digestive behavior. No permanent hunger-bar-adjacent gas meter in initial implementation.
+
 ## Player crouch as natural pressure relief (revised proposal, 2026-11-08)
 
 **Latest user request (supersedes the previous one-second-only crouch idea):** The player can deliberately relieve intestinal gas by crouching, with the outcome driven by **current lower-reservoir pressure** rather than a scripted two-part sequence. No need to have farted previously to use the quiet-relief path. User's 75% / 25% figures refer to **amount of gas in the reservoir**, not a 75% release probability.
