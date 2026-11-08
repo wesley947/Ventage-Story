@@ -45,6 +45,8 @@
 
 | D32 | Investigate **multiplayer effects visible to clients without the mod**. An appropriate brief **rear-origin particle puff** from a player/entity's actual gas release could use vanilla particles if the server can propagate them. Test server-installed vs only-one-client-installed cases; don't promise that a client-only mod can affect other clients. | **User-requested future research (2026-11-08), not implemented.** Preserve audio-first initial scope; consider server-owned event replication, no custom-asset requirement for vanilla-client visibility, reasonable effect size and network/particle budgets. |
 
+| D33 | Player's digestive sound instrument defaults to **dynamically follow their selected Seraph speaking voice and pitch**, with an optional independent override. Animal sound instruments/profiles are chosen by the mod. | **User approved (2026-11-08), not implemented.** Cosmetic selection only; speech voice never altered by fart settings. Test 1.22.7 voice assets, custom UI and network behavior. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
