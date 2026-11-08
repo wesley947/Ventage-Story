@@ -28,6 +28,8 @@
 
 | D22 | Protect original game's lore discovery pace: player's **vanilla journal completion** should gradually increase rare *additional* Ventage lore drops; never take away vanilla lore chances. | **Proposed, preferred direction (2026-11-08).** Per-player journal and vessel hooks look promising; chest generation timing, denominator, thresholds, and multiplayer require verification. See `LORE_INDEX.md`. |
 
+| D23 | Allow duplicate lore books and scrolls to remain collectible; repeated physical items can decorate shelves or be traded and should not automatically be excluded. Distinguish new-to-journal status from validity of a physical repeat item. | **Agreed correction (2026-11-08).** Ordinary vanilla world lore can repeat; the Resonance Archives' special player-aware selection does not establish universal duplicate prevention. Do not add an anti-duplicate mechanism without later user agreement. |
+
 ## Important open questions
 - Select neutral permanent Mod ID and storage namespace before the first real build.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
