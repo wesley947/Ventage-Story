@@ -83,6 +83,8 @@
 
 | D52 | Treat cave refuge food supply, preservation of cheese-making and animal husbandry after the catastrophe, and any Seraph dairy intolerance **origin story as unproven**. Keep Great Silence lore limited to a particular shelter/author's account, with plausible but uncertain grain/nut/meat hypotheses, not universal canon. | **User correction and wiki lore review (2026-11-08).** Canon Quartermaster's Ledger mentions dried wolf/rabbit and desperate small-game supplies in one shelter; Tobias later relayed farming knowledge, but dairy reconstruction is unspecified. Seraphs were transformed/time-lost humans, not necessarily generations of cave descendants. No claim that skipping dairy genetically causes lactose intolerance. |
 
+| D53 | **Simplify digestion to a pure stomach delay before intestinal gas production.** The “stomach phase” is only a game-time wait, with **no separate stomach compartment, transit model, upper-gas reservoir, burping, or future burp scaffolding**. After each ingredient's delay, it generates intestinal gas over a finite window into the **one persistent reservoir**, which only actual flatulence can drain. | **Explicit user clarification (2026-11-08); supersedes D04/D05 upper/lower wording, D39 future burp extensibility and D40 progressive stomach transit.** Eating sessions and individually profiled foods remain; overlap and persistence unchanged. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
