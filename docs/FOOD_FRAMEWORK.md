@@ -38,6 +38,10 @@ At game startup, build a compact index of registered **vanilla edible content**,
 7. On a successful player intake, refresh the pending session's inactivity deadline to **30 real seconds**, **not +30 seconds**, and timestamp finished stomach meal at inactivity closure (user preference). Serialize pending data with gas and digestion progress.
 8. Animals receive distinct direct-feeding observations and slow species baseline intestinal gas; don't impose the player eating-session timer.
 
+## Digestion handoff — simple delay only
+
+**Accepted user clarification (2026-11-08):** Once the player's resettable 30-second intake session closes, it records one timestamp for the mixed meal. For each consumed ingredient, lookup its actual eaten amount and food profile, then create a **delayed intestinal-gas contribution** with `startHour = mealClosedHour + digestiveDelayGameHours`, `durationGameHours` and `totalGasPotential`. There is **no progressive stomach transit**, stomach reservoir or burping: “stomach” is the waiting period only. Contributions accumulate gas gradually into one persistent shared reservoir; completed contributions expire without removing gas already generated. Animal direct feeding uses equivalent delayed contributions; background animal production runs independently.
+
 ## Next engineering slice
 
 **Meaningful integrated proof** (not isolated 1-line logger): Implement a lightweight food event capture + normalization + diagnostics for plain item, multi-ingredient meal and liquid/slice, with deduplication and actual portion handling. Load the runtime vanilla edible-content registry and print a one-shot diagnostic audit for unmatched foods; do *not* build gas/sound simulation until basic captured intake is validated. Then assign initial gastro profiles and integrate stomach queue.
