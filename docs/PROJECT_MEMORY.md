@@ -8,6 +8,14 @@ Create a humorous but carefully engineered digestive-gas simulation for Vintage 
 
 The first public release should include some well-crafted in-world *Great Silence* lore. Audio samples can be placeholders during development but should be revisited before release.
 
+## Simplified stomach pause: delayed intestinal gas only (2026-11-08)
+
+**Latest explicit user clarification—takes precedence over historical exploratory notes:** The so-called **stomach phase is solely a waiting-period/time delay**, not an independently modeled compartment. There is **no stomach reservoir, upper-gas tracking, burping, gradual gastric-emptying simulation, or stomach sounds** in the planned design. Once the delay expires, the food begins **gradual intestinal gas production** over its own production duration, adding to the **single persistent intestinal reservoir**. Actual flatulence alone removes gas.
+
+**Minimal contribution:** `{foodProfile, actualAmount, stomachEntryTotalHours, digestiveDelayGameHours, intestinalProductionDurationGameHours, totalGasPotential, gasProducedSoFar}`. The player's sliding 30-second inactivity eating session closes and time-stamps one combined batch at closure. Mixed ingredients remain distinct sub-contributions to allow different delays/amounts/durations (they may all share the meal's starting hour). At `entry+delay`, production starts, scales with elapsed game-hours, and ends after `duration`; completed contributions can be pruned after the entire potential has been accounted for, never deleting previously produced gas. Animal observed feeding can use the same model without the player's 30-second window; animal background gas can add directly to the single intestinal reservoir over elapsed game time. Multiple meals overlap independently. Time skips/reloads use cumulative contributions and never double count. This replaces the older **progressive gastric transfer** proposal and explicitly **does not leave a future burp extension requirement**.
+
+**Do not implement** old mentions of `upperGas`/`lowerGas` as two live reservoirs, two-phase gastric->gut material transport, or future stomach emission placeholders. These are historical notes superseded by this decision. User wants compact maintainable code and would rather omit burping entirely than prebuild an extensibility layer for it.
+
 ## Essential simulation invariants
 1. **Food intake, production, upper/lower storage, and gas release are separate stages.** Movement and fear affect release probability, not magical gas generation.
 2. **Overlapping meals are additive.** New food never zeroes existing gas or restarts prior food contributions. Each consumed portion has its own upper/lower gas *potential* and progress over game time. The contributions still being digested can be compactly stored. Completed contributions can be pruned after accounting for all gas they produced; do not silently discard unproduced gas.
