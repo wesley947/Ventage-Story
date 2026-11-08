@@ -5,17 +5,17 @@
 
 ## Ground rules
 - Continue following [AIMAIN.md](../AIMAIN.md), [AGENTS.md](../AGENTS.md), [PROJECT_MEMORY.md](PROJECT_MEMORY.md) and [DECISIONS.md](DECISIONS.md).
-- The internal `modid` is a long-lived technical identifier. **Do not pick it silently or bind it to a provisional display name**. The user will select/approve a neutral, unique lowercase-alphanumeric ID before `modinfo.json` and saved attribute names are finalized.
+- The internal `modid` is a long-lived technical identifier: **user approved `lingamsdigestivesim` on 2026-11-08**. Public display title is still open, with creator-brand preference **Lingam's ...**. Preserve the distinction between ID, repo name and display title. Verify no public collision before release.
 - Target Vintage Story 1.22.x and .NET 10. Use the **current official VintageStory.Mod.Templates** when available; the wiki's older tutorial says it was last verified for 1.19.8, so inspect generated files rather than copy an old template blindly.
 - **One Windows PowerShell command at a time.** First establish SDK/template availability, then inspect generation commands; do not overwrite existing folders.
 - Work on a separate dev world and use non-destructive feature flags where necessary. Never assume a planned feature is present until built and observed in game.
 - Keep core mechanics separate from game API adapters. No speculative Harmony patches or unverified references to 1.22 assemblies.
 
 ## First action on development machine
-1. Run `dotnet new list | Select-String -Pattern 'Vintage'` to find installed Vintage Story templates.
-2. If absent, install the official `VintageStory.Mod.Templates` package via `dotnet new install VintageStory.Mod.Templates` and then examine the short names/parameters with `dotnet new list` and the template's help. Do not choose an unknown CLI short name.
-3. Before generating the source project, approve a stable internal `modid`, choose a new folder under the cloned repository, and check whether the local repo already has anything uncommitted.
-4. Generate minimal 1.22-compatible project; inspect `.csproj`, `modinfo.json`, `assets/<modid>`, `ModSystem` and build/run/packaging targets.
+1. **Completed:** installed `VintageStory.Mod.Templates@1.22.0`; `vsmod` and `vsmoddll` are available and `dotnet new vsmod --help` was inspected.
+2. **Completed:** verified `%APPDATA%\\Vintagestory\\VintagestoryAPI.dll` exists. Exact full VS installation/version/reference configuration still needs confirmation when generated.
+3. **Next:** inspect local clone location and working tree; ensure template output goes to a new folder and will not overwrite GitHub documentation.
+4. Run a **dry-run** of the `vsmod` template, using internal Mod ID `lingamsdigestivesim`, while keeping the display title changeable. Then generate and inspect `.csproj`, `modinfo.json`, `assets/<modid>`, `ModSystem` and build/run/packaging targets.
 5. Compile and load in a test world before building custom gameplay code.
 
 Official setup guide: https://wiki.vintagestory.at/Modding:Setting_up_your_Development_Environment
@@ -51,7 +51,7 @@ Official examples (beware version drift): https://github.com/anegostudios/vsmode
 **Optional/later:** hunger stomach gurgles, fertilizer/dung, advanced sound libraries, bear hind-leg posture influence (~1s delayed optional opportunity), naturally emerging animal startle reactions. No scripted goat mayhem or separate cascade feature.
 
 ## One-turn next practical step
-**Ask the user to run:** `dotnet new list | Select-String -Pattern 'Vintage'` **in Windows PowerShell**, share the output, and proceed with exactly one follow-up command at a time. It is not necessary to reinstall .NET 10 unless the existing SDK has changed or reports a failure.
+**Template already installed and Mod ID approved.** Next inspect the user's local clone/current working directory before generating any files. Then dry-run `vsmod` with verified parameters and a new safe output path. Continue with exactly one PowerShell command at a time.
 
 ## Documentation checkpoints
 On successful code milestones or major decisions, update this document and `ROADMAP.md`, and relevant `PROJECT_MEMORY.md`/`DECISIONS.md` entries. Commit to GitHub and verify before reporting the project stage as complete.
