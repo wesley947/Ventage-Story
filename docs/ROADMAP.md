@@ -1,6 +1,6 @@
 # Development Roadmap
 
-**Last updated:** 2026-11-06  
+**Last updated:** 2026-11-08  
 **Project stage:** documentation and architectural bootstrap.  
 **Next step:** validate the existing GitHub documentation (especially creature exporter, overlapping food contributions, and lore plan), choose a neutral permanent mod ID, then create the smallest compilable Vintage Story 1.22.x mod shell.
 
@@ -56,6 +56,7 @@
 ### M6 — Great Silence lore (required for first release)
 - [ ] Plan coherent chronology/sections/authors in `LORE_INDEX.md`.
 - [ ] Compare tone and asset structure with verified vanilla lore books/scrolls.
+- [ ] **Hello World persistence test:** spawn vanilla book/scroll with `title` and embedded `text` ItemStack attributes, save, store in inventory/chest/shelf/ground, disable mod on copied world, check readability and identity. Details: `docs/LORE_PERSISTENCE_RESEARCH.md`.
 - [ ] Draft readable, mildly irreverent ancient medical and social histories, not excessively opaque.
 - [ ] Implement at least some **rare discoverable scrolls/books**, and test journal and ruin loot behavior.
 - [ ] Explore one or two original resonator cylinder recordings if practical; not a blocker if disproportionate effort.
