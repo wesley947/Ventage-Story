@@ -1,0 +1,57 @@
+# Incremental Implementation Plan — Ventage Story
+
+**Last updated:** 2026-11-08
+**Stage:** Architecture plan only. **No C# source, compiled DLL, asset package, or successful in-game test yet.**
+
+## Ground rules
+- Continue following [AIMAIN.md](../AIMAIN.md), [AGENTS.md](../AGENTS.md), [PROJECT_MEMORY.md](PROJECT_MEMORY.md) and [DECISIONS.md](DECISIONS.md).
+- The internal `modid` is a long-lived technical identifier. **Do not pick it silently or bind it to a provisional display name**. The user will select/approve a neutral, unique lowercase-alphanumeric ID before `modinfo.json` and saved attribute names are finalized.
+- Target Vintage Story 1.22.x and .NET 10. Use the **current official VintageStory.Mod.Templates** when available; the wiki's older tutorial says it was last verified for 1.19.8, so inspect generated files rather than copy an old template blindly.
+- **One Windows PowerShell command at a time.** First establish SDK/template availability, then inspect generation commands; do not overwrite existing folders.
+- Work on a separate dev world and use non-destructive feature flags where necessary. Never assume a planned feature is present until built and observed in game.
+- Keep core mechanics separate from game API adapters. No speculative Harmony patches or unverified references to 1.22 assemblies.
+
+## First action on development machine
+1. Run `dotnet new list | Select-String -Pattern 'Vintage'` to find installed Vintage Story templates.
+2. If absent, install the official `VintageStory.Mod.Templates` package via `dotnet new install VintageStory.Mod.Templates` and then examine the short names/parameters with `dotnet new list` and the template's help. Do not choose an unknown CLI short name.
+3. Before generating the source project, approve a stable internal `modid`, choose a new folder under the cloned repository, and check whether the local repo already has anything uncommitted.
+4. Generate minimal 1.22-compatible project; inspect `.csproj`, `modinfo.json`, `assets/<modid>`, `ModSystem` and build/run/packaging targets.
+5. Compile and load in a test world before building custom gameplay code.
+
+Official setup guide: https://wiki.vintagestory.at/Modding:Setting_up_your_Development_Environment
+Official examples (beware version drift): https://github.com/anegostudios/vsmodexamples
+
+## Intended logical responsibilities (folders can evolve with the template)
+- `src/Core/`: minimal `ModSystem`, service registration/lifecycle, feature flags, logging, native config.
+- `src/Simulation/`: **pure C#** logic: digestion contributions, gas generation over game time, upper/lower reservoirs, cooldown decisions and release events. Keep unit-testable without needing the game to run.
+- `src/Entities/`: adapter for attached persistent state, life/death/unload callbacks, species selection and runtime tick. The precise game API hooks must be verified before implementation.
+- `src/Foods/`: food/ingredient/portion resolver and data-driven profiles. Handle raw/cooked/meal item contents where the installed game exposes them. Neutral/relief foods are open research.
+- `src/Creatures/`: data-driven species registry, optional third-party profiles, export and debug inspection.
+- `src/Audio/`: later, audible sound category selection and client positional playback / concurrency controls.
+- `src/Lore/`: later, journal discovery and loot hook; favor existing vanilla readable item types with embedded per-ItemStack `title` and `text`, pending verified persistence test.
+- `assets/<modid>/`: JSON profiles, translations, later audio and lore data. Need not pre-create every folder.
+- `tests/`: deterministic unit tests for gas arithmetic and meal overlap if convenient (no world-file dependence).
+
+**Avoid giant empty frameworks.** Each module should be introduced as its first working requirement needs it.
+
+## Workable implementation checkpoints
+
+| Stage | Implement | Evidence required before next stage |
+| --- | --- | --- |
+| 0 — bootstrap | Official .NET 10 project shell, neutral mod ID, correct `modinfo.json`, clean startup logger | DLL compiles, mod listed in Manager, test world loads with no error; reproducible build instructions committed |
+| 1 — diagnostics/config | JSON config with version and safe defaults; a single status/debug command | Config round trip and command work with a clean restart |
+| 2 — entity persistence | Attach a tiny versioned per-entity state containing zero upper/lower gas to **one** goat (after verifying API) | Save, unload, restart and inspect same entity state; no vanilla behavior changes |
+| 3 — deterministic digestion | Reusable pure code for meal contributions, elapsed game time, separate reservoirs and release consumption | Unit tests cover 0 gas, two overlapping meals, long time skip, caps, save/reload and no lost future potential |
+| 4 — intake and food | Start with one consumed test food, then multiple ingredients, recipes and partial servings | Observe actual intake amounts without suppressing vanilla feeding or nutrition |
+| 5 — ordinary release | Rare reservoir-dependent fart/belch decisions; baseline gas; cooldowns; admin inspection | An eligible animal can release gas, empty cannot, no forced events, and offscreen time skips never replay old sounds |
+| 6 — audio and species | Shared temporary sounds, positional hearing, classification, modded animal profiles and creature exporter | Verify with 1 then ~40 goats in survival and creative, no endless noise; exported profiles are privacy-safe |
+| 7 — first-release lore | **Hello World** vanilla written book/scroll with embedded text; rare bonus loot, journal behavior, story entries | Save/remove-mod/trade tests pass on a **copied test world**; vanilla lore chances not reduced |
+| 8 — release hardening | Polish audio, credits, test matrix, README, ModDB ZIP and source release | Build, restart, multiplayer, add/remove mod and assets validated; documentation committed |
+
+**Optional/later:** hunger stomach gurgles, fertilizer/dung, advanced sound libraries, bear hind-leg posture influence (~1s delayed optional opportunity), naturally emerging animal startle reactions. No scripted goat mayhem or separate cascade feature.
+
+## One-turn next practical step
+**Ask the user to run:** `dotnet new list | Select-String -Pattern 'Vintage'` **in Windows PowerShell**, share the output, and proceed with exactly one follow-up command at a time. It is not necessary to reinstall .NET 10 unless the existing SDK has changed or reports a failure.
+
+## Documentation checkpoints
+On successful code milestones or major decisions, update this document and `ROADMAP.md`, and relevant `PROJECT_MEMORY.md`/`DECISIONS.md` entries. Commit to GitHub and verify before reporting the project stage as complete.
