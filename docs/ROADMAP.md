@@ -47,6 +47,7 @@
 ### M4 — Functional simulation
 - [ ] Implement background gas production, delayed meal-derived upper/lower production, reservoir caps.
 - [ ] Implement small sporadic and larger threshold releases, movement/jump/fear influences.
+- [ ] Explore **player crouch release opportunity**: after ~1 real-time second continuously crouching, one high-probability check when lower gas reservoir is sufficiently loaded; normal gas depletion and cooldown; verify multiplayer/server crouch state. Not implemented.
 - [ ] Add death hook and delayed one-off release if viable.
 - [ ] Handle long elapsed game-time intervals and save/unload/reload, without audio backlog.
 - [ ] Add entity/area/herd diagnostics and bounded event logging.
