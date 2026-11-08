@@ -1,6 +1,6 @@
 # Decision Log
 
-**Last updated:** 2026-11-06. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
+**Last updated:** 2026-11-08. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
 
 | ID | Decision | Status / rationale |
 | --- | --- | --- |
@@ -25,6 +25,8 @@
 | D19 | Write lore seriously but with clear, lightly veiled fart references; keep story segments, chronology, authors and placement coherent. | **Agreed.** Future lore spreadsheet/document useful. |
 | D20 | Put documentation on GitHub, with one root `AIMAIN.md` pointing to architecture, decisions, roadmap and lore. Remind user of documentation checkpoints and commit changes. | **Agreed and partially implemented.** `AIMAIN.md` committed earlier; this log records next steps. |
 | D21 | Do not play sounds for events with no possible listener, nor replay an offscreen backlog after chunk reload. | **Agreed design direction.** Loaded entities can simulate state even out of hearing range. |
+
+| D22 | Protect original game's lore discovery pace: player's **vanilla journal completion** should gradually increase rare *additional* Ventage lore drops; never take away vanilla lore chances. | **Proposed, preferred direction (2026-11-08).** Per-player journal and vessel hooks look promising; chest generation timing, denominator, thresholds, and multiplayer require verification. See `LORE_INDEX.md`. |
 
 ## Important open questions
 - Select neutral permanent Mod ID and storage namespace before the first real build.
