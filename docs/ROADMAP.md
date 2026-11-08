@@ -76,6 +76,7 @@
 - Additional lore books, scrolls, historical figures, resonator recordings, and collectible tapestry fragments.
 - Animal dung, pellets/pies, decay, farm fertilizer and potential manure-mod integration.
 - Advanced digestive interactions, relief foods, complex settings interface and more specialized AI.
+- **Experimental herd startle cascade**: rare loud flatulence may startle nearby eligible animals, indirectly increasing their stored-gas release chance and sometimes propagating through a herd. Needs bounded event depth/cooldowns and separate AI/audio test; not committed for first release. See `PROJECT_MEMORY.md`.
 
 ## Highest-priority technical unknowns
 1. Actual installed game API hook for successful ingestion and food identity across various creatures.
