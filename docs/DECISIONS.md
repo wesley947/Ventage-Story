@@ -63,6 +63,8 @@
 
 | D43 | Consider a **fixed 30-second real-time intake window** from the first successful food consumption, collecting further bites into a single mixed-food batch (e.g. carrot, peanut, carrot, peanut); after expiry a new intake starts a new batch. Preserve type, number, amount and original consumption times so differing digestive phases aren't lost. | **User proposed (2026-11-08); 30 seconds tentative and pending confirmation of exact clock semantics.** Prefer window as batching/compression only, not delaying digestive transit until batch closure; do not reset timer on every bite; correctly persist pending batches. |
 
+| D44 | **Revised eating-session batching proposal:** reset a single 30-real-second inactivity timer after **every** successfully eaten food. When the player stops eating for 30 seconds, finalize one mixed-food meal and timestamp its entry into the stomach queue at **window close**, rather than first bite; preserve distinct food types/quantities inside the batch. | **Current user preference under discussion (2026-11-08); supersedes D43 fixed window and assistant's per-bite starting-clock suggestion.** Very long uninterrupted snacking can postpone initial food digestion; optional maximum-session duration is a suggested safeguard **not yet agreed**. Save/quit must not drop pending portions. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
