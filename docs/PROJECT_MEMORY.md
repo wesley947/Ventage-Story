@@ -1,7 +1,13 @@
 # Project Memory — Vintage Story Digestive-Gas Mod
 
 **Last updated:** 2026-11-08  
-**Status:** Planning/bootstrap; no confirmed compiled mod or public release. Approved internal Mod ID: `lingamsdigestivesim`; public display title remains undecided.
+**Status:** Official-template shell compiled and loaded in the user's Creative test world; new JSON food registry/loader now committed on GitHub but untested locally. No release. Approved internal Mod ID: `lingamsdigestivesim`; public display title remains undecided.
+
+## Food registry integration milestone (2026-11-08)
+
+User requested converting the 214-row review CSV into compact runtime JSON and a lookup loader **inside the existing one-mod project**. Done on GitHub: `data/Ventage_Story_Vanilla_Food_Gas_Profiles_IMPLEMENTATION_BASELINE.csv` (editable source; dairy lowered to milk 8 / 0.1 L, cottage 7 / 0.1 L, cheddar/waxed 16 / slice, blue 18 / slice; bell peppers unchanged at 12, pickled 10.2); `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodprofiles.json` (195 gas-valued profiles, 13 mixed-meal rules, 6 exclusions); `src/Foods/FoodProfileRegistry.cs` and `FoodProfilesModSystem.cs` (dictionary lookup and automatic asset loading at `AssetsLoaded`); and `mod/lingamsdigestivesim/Directory.Build.targets` (copies JSON without changing user-local, untracked template `.csproj`). Full status and limitations in `docs/FOOD_REGISTRY_INTEGRATION.md`.
+
+**Not yet done:** user's local `git pull`, build/testing of new loader, native item-code audit (0 bound), successful consumption hooks, 30s meal sessions, persistent gas and fart sounds. The user has an existing generated, compiled/loaded template folder in their Windows clone which remains uncommitted to GitHub; never overwrite those files when pulling new ones. Do not claim this integration provides working digestion yet.
 
 ## Purpose
 Create a humorous but carefully engineered digestive-gas simulation for Vintage Story 1.22.x (C#/.NET 10). Include players and eligible ground animals, vanilla and optional third-party species; keep player effects cosmetic. The creator wants a consistent **Lingam's ...** public naming identity for original full mods. The exact display title is unsettled; *Cabbage Carnage* and *Ventage Story* were previous working titles. The existing GitHub repository is named `Ventage-Story` and the approved permanent internal Mod ID is `lingamsdigestivesim`. Do not conflate repository name, mod ID, and final display name.
