@@ -78,6 +78,16 @@ At the level of a *single* animal:
 
 This possibility should be tested *after* ordinary gas/AI behavior works, in a controlled survival pen containing 1, 5, then ~40 goats. Test for believable rare responses and performance, without tuning to guarantee any particular comedic outcome. No special mechanic is committed to first release.
 
+## Bear upright idle posture and gas-release opportunity (idea, 2026-11-08)
+
+**User observation:** Vintage Story bears sometimes rise onto hind legs and look around. If the pose or associated AI task can be observed, its ordinary postural transition could momentarily make the bear somewhat more likely to release **existing** gas, as an incidental release during a stretch; do not generate gas or demand a sound. The underlying appearance may be an alert lookout pose rather than a true stretch. Avoid forcing a fart every time the bear stands up or creating any new bear animation.
+
+**API research:** The [game bear wiki](https://wiki.vintagestory.at/Bear) confirms occasional hind-leg standing; [IAnimationManager](https://apidocs.vintagestory.at/api/Vintagestory.API.Common.IAnimationManager.html) has `IsAnimationActive(params string[] anims)`; [entity AI debug documentation](https://wiki.vintagestory.at/Modding:Entity_Behavior_taskai) identifies `/entity debug 1` on server plus `.clientconfig showentitydebuginfo 1` on client to see active tasks and animations. The existing [Noisy Bears](https://mods.vintagestory.at/noisybears) mod uses JSON AI task sound hooks to produce a growl on hind-leg standing (historical versions, not tested for 1.22). **Exact bear animation/task code and server visibility have not been inspected in an installed 1.22 build.**
+
+**Potential implementation:** Discover the actual posture task/animation first. Sample a state transition rather than repeatedly buffing probability for the whole animation. Use the same per-entity gas reservoir and release logic as all other natural movement/posture influences. A threshold of available gas, a small temporary probability effect and ordinary cooldowns keep it rare. If animations are client-only, prefer a validated server AI-task state or equivalent rather than a client-authored release.
+
+**Test:** Observe a wild bear in an isolated throwaway survival test world with entity debugging active. Confirm precise animation/task codes while upright; verify that no special release occurs if reservoir is empty, that the bear can stand normally without farting, and that movement/AI is unchanged. Do not disturb the user's established world merely to test this.
+
 ## Lore and release
 - *The Great Silence* is part of the first public release, though collectible tapestry fragments, complex manure/fertilizer integration and large sound libraries belong on later roadmap.
 - Lore should fit established Vintage Story tone but use **recognizably funny, lightly veiled references** rather than making the topic so cryptic players miss it.
