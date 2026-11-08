@@ -70,6 +70,8 @@
 
 | D45 | **Separate player and animal intake policies while sharing one digestion/reservoir engine.** Players eat frequently and use their mixed-food 30-second inactivity batching; animals often go unfed for long periods in vanilla, so directly observed feedings use per-event contributions, **plus subtle species-specific background intestinal gas** even without observed food. | **User requirement (2026-11-08), architecture proposed and not implemented.** Do not add animal starvation, force animal feeding timers, invent food identities from satiety, or impose player-style eating sessions on animal AI. Respect realistic differences among species, herd noise limits and compatibility with husbandry mods. |
 
+| D46 | **Hard conservation invariant for players and terrestrial animals:** Stored intestinal gas continuously accumulates from delayed food fermentation and/or background gas, without pausing or disappearing due to cooldown, source expiry, elapsed time, save/reload or capacity. **Only actual flatulence releases remove part or all of the gas reservoir.** | **Explicit user requirement (2026-11-08).** Release cooldowns apply to release frequency, never production. High-pressure thresholds must not silently clamp/delete excess; gas-lowering foods may only change *future generation* in v1, not absorb already-stored gas. Persist precisely across state transitions and test conservation. |
+
 ## Important open questions
 - Confirm `lingamsdigestivesim` has no conflicting public mod registration before release; decide a stable persisted-attribute namespace after inspecting actual 1.22 API.
 - Find reliable hooks for successful consumption by each supported species/feeding method; determine what can be inferred from registered entity metadata.
