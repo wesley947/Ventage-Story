@@ -37,6 +37,8 @@
 - [ ] Add data-driven optional domain-qualified third-party profiles; ignore missing mods.
 - [ ] Build JSON/plain-text species metadata exporter, suitable for issue submissions. See `CREATURE_EXPORT_SPEC.md`.
 - [ ] Survey raw, cooked and prepared vanilla foods and define preliminary profiles.
+- [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
+- [ ] **Hunger gurgle prototype (optional):** find player satiety property, test subtle hunger-scaled stomach sounds with cooldowns independent of gas state; verify client/server sound ownership and no overlap with existing ambient audio.
 - [ ] Verify actual successful-feeding pathways for animals and players; record limitations.
 
 ### M4 — Functional simulation
