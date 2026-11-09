@@ -1,8 +1,8 @@
 # Food Framework: Reusing Vintage Story Nutrition Events and Ingredient Resolvers
 
-**Design and partial implementation — November 8, 2026.** JSON registry and C# asset loader added on GitHub; no food-capture gameplay yet. Target Vintage Story 1.22.7, mod ID `lingamsdigestivesim`. Exact gas potential, transit and fermentation parameters not approved.
+**Current verified checkpoint — November 8, 2026:** Vintage Story 1.22.7 / `lingamsdigestivesim` food JSON registry and 158 audited code bindings loaded in-game. **DEBUG-only** direct-food Harmony intake observation successfully captured eating and now feeds a tested 30-second player meal session and delayed persistent gas accumulator. A small meal generated 15.40%, later cabbage sessions accumulated up to 121% without a hard clamp; pending and partial digestion survived restart. **Still pending:** complex cooked meals, liquids, partial serving amounts, Release-build-safe intake, and exact food balancing. Historic research below may describe older planned/untested status; consult [AIMAIN.md](../AIMAIN.md) for current work.
 
-**Committed implementation:** The editable 214-row CSV lives in `data/Ventage_Story_Vanilla_Food_Gas_Profiles_IMPLEMENTATION_BASELINE.csv`. The runtime JSON lives in `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodprofiles.json`, with 195 gas-valued ingredients, 13 composite rules and 6 excluded intermediates. C# loaders are in `mod/lingamsdigestivesim/src/Foods/`; build copies JSON via `mod/lingamsdigestivesim/Directory.Build.targets`. See [FOOD_REGISTRY_INTEGRATION.md](FOOD_REGISTRY_INTEGRATION.md). The food mapping/consumption hooks and in-game compile remain outstanding.
+**Committed implementation:** The editable 214-row CSV lives in `data/Ventage_Story_Vanilla_Food_Gas_Profiles_IMPLEMENTATION_BASELINE.csv`. The runtime JSON lives in `mod/lingamsdigestivesim/assets/lingamsdigestivesim/config/foodprofiles.json`, with 195 gas-valued ingredients, 13 composite rules and 6 excluded intermediates. C# loaders are in `mod/lingamsdigestivesim/src/Foods/`; build copies JSON via `mod/lingamsdigestivesim/Directory.Build.targets`. See [FOOD_REGISTRY_INTEGRATION.md](FOOD_REGISTRY_INTEGRATION.md). The original food-mapping/consumption-hook/build todo is now **historical**: a narrow DEBUG direct-food path has been tested; general meals and liquid intake remain outstanding.
 
 ## New insight: the game already performs useful classification
 
@@ -61,7 +61,7 @@ The first-pass **214-row food-profile CSV** was shared for editing. User said th
 
 **Critical unit warning:** A full **1-liter** serving of milk at 20 units per **0.1 L** creates **200 gas units**. This may be far more intense than the user envisions when comparing to one cabbage item (24 units). Preserve and surface the portion-unit distinction before committing values to code; don't silently normalize unlike volumes. User expressly asked for highly gassy Seraph dairy, but actual acceptable per-serving size remains for their review. Lactose intolerance explains milk; real aged cheeses have little lactose, so the very high cheese effects are intentional fictional Seraph sensitivity. Pickled bell pepper uses the original ~85% preservation multiplier. All food IDs/item codes still need validation against installed game.
 
-## Next engineering slice
+## Historical next engineering slice (superseded by current tested direct-food integration)
 
 **Meaningful integrated proof** (not isolated 1-line logger): Implement a lightweight food event capture + normalization + diagnostics for plain item, multi-ingredient meal and liquid/slice, with deduplication and actual portion handling. Load the runtime vanilla edible-content registry and print a one-shot diagnostic audit for unmatched foods; do *not* build gas/sound simulation until basic captured intake is validated. Then assign initial gastro profiles and integrate stomach queue.
 
