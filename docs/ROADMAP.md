@@ -1,3 +1,9 @@
+## Verified sound-only gas conservation — 2026-11-08
+
+**USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
+
+---
+
 ## Audible trumpet test passed in Vintage Story — 2026-11-08
 
 **PASS:** User built and installed Debug DLL with matching SHA256 hashes, loaded the Creative test world, issued `/gas sound`, and clearly **heard the native trumpet**. This proves audio playback for the first sound prototype using `game:sounds/voice/trumpet` with server positional audio in the tested singleplayer session. It does not yet prove gas conservation or the `/gas fart` path. **NEXT:** confirm `/gas status` still equals previous 121% (unless additional ingestion occurred), then test manual `/gas fart` and verify exact 60%-of-current depletion, empty-reservoir silence and no unexpected impact to active digestion.
