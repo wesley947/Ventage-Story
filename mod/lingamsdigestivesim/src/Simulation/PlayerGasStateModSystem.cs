@@ -7,15 +7,18 @@ using Vintagestory.API.Server;
 namespace lingamsdigestivesim.Simulation;
 
 /// <summary>
-/// Small, server-only player persistence test. Does not produce or release gas,
-/// change vanilla entities/items, play audio, or modify the food observer.
-/// The same versioned state shape can later be shared by eligible animals.
+/// Server-only player gas persistence and administrator diagnostics.
+/// The separate digestion system fills the saved reservoir. These commands
+/// only test native trumpet playback and deliberate, gas-consuming releases.
+/// Nothing here changes vanilla entities, items, recipes or food observation.
 /// </summary>
 public sealed class PlayerGasStateModSystem : ModSystem
 {
     private const string StateKey = "lingamsdigestivesim";
     private const int SchemaVersion = 1;
     private const double PlayerNormalFullGasUnits = 100d; // Test baseline, not final balance.
+    private const double TestReleaseFraction = 0.60d; // Temporary manual release ONLY; balance is not final.
+    private static readonly AssetLocation TrumpetSound = new("game", "sounds/voice/trumpet");
 
     private ICoreServerAPI? serverApi;
 
@@ -42,9 +45,17 @@ public sealed class PlayerGasStateModSystem : ModSystem
                 .WithDescription("Set your gas pressure percentage for persistence testing")
                 .WithArgs(api.ChatCommands.Parsers.DoubleRange("percent", 0d, 1000d))
                 .HandleWith(OnSet)
+            .EndSubCommand()
+            .BeginSubCommand("sound")
+                .WithDescription("Play a vanilla trumpet sound with pitch variation; use no gas")
+                .HandleWith(OnSound)
+            .EndSubCommand()
+            .BeginSubCommand("fart")
+                .WithDescription("Test a trumpet release that consumes 60% of current stored gas")
+                .HandleWith(OnFart)
             .EndSubCommand();
 
-        api.Logger.Notification("[lingamsdigestivesim] Player gas persistence active (digestion test may add gas; no releases or sounds).");
+        api.Logger.Notification("[lingamsdigestivesim] Player gas storage plus manual trumpet sound/release diagnostics active (no automatic release).");
     }
 
     public override void Dispose()
@@ -140,6 +151,81 @@ public sealed class PlayerGasStateModSystem : ModSystem
         }
 
         return TryGetState(player.Entity, out state, out _, out error);
+    }
+
+    /// <summary>
+    /// Server-originated positional audio: callers and nearby vanilla clients
+    /// can receive the built-in game asset. No client mod files are required.
+    /// This is a dispatch only, not proof that any listener heard the sound.
+    /// </summary>
+    private void DispatchTrumpet(Entity entity, float pitch, float volume)
+    {
+        if (serverApi == null)
+            throw new InvalidOperationException("Server sound API is unavailable.");
+
+        // Location includes sounds/ prefix, excludes .ogg extension.
+        // Pass null to avoid excluding the invoking player from the broadcast.
+        serverApi.World.PlaySoundAt(
+            TrumpetSound, entity, null, pitch, 20f, volume);
+    }
+
+    private static float NextPitch(float minimum, float maximum) =>
+        minimum + (float)Random.Shared.NextDouble() * (maximum - minimum);
+
+    private TextCommandResult OnSound(TextCommandCallingArgs args)
+    {
+        try
+        {
+            if (args.Caller.Player is not IServerPlayer player || player.Entity == null)
+                return TextCommandResult.Error("A loaded player is required.");
+
+            float pitch = NextPitch(0.86f, 1.14f);
+            DispatchTrumpet(player.Entity, pitch, 0.85f);
+            return TextCommandResult.Success(
+                $"Vanilla trumpet sound requested at your position (pitch {pitch:0.00}, volume 0.85). No gas consumed. Confirm it is audible.");
+        }
+        catch (Exception ex)
+        {
+            serverApi?.Logger.Error("[lingamsdigestivesim] /gas sound failed: {0}", ex);
+            return TextCommandResult.Error("Trumpet sound dispatch failed; gas unchanged. See server log.");
+        }
+    }
+
+    private TextCommandResult OnFart(TextCommandCallingArgs args)
+    {
+        try
+        {
+            if (!TryGetPlayerState(args, out ITreeAttribute? state, out string error))
+                return TextCommandResult.Error(error);
+            if (args.Caller.Player is not IServerPlayer player || player.Entity == null)
+                return TextCommandResult.Error("A loaded player is required.");
+
+            double gas = state!.GetDouble("gasUnits");
+            if (gas <= 0d)
+                return TextCommandResult.Success("Your gas reservoir is empty. No release and no sound.");
+
+            double capacity = state.GetDouble("normalCapacityUnits");
+            double released = gas * TestReleaseFraction;
+            double remaining = Math.Max(0d, gas - released);
+
+            // For this one-off manual test, high pressure gets a deeper trumpet.
+            // No preset release tiers, crouch triggers, background odds, or
+            // animal releases are introduced here.
+            float pitch = gas >= capacity
+                ? NextPitch(0.75f, 0.93f)
+                : NextPitch(0.95f, 1.10f);
+            DispatchTrumpet(player.Entity, pitch, 0.90f);
+
+            // Change saved gas only for the real release, after sound dispatch.
+            state.SetDouble("gasUnits", remaining);
+            return TextCommandResult.Success(
+                $"Manual trumpet release: {released:0.00} gas units expelled; {remaining:0.00} remaining ({100d * remaining / capacity:0.00}%). Pitch {pitch:0.00}. Test-only 60% release.");
+        }
+        catch (Exception ex)
+        {
+            serverApi?.Logger.Error("[lingamsdigestivesim] /gas fart failed: {0}", ex);
+            return TextCommandResult.Error("Manual gas release failed; check server log.");
+        }
     }
 
     private TextCommandResult OnStatus(TextCommandCallingArgs args)
