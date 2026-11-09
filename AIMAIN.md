@@ -31,7 +31,7 @@
 - **D46–D50:** Gas is conserved; **only a real release** removes stored gas. 100% normal-full is a soft threshold, not a hard cap. Animal background gas and feeding are *planned*, not implemented; birds/flying and nonbiological creatures excluded. No scripted herd frenzy.
 - **D57–D59:** Pressure-sensitive big/medium/final squeaker releases planned. Very low forced release should be a near-instant squeak-pop clearing exactly 0; a low-pitched blast tends to expel more per second but rates/durations **overlap** with higher squeakers. Long bass rumbles and finite small squeakers should both be possible; no final constants approved.
 - **D60:** **First public release blocker:** a **convincing, diverse, curated fart sound library** must exist before any initial `0.1.0` or `1.0.0` release; plain trumpet is an excellent proof, but not enough. Eight native voice files known: `accordion`, `altoflute`, `clarinet`, `harmonica`, `oboe`, `sax`, `trumpet`, `tuba`. Use native assets by location, do not redistribute game audio. See [Audio API Audit](docs/AUDIO_API_AUDIT.md).
-- **Fart Lab** is a **proposed developer-only, non-consuming audition tool** (four-node pitch curve, independent ADSR, tremolo/gravel, random variation, finale, saved named presets). Ordinary players getting the editor is **not decided**. Client `ILoadedSound` controls are different from server one-shot audio that unmodded remote clients can hear; test separately.
+- **Fart Lab (exploratory architecture):** The user is considering a **separate Vintage Story mod** for authoring/auditioning sound presets. Its **versioned JSON sound-recipe collection** could be imported by the gameplay mod **without the editor installed**. Four pitch nodes, separate ADSR, tremolo, texture, randomness, ending flourish and named presets. JSON recipes are **not audio recordings**; a compatible renderer and shared format are needed. [Preset format proposal](docs/FART_PRESET_FORMAT.md). Neither the independent-mod split nor ordinary-player editor access is finalized. Rich client `ILoadedSound` envelopes are not automatically reproducible on unmodded multiplayer clients.
 - **Safety D55:** Worlds must remain usable with/without the mod. Use server-owned namespaced state and reversible Harmony. Uninstall/re-enable and unmodded-client tests are outstanding. Never replace vanilla items/recipes or modify the game's files.
 - **First public lore requirement D16:** some Great Silence lore collectibles must ship with the first public release, but **none are implemented yet**. The revised story (old-world elite social suppression, plague refuge, unfamiliar surface foods, first laughter) is in [Lore Index](docs/LORE_INDEX.md).
 
@@ -41,7 +41,7 @@
 
 **User workflow:** Always **one Windows PowerShell command per message**, wait for output. Before installing changed DLLs, back up working mod; build locally with the known .NET 10 command and compare hashes. GitHub commits are not local installation or proof of successful gameplay. Treat the user's locally generated template files as precious.
 
-## Documentation map — the 14 audited Markdown files
+## Documentation map — the 15 audited Markdown files
 
 | File | Purpose |
 | --- | --- |
@@ -52,6 +52,7 @@
 | [docs/PROJECT_MEMORY.md](docs/PROJECT_MEMORY.md) | Full chronological research, experiments, failures and successful tests. |
 | [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) | Engineering test gates and historical stage plans. |
 | [docs/AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md) | Exact supported/unproven audio controls and audition plan. |
+| [docs/FART_PRESET_FORMAT.md](docs/FART_PRESET_FORMAT.md) | Proposed portable JSON sound recipe format for optional standalone Fart Lab. |
 | [docs/SOUND_CREDITS.md](docs/SOUND_CREDITS.md) | Native voice samples, licensing and eventual credits. |
 | [docs/FOOD_FRAMEWORK.md](docs/FOOD_FRAMEWORK.md) | Food identity/amount capture and partial meal research. |
 | [docs/FOOD_CODE_AUDIT_REVIEW.md](docs/FOOD_CODE_AUDIT_REVIEW.md) | Audited native food-code mapping and gaps. |
