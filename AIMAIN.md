@@ -7,7 +7,7 @@
 - Repository: `wesley947/Ventage-Story` (repository spelling is intentional; do not rename it without asking).
 - Project: a Vintage Story digestive-gas simulation mod, with **Lingam's** as the intended public naming/creator brand. **Public display title remains undecided.** Previous names included *Cabbage Carnage* and *Ventage Story*.
 - Target: Vintage Story 1.22.x, C#/.NET 10.
-- Current stage (2026-11-08): compiled/verified 195 food profiles and 158 native item-code bindings on both sides. First unregistered server-side collectible behavior injection caused a client item-type deserialization crash; removing it restored normal world load/exit. **Current untested GitHub source** replaces it with `DirectFoodIntakeHarmonyProbe.cs`, a DEBUG-only server-side Harmony observation of vanilla `tryEatStop`, with patch removed on server ModSystem dispose and no vanilla item-type mutation. **Next:** one-command-at-a-time pull/build/copy/hash/world-load test before attempting to eat food. Never claim this new probe has passed until user verifies. No gas simulation or persisted digestive state yet. Mod ID `lingamsdigestivesim`; repo spelling `Ventage-Story` intentionally remains.
+- Current stage (2026-11-08 17:08 PST): 195 food profiles, 13 composite meal rules, 6 exclusions and 158 verified native item-code bindings load. The DEBUG server-only Harmony EAT-PROBE has now PASSED actual consumption tests: violet web cap (F093), rye grain (F055), and spelt grain (F058), each logged as one native unit, with user-observed satiety increases. This verifies those three direct food paths, not meals, liquids or animal intake. No gas generated. Earlier server-only collectible-behavior injection caused startup crash; it was removed and must not return. No persistent meal state, running digestion, gas accumulator, release mechanic or audio yet. Next engineering gate: a tiny namespaced per-entity persistence save/reload test. Approved Mod ID lingamsdigestivesim; repo spelling Ventage-Story intentional.
 - Keep permanent technical identifiers based on approved `lingamsdigestivesim`, not on any provisional public display name. The public name may change without changing saved-data namespaces or item codes.
 
 ## On every new chat
@@ -37,7 +37,7 @@
 | `docs/CREATURE_EXPORT_SPEC.md` | Design for opt-in, privacy-safe export of modded creature metadata to support GitHub issue requests without chasing animals. |
 | `docs/SOUND_CREDITS.md` | Eventually record sound sources, creators, licenses, and edits. |
 
-**Documentation status (2026-11-08):** All files listed in this table have been created and committed to GitHub. The actual C# mod shell and playable features have **not** been implemented. Recheck the repository before assuming this remains current.
+**Documentation status (2026-11-08):** All files listed in this table have been created and committed to GitHub. The C# mod shell, food catalog and direct-food diagnostic have been implemented and tested. The digestive simulation, gas reservoir, releases and audio are not yet implemented.
 
 ## Current essential design decisions (bootstrap summary)
 
@@ -68,12 +68,14 @@
 
 Small iterative changes do not require an interruption on every message.
 
-## Current checkpoint (2026-11-08)
+## Current checkpoint (2026-11-08, after EAT-PROBE testing)
 
-The local GitHub repo was successfully cloned under `$HOME\\Ventage-Story`. User has **not yet confirmed navigating into it**, but the clone command reported success. Research of game-owned voice samples and sound APIs has advanced, and the user has declared a minimum multiplayer acceptance goal: unmodded nearby players hear the modded player's fart. Only-client-modded/unmodified-server delivery is **unverified and potentially unsupported**; defer hands-on multiplayer test to when the user's son visits around Thanksgiving. Continue local template bootstrap now. The immediate next one-command PowerShell instruction is `git -C "$HOME\\Ventage-Story" status --short --branch`, then dry-run generation if clean.
+User verified three completed direct-food events, each with a one-unit log and increased satiety: violet web cap F093, rye grain F055, and spelt grain F058. Supersedes all earlier references to the Harmony observer being untested. The previous server-only injected CollectibleBehavior caused a startup crash and must never be restored. The successful DEBUG Harmony observer is read-only and creates no gas.
 
-## Immediate next step at repository bootstrap
+**Next engineering gate:** verify saved and reloaded versioned, namespaced per-entity attributes in a test world before adding the meal queue, 30-second player intake sessions, or gas accumulation. Give one PowerShell command at a time.
 
-Official `VintageStory.Mod.Templates@1.22.0` is installed, `dotnet new vsmod --help` reviewed, and the game API DLL was found in the development PC's expected location. Next: inspect local clone/working directory and dry-run the `vsmod` template using stable Mod ID `lingamsdigestivesim`, while leaving the public display title changeable. Then create a tiny compilable mod shell and verify it loads in Vintage Story 1.22.x. Research actual feeding and attribute APIs before implementing digestion. Follow the user's preference for **one PowerShell command at a time**, waiting for results before supplying the next command.
+## Current authoritative digestion model
 
-Do not mistake a design mockup, hypothetical number, or untested snippet for an implemented feature.
+Decision D53 supersedes old two-reservoir, burping and progressive gastric-transfer concepts. The stomach is only a food-specific **game-time delay**; production then occurs gradually over a finite duration into **one persistent intestinal reservoir**. Players use a sliding **30 real-second inactivity timer**, reset to 30 seconds at each successful bite, and timestamp the combined meal when the window closes. Distinct food identities and contributions remain independent; new food never resets older meals. Animals use observed feeding plus sparse species-specific background gas, without player-style meal batching. Stored gas is conserved; **only actual fart events subtract it**. Normal full pressure is 100%, not a hard clamp, with overpressure release behavior targeted around 125%. No burping, upper-gas reservoir, modeled stomach compartment or future burp scaffolding. Unapproved numerical examples are not binding.
+
+See docs/DECISIONS.md D44-D55, docs/PROJECT_MEMORY.md's latest override notes, and docs/ROADMAP.md for constraints and next actions.
