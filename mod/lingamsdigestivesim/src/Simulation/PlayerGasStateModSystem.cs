@@ -44,7 +44,7 @@ public sealed class PlayerGasStateModSystem : ModSystem
                 .HandleWith(OnSet)
             .EndSubCommand();
 
-        api.Logger.Notification("[lingamsdigestivesim] Player gas persistence test active (no gas production, releases or sounds).");
+        api.Logger.Notification("[lingamsdigestivesim] Player gas persistence active (digestion test may add gas; no releases or sounds).");
     }
 
     public override void Dispose()
@@ -152,7 +152,7 @@ public sealed class PlayerGasStateModSystem : ModSystem
             double gas = state!.GetDouble("gasUnits");
             double capacity = state.GetDouble("normalCapacityUnits");
             return TextCommandResult.Success(
-                $"Gas: {100d * gas / capacity:0.00}% ({gas:0.00} / {capacity:0.00} units). Saved state version {SchemaVersion}. No digestion active.");
+                $"Gas: {100d * gas / capacity:0.00}% ({gas:0.00} / {capacity:0.00} units). Saved state version {SchemaVersion}. {PlayerDigestionModSystem.Describe(((IServerPlayer)args.Caller.Player).Entity)}");
         }
         catch (Exception ex)
         {
