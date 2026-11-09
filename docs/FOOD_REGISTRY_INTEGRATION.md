@@ -1,3 +1,9 @@
+## Direct-food diagnostic confirmed — 2026-11-08 17:08 PST
+
+The replacement DEBUG-only server Harmony observer is no longer merely source-committed: user successfully compiled/installed and confirmed a world load and actual eating. EAT-PROBE logged violet web cap (F093), rye grain (F055) and spelt grain (F058), one native unit each; user directly observed satiety increase. No gas was generated. Thus prior 'not tested' statements below are historical and superseded. Do not claim support for prepared meals, liquids, animal feeding, partial servings or uninstall regression. Never restore the prior post-registration server-only CollectibleBehavior injection, which caused a client startup crash. Next: safe persistent state, then player sliding 30-second inactivity batching and food-dependent intestinal production after a pure delay, with one conserved gas reservoir (D44/D53).
+
+---
+
 ## Replacement direct-food eating diagnostic — 2026-11-08
 
 **Source committed, NOT yet compiled or tested in the user's game.** The first probe crashed client item-type deserialization because it appended an unregistered custom `CollectibleBehavior` to server item definitions; it was removed, and the corrected baseline world loaded/exited normally. The replacement is `src/Foods/DirectFoodIntakeHarmonyProbe.cs`, installed in `FoodProfilesModSystem.StartServerSide` under `#if DEBUG`. It targets the existing protected virtual `CollectibleObject.tryEatStop(float, ItemSlot, EntityAgent)` using Harmony prefix/postfix: capture an actual mapped player-held food before vanilla eating, then log only if one item disappears from the held slot afterward. It **never mutates registered items, recipes, nutrition, inventory or save data**. Its unique Harmony ID is unpatched in the mod's server-side `Dispose`. Game-supplied `Lib/0Harmony.dll` is referenced through `Directory.Build.targets` without editing the user's untracked local `.csproj`.
