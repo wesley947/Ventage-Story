@@ -1,3 +1,9 @@
+## First gas-consuming manual release verified in game — 2026-11-08 evening
+
+**USER SCREENSHOT CONFIRMS:** In the Vintage Story 1.22.7 Creative test world, `/gas sound` requested a native trumpet at pitch **1.04**, volume **0.85**, did not change the gas amount; `/gas status` was **121.00%**. Then `/gas fart` returned **"Manual trumpet release: 72.60 gas units expelled; 48.40 remaining (48.40%). Pitch 0.88. Test-only 60% release."** The follow-up `/gas status` independently reported **48.40% (48.40 / 100.00 units)**, with **no pending or active foods**. This verifies the first actual 60%-fraction player manual reservoir reduction after the verified food-generated accumulation. **Do not yet mark release audio as audibly confirmed:** the `/gas fart` message proves the sound request was sent, not that it was heard; ask user whether the trumpet was audible on release. Existing `/gas sound` audible playback is independently user verified. Next release tests: audible command result, 0-gas silence and no depletion on empty, persistence of remaining 48.40% after restart, then design crouch tiers. The 60% fraction is a temporary diagnostic, not final balance. Keep one instruction at a time.
+
+---
+
 ## Verified sound-only gas conservation — 2026-11-08
 
 **USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
