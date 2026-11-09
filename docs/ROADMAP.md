@@ -1,3 +1,9 @@
+## Trumpet audio + gas release proof of concept — code committed, test pending (2026-11-08)
+
+Committed `3654088`: admin `/gas sound` plays **existing** `game:sounds/voice/trumpet` from the player via server positional audio; randomized pitch, no gas subtraction. `/gas fart` is a manual sound + gas-consuming event, using **temporary 60% release fraction** and pressure-dependent pitch choice (no auto releases, crouch, animals, or final tiers). No new sound assets. Minimal changes confined to existing `PlayerGasStateModSystem.cs`, so the previously verified food accumulator is untouched. **UNCOMPILED/UNTESTED in user's environment** at this checkpoint. Verify pull/build/backup, install, audible sound-only test at existing 121%, unchanged gas, then manual release amount and sound. If sound-only is inaudible, investigate before consuming gas.
+
+---
+
 ## Sound manipulation capability confirmed for upcoming trumpet test — 2026-11-08
 
 Use built-in `game:sounds/voice/trumpet` for the first test, but allow varied **pitch / pitch randomization, volume and audible range** via server positional sound API. Later variations may use client `ILoadedSound` for dynamically changing pitch/volume, reverb, low-pass and fades, but do not introduce unnecessary client networking in the first smoke test. Official 1.22.7 API docs: https://apidocs.vintagestory.at/api/Vintagestory.API.Common.IWorldAccessor.html and https://apidocs.vintagestory.at/api/Vintagestory.API.Client.ILoadedSound.html . Next gate remains sound-only command then gas-consuming release, both to be built and game-tested.
