@@ -1,3 +1,9 @@
+## First audible fart-prototype asset test — 2026-11-08
+
+Following git pull through `09bb9f2`, successful .NET 10 Debug build, saved known-good accumulator DLL backup, install and hash check, the user confirmed **`/gas sound` actually sounded the built-in Vintage Story trumpet** in their Creative world. The command is designed as sound-only, selecting random pitch via `World.PlaySoundAt`; real audible result is verified, but numerical gas amount unchanged is pending explicit `/gas status` check. `/gas fart` uses a deliberately provisional 60% depletion and has not been tested yet. Do not conflate this with client-only-to-unmodded-server multiplayer compatibility. Next action: gas status check followed by actual release check.
+
+---
+
 ## VERIFIED: no gas after finished digestion — 2026-11-08 evening PST
 
 **USER-VERIFIED FINAL ACCUMULATOR CHECK:** After a two-food active digestion test finished at **121.00%** gas with **zero pending or active contributions**, the user entered `/time add 2` (two further game hours) in the same Creative world and reported `/gas status` was **unchanged**. The completed food sources did not produce new gas after their retirement; accumulated gas remained stored, including the amount over 100% normal-full. Combined with earlier direct-food EAT-PROBE tests, pending meal closure and save/restart, partial digestion/restart, and full production, this is a **successful narrow player-direct-food accumulator validation**. Not covered: repeated-bite reset edge case, exact food-to-gas attribution, meals/liquids, animal production, player switching/multiplayer, mod disable/re-enable world safety. **Next gameplay milestone:** actual gas-consuming manual release plus simple audible placeholder fart sound and separate non-consuming sound diagnostics, followed by intentional crouch behavior; ensure no subtraction unless a genuine release occurs. Preserve one-step PowerShell workflow and tested DLL backup.
