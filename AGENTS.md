@@ -1,3 +1,9 @@
+## Audio preset authoring boundary — proposed, not final
+
+The user is considering a **separate Fart Lab mod** that exports versioned JSON audio preset definitions consumed by the gameplay mod. Documentation is in [docs/FART_PRESET_FORMAT.md](docs/FART_PRESET_FORMAT.md) and [docs/AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md). This is an open architectural option, **not implemented** and not approval to ship a public audio editor. Keep user audio previews independent of server gas consumption; avoid copying game-owned instrument files into the mod.
+
+---
+
 # Collaboration and Development Rules
 
 This repository contains an **implemented and user-tested Debug prototype** of a Vintage Story 1.22.7 C#/.NET 10 digestive-gas mod, not just a plan. The final public title remains undecided; the repo spelling `Ventage-Story` is intentional and the stable internal ModID is `lingamsdigestivesim`. Start with [AIMAIN.md](AIMAIN.md) for current state and [docs/AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md) for the current audio-first development gate.
