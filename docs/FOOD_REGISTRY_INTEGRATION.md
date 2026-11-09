@@ -1,3 +1,9 @@
+## CURRENT ACTUAL STATUS — reconciled 2026-11-08 21:15 PST
+
+**Runtime-tested:** food loader (195 / 13 / 6) and 158 vetted native bindings; **DEBUG-only** server Harmony `tryEatStop` observer captured real completed eating (violet web cap, rye, spelt), queued two actual food types, closed a 30-second inactive session, and produced gas over elapsed **game hours** into one saved player reservoir. User confirmed 15.40% gas from an early meal, cabbage pending-session survival, active digestion saved/restored, accumulation up to **121.00%**, completion/no added gas after +2 more hours, and native trumpet sound/manual release. **Scope limits:** general prepared meals, liquids, precise serving amounts and Release-build intake have **not** been verified; no animal intake. Earlier sections below explicitly labeled source-only, future/no gas, crash or next build gate are **historical checkpoints**, not current state or instructions. Do not resurrect `DirectFoodIntakeProbeBehavior`, which crashed startup. Current plan: [AIMAIN.md](../AIMAIN.md) and [ROADMAP.md](ROADMAP.md).
+
+---
+
 ## Direct-food diagnostic confirmed — 2026-11-08 17:08 PST
 
 The replacement DEBUG-only server Harmony observer is no longer merely source-committed: user successfully compiled/installed and confirmed a world load and actual eating. EAT-PROBE logged violet web cap (F093), rye grain (F055) and spelt grain (F058), one native unit each; user directly observed satiety increase. No gas was generated. Thus prior 'not tested' statements below are historical and superseded. Do not claim support for prepared meals, liquids, animal feeding, partial servings or uninstall regression. Never restore the prior post-registration server-only CollectibleBehavior injection, which caused a client startup crash. Next: safe persistent state, then player sliding 30-second inactivity batching and food-dependent intestinal production after a pure delay, with one conserved gas reservoir (D44/D53).
