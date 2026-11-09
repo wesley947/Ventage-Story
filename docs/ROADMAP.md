@@ -2,9 +2,10 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** Verified Vintage Story 1.22.7 test-world load: 195 food profiles + 13 composites + 6 exclusions on server/client. Native collectible audit also successfully generated in-game; audited 158 strong native identity/nutrition mappings for 122 profiles. Secondary bindings asset and C# reader recompiled successfully and **verified in-game on both server and client** (158 bindings each; Nov 8, 16:10).  
-**Next step (2026-11-08):** Corrected build loaded and exited normally after unsafe collectible-behavior injection was removed. A replacement **DEBUG-only Harmony observer** is now committed in `src/Foods/DirectFoodIntakeHarmonyProbe.cs` but **not yet compiled or tested**. It observes `CollectibleObject.tryEatStop` before/after vanilla execution without altering registered item types and unpatches on server ModSystem `Dispose`. Pull/build/install/check DLL hash, then test safe world load **before** eating a known mapped food. One PowerShell command per user turn.
+**Next step (2026-11-08 17:08 PST):** EAT-PROBE successfully logged direct consumption of violet web cap F093, rye grain F055 and spelt grain F058, one native unit each, with observed satiety increases. This verifies those direct-food paths, not meals, liquids or animals. Next engineering gate: save/reload a tiny versioned namespaced per-entity attribute. No persistent meal sessions, active digestion, gas reservoir, release or audio exists yet. One PowerShell command at a time.
 
-- **Harmony intake observer (not yet tested):** Debug-only server-side observation of direct food consumption; no nutrition, inventory or save changes. Must pass load, eating, and removal regression before being considered safe.
+- **Verified DEBUG Harmony EAT-PROBE:** DirectFoodIntakeHarmonyProbe.cs observes vanilla tryEatStop without modifying item behaviors, recipes, nutrition or inventory. Previous injected collectible behavior crashed during startup and remains prohibited; uninstall regression is outstanding.
+- **Current D53 design:** Only stomach delay, then intestinal production into one persistent reservoir. No burps, upper gas, modeled stomach or progressive gastric transfer. Sliding player 30-second real-time inactivity countdown resets after every successful bite and stamps the meal upon closure. Stored gas is conserved and removed only by actual flatulence.
 
 ## Release-blocking world safety requirement (2026-11-08)
 
@@ -53,7 +54,7 @@
 - [x] **Secondary binding file:** `config/foodcodebindings.json` and reader (158 codes to 122 profiles) compiled successfully, loaded and verified by client and server logs at 16:10 on Nov 8, 2026.
 - [ ] Audit actual vanilla game item/block codes for the 195 profiles, then connect ingestion event resolution to profile lookup (current JSON deliberately has no unverified itemCode bindings).
 - [ ] **Future mushroom potency (deferred):** Eventually give selected hallucinogenic mushroom foods, such as liberty caps, higher gas potential than ordinary mushrooms while preserving all native special effects. Verify exact edible codes and consumption amounts first; see `docs/FOOD_FRAMEWORK.md`.
-- [ ] **Direct-food intake probe:** First DEBUG prototype **FAILED** after correctly installing DLL: game crashed during client item-type loading (Nov 8 16:36). Dangerous server-only post-registration `CollectibleBehaviors` modification **removed in hotfix**. Require reliable load test and a different API interception method before resuming. 
+- [x] **Direct-food intake probe:** First injected-behavior approach failed and was removed. Replacement DEBUG Harmony observer verified violet web cap, rye and spelt consumption with corresponding satiety increases. Other intake paths and uninstall regression remain untested. 
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
 
 - [ ] Verify actual successful-feeding pathways for animals and players; record limitations.
