@@ -1,3 +1,9 @@
+## D61 sound library format requirement (2026-11-08 evening)
+
+A future curated fart library will be **versioned JSON sound recipes**, not redistributions of Vintage Story instrument OGG files. Every sound recipe should have a **clear gas cost** and an audible definition (samples, pitch/duration envelopes, modulation and random tolerances). The proposed authoring Fart Lab may be a **separate mod**, but Cabbage Carnage should be able to load its exported presets directly without the editor. Several distinct sounds per example gas-cost tiers 75, 50, 25, 10% of normal-full capacity and cheaper should be curated/tested before public release. Runtime randomly chooses **affordable** sounds only. No new recordings or third-party licenses have been committed as part of this design. See [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md).
+
+---
+
 ## CURRENT AUDIO STATUS — 2026-11-08 21:15 PST
 
 **Already user-auditioned in game:** existing `game:sounds/voice/trumpet` played from the mod via server `PlaySoundAt`; pitch randomization was audible, `/gas sound` consumed no stored gas, and a manual `/gas fart` diagnostic successfully subtracted 60% of current gas. **No curated fart-sound library exists yet**, and no third-party audio is included. First public release **requires** a curated varied collection (D60), preferably built from the existing eight game-owned instrument voice samples without copying these files. Investigate complex envelope playback in [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md) and a possible separate Fart Lab JSON export format in [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md); ordinary players' access to such an editor is undecided. Other historic audio research and license caution below remain useful; prior advice to defer the whole library until after initial public release is superseded.
