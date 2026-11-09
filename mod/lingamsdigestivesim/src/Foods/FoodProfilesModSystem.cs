@@ -1,5 +1,8 @@
 using System;
 using System.Text.Json;
+#if DEBUG
+using HarmonyLib;
+#endif
 using Vintagestory.API.Common;
 using Vintagestory.API.Server;
 
@@ -13,6 +16,12 @@ public sealed class FoodProfilesModSystem : ModSystem
 {
     public FoodProfileRegistry? Registry { get; private set; }
 
+#if DEBUG
+    // Owned only by the server-side ModSystem instance. Never patch client
+    // item definitions or serialize a custom collectible behavior.
+    private Harmony? directFoodProbe;
+#endif
+
     // Diagnostic only. Debug builds generate an audit of the actual registered vanilla
     // item/block codes so no one has to guess thousands of native food identifiers.
     public override void StartServerSide(ICoreServerAPI api)
@@ -22,10 +31,24 @@ public sealed class FoodProfilesModSystem : ModSystem
         if (Registry != null)
         {
             VanillaFoodCodeAudit.Write(api, Registry);
-            // The previous late-bound CollectibleBehavior intake probe was removed:
-            // mutating registered item behaviors on the server breaks client item deserialization.
+            // Runtime observation only; no alterations to registered item types.
+            directFoodProbe = DirectFoodIntakeHarmonyProbe.Install(api, Registry);
         }
 #endif
+    }
+
+    public override void Dispose()
+    {
+#if DEBUG
+        // In singleplayer client and server ModSystems share a process. Only
+        // the server instance that owns the Harmony patch may unpatch it.
+        if (directFoodProbe != null)
+        {
+            DirectFoodIntakeHarmonyProbe.Uninstall(directFoodProbe);
+            directFoodProbe = null;
+        }
+#endif
+        base.Dispose();
     }
 
     public override void AssetsLoaded(ICoreAPI api)
