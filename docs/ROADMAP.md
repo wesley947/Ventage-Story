@@ -50,6 +50,6 @@
 
 ## Documentation and branch workflow
 
-At audit start, GitHub showed **one remote branch: main**, and all prior work had landed there. Preserve a named checkpoint of the working digestive/trumpet prototype for safety. Use a separate `feature/...` branch for **future experimental audio UI/code** rather than continuing unreviewed prototype work directly on main; confirm user local branch before any pull. A Git *tree* is a commit's file snapshot, not an independent active branch.
+GitHub audit confirmed that **all previous development had been committed directly to `main`**, which was the repository's only branch. Created **`checkpoint/verified-accumulator-trumpet-2026-11-08`** pointing at the reconciled working-source/doc snapshot. **Remote branch count: 2** (`main` and checkpoint). The checkpoint is a safe branch reference, not a second independently developed implementation. For future experimental sound UI/code use a separate `feature/...` branch or an independent Fart Lab repo **after deciding the architecture**; confirm user's local branch before any pull. A Git *tree* is a commit's file snapshot, not an independent branch.
 
 Use [AIMAIN.md](../AIMAIN.md) as entry, [DECISIONS.md](DECISIONS.md) for authoritative user choices and [PROJECT_MEMORY.md](PROJECT_MEMORY.md) for detailed past results. After a successful new milestone, update these files and verify the GitHub commit. **One PowerShell command per response**, as requested.
