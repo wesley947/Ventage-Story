@@ -5,4 +5,12 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <!-- Game-supplied Harmony dependency for DEBUG-only, reversible eating diagnostics.
+       Private=false means the mod does not ship a conflicting Harmony DLL. -->
+  <ItemGroup Condition="Exists('$(VINTAGE_STORY)/Lib/0Harmony.dll')">
+    <Reference Include="0Harmony">
+      <HintPath>$(VINTAGE_STORY)/Lib/0Harmony.dll</HintPath>
+      <Private>false</Private>
+    </Reference>
+  </ItemGroup>
 </Project>
