@@ -1,3 +1,9 @@
+## Latest implementation checkpoint — 2026-11-08 17:08 PST
+
+The older 'no code built' / template bootstrap and two-reservoir stages below are historical and **NOT current instructions**. Actual verified implementation: Vintage Story mod shell and JSON registry load 195 food profiles, 13 composite rules, 6 exclusions, and 158 native bindings. DEBUG server-side Harmony EAT-PROBE successfully logged three real direct food consumptions (violet web cap F093, rye F055, spelt F058), each one native unit with satiety increase. Nothing yet persists intake, processes elapsed-game-time gas production, stores intestinal gas, releases gas or plays sounds. Next test: persist/reload one tiny namespaced entity attribute. D53 disallows stomach compartments, upper-gas reservoirs, burps and progressive gastric transfer; stomach is just delay, followed by gradual intestinal gas production into one conserved persistent reservoir. D44 uses sliding 30-second **inactivity** sessions with meal timestamp at closure. The old stage table can provide test ideas but is not an implementation specification where it conflicts with D44/D53/D55. Avoid touching vanilla item registration; previous injected behavior caused a crash.
+
+---
+
 # Incremental Implementation Plan — Ventage Story
 
 **Last updated:** 2026-11-08
