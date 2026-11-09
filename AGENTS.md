@@ -1,6 +1,6 @@
 # Collaboration and Development Rules
 
-This repository is for a Vintage Story C#/.NET 10 mod currently being planned. The public mod name is not finalized; `Ventage-Story` is the GitHub repository name.
+This repository contains an **implemented and user-tested Debug prototype** of a Vintage Story 1.22.7 C#/.NET 10 digestive-gas mod, not just a plan. The final public title remains undecided; the repo spelling `Ventage-Story` is intentional and the stable internal ModID is `lingamsdigestivesim`. Start with [AIMAIN.md](AIMAIN.md) for current state and [docs/AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md) for the current audio-first development gate.
 
 **Start with [AIMAIN.md](AIMAIN.md)**, then read the latest project documentation before changing code.
 
@@ -11,7 +11,7 @@ This repository is for a Vintage Story C#/.NET 10 mod currently being planned. T
 - Build a tiny working mod shell first, and test each capability before expanding.
 - Keep the core simulation, species/food data, audio, lore, configuration and diagnostics independent where reasonable.
 - No speculative invasive Harmony patches. Prefer native APIs where feasible; use a narrow patch only after verifying the needed observation hook is absent.
-- Treat `modinfo.json` display title as changeable. Choose a neutral, stable mod ID before serialization/assets are released. Don't embed a provisional title such as Cabbage Carnage in C# namespaces, comments, persistent attribute keys, or public IDs.
+- Treat the display title as changeable but keep the **already approved and implemented** `lingamsdigestivesim` ModID and serialized namespace stable; don't embed provisional public titles in saved data.
 - Preserve vanilla mechanics, saved-world compatibility, multiplayer server authority, and mod compatibility.
 - **Uninstall-safe by design:** never patch shipped game files on disk, persist vanilla asset mutations, introduce required replacement vanilla item/entity identifiers, or append unregistered collectible behaviors to already registered networked items. Any mod-specific saved data must be namespaced and harmless when the mod is absent. Favor passive observation; if a narrowly verified runtime patch is necessary, it must be scoped, reversible/unpatched on unload, and tested client/server and add/remove. Regress existing world open/save/quit with mod enabled, disabled and re-enabled before release.
 - Maintain reasonable performance with dozens of loaded animals and avoid noise explosions.
@@ -24,6 +24,12 @@ This repository is for a Vintage Story C#/.NET 10 mod currently being planned. T
 - For survival tests, favor controlled setups rather than chasing wildlife across the map.
 - Preserve the user's established world and files; do not make destructive changes without explicit agreement.
 - Include diagnostics that do not require targeting a fleeing animal.
+
+## Source-control safety checkpoint
+
+- At the 2026-11-08 GitHub audit, only `main` existed; working prototype changes had been committed there. After creating a safe checkpoint branch, **future experimental features should use a separate feature branch**, then be reviewed before merging. Never force push or rewrite verified history without explicit user approval.
+- Current GitHub tree does **not** include the user's locally generated `.csproj`, `modinfo.json`, starter ModSystem or local build scripts. Treat those files as important; investigate `git status` and contents before proposing new tracked copies, and never overwrite them to make a clean GitHub clone appear buildable.
+- Always distinguish actual tested Debug gameplay from untested Release build, multiplayer or disable/re-enable behavior. Do not ship with DEBUG-only ingestion or inadequate fart sounds.
 
 ## Project documentation checkpoint
 Before transitioning to another substantial milestone, or after a consequential design change, important API finding, test outcome or bug fix:
