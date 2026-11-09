@@ -1,3 +1,9 @@
+## Verified completion-state restart persistence — 2026-11-08/09
+
+**USER VERIFIED:** Following successful completion of the two-food digestion test producing **15.40% gas**, the player saved the test world, completely exited and restarted Vintage Story, and reported that `/gas status` remained as expected (15.40% and no pending/active foods). This confirms retention of **completed digestion gas** after restart without observed replay in this test. It does **not** yet verify restart of a pending 30-second meal or a **partially produced active** food contribution, nor does it prove repeat-bite timer reset, cross-player behavior or animals. **Next test:** eat a known bound single cabbage (`game:vegetable-cabbage`, F005, 4.8 game-hour delay plus 9 game-hour linear production), close the 30s window, then advance ~7–9 game-hours via bed sleep to create partially produced gas before save/exit/restart. First confirm cabbage ingestion is observed. Compare status and gas before/after restart to rule out double-credit. Preserve one-step instructions.
+
+---
+
 ## Verified first automatic gas cycle — 2026-11-08/09
 
 **In-game verified (one Creative test-world player):** New digestive module compiled cleanly, installed with matching SHA256 DLL hashes, game loaded, status read correctly. Two distinct direct food types appeared in a **23s remaining** pending session with 0% gas. After 30s inactivity, status showed **two active contributions** and zero pending. After sleeping (calendar time advanced), gas automatically became **15.40% (15.40/100)** and there were **no active/pending foods**. The full direct-food path and completed digestion/gas production have been demonstrated for this small meal. This does not yet prove 30s reset on subsequent food, exact ingredient profiles, partial accrual, restart conservation, or general food support.
