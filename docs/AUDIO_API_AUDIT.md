@@ -1,3 +1,9 @@
+## Proposed authoring/runtime split (2026-11-08 evening PST)
+
+User suggested making **Fart Lab a separate Vintage Story editor mod**, exporting **versioned JSON sound recipes** into Ventage Story / Cabbage Carnage, rather than embedding the editor into the gameplay mod. This is an exploratory design, not yet built or finalized; the main mod should be able to load curated presets **without Fart Lab installed**. The proposed interchange structure, four-point normalized pitch envelope, ADSR, tremolo, optional finale, random selection weights and input-validation constraints are described in [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md). JSON is **not rendered audio**; client audio engine must implement timed sound modifications and multiplayer fallback. D60 still blocks first public release until varied audio has been heard and approved.
+
+---
+
 # Vintage Story audio API audit — fart library research
 
 **Research checkpoint:** 2026-11-08, official Vintage Story 1.22.7 public API reference. This is a feature inventory and engineering experiment plan; it is **not** proof each control works with the installed trumpet .ogg or on remote clients. Do not promise audio effects or custom synthesis without an in-game audition.
