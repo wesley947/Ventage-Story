@@ -22,7 +22,8 @@ public sealed class FoodProfilesModSystem : ModSystem
         if (Registry != null)
         {
             VanillaFoodCodeAudit.Write(api, Registry);
-            DirectFoodIntakeProbeBehavior.Attach(api, Registry);
+            // The previous late-bound CollectibleBehavior intake probe was removed:
+            // mutating registered item behaviors on the server breaks client item deserialization.
         }
 #endif
     }
