@@ -1,3 +1,9 @@
+## Tiny-residual release diagnostic — 2026-11-08/09
+
+**USER SCREENSHOT VERIFIED:** Repeated `/gas fart` invocations with the temporary 60%-of-current gas rule yielded successive **expelled/remaining** values: `4.65→3.10`, `1.86→1.24`, `0.74→0.50`, `0.30→0.20`, `0.12→0.08` gas units. This confirms geometric depletion of stored gas rather than a fixed subtraction. **Known prototype limitation:** repeated 60%-fraction releases leave an asymptotic trace instead of a clean zero, and currently may play a trumpet even at negligible pressure. This is **expected of diagnostic logic, not approved final gameplay**. User's earlier agreed release direction includes differentiated large/medium releases and a final rising squeaker at low reserve that fully clears the remaining gas, with strictly no sound or subtraction if zero. Before the actual crouch/release tier implementation, add a low-gas finish path and audibly distinct small release, with no artificial gas creation and no sound-only test depletion. The screenshot verifies command output/accounting, not exact audible quality of each tiny release.
+
+---
+
 ## First manual gas-consuming event passed — 2026-11-08 evening
 
 **PASS in user's Creative test world:** `/gas fart` consumed **72.60 units** from **121.00%** stored gas (temporary 60% release fraction), leaving **48.40%**, corroborated by an immediate independent `/gas status` read. No pending/active foods at the time. The event reported native trumpet sound dispatched with pitch **0.88**, but audible playback *during `/gas fart`* remains unconfirmed by the user; `/gas sound` was heard and independently confirmed to leave 121% unchanged. **Next:** ask whether trumpet was heard for real release, test at 0 gas for silence/no event, then test remaining-reservoir save/reload; follow with crouch-driven release and variable sound envelopes. No animal or passive release in this code.
