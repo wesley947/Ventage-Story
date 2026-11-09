@@ -1,3 +1,7 @@
+## Initial passive player eating diagnostic (2026-11-08)
+
+A DEBUG-only server-side `DirectFoodIntakeProbeBehavior` was committed to `src/Foods/`, and hooked in `FoodProfilesModSystem.StartServerSide` after the audited binding catalog loads. The behavior is appended only to known direct nutritious collectibles, then observes `OnHeldInteractStop` on the regular vanilla eating path, waits one game tick and logs a bite only if the same inventory slot decreased by exactly 1 native unit. No hunger, inventory, gas, sound, or save logic changes. **Not yet compiled/tested by user.** This avoids Harmony initially and doesn't cover overrides like `BlockMeal`/`BlockPie`, partial meal servings, fluids or exact nutritional fractions; false positives are possible with unusual instant inventory swaps. Next: pull/build/install; consume simple cabbage/carrot; check `server-main.log` for `EAT-PROBE direct`. See `docs/FOOD_REGISTRY_INTEGRATION.md`.
+
 # Project Memory — Vintage Story Digestive-Gas Mod
 
 **Last updated:** 2026-11-08  
