@@ -1,3 +1,9 @@
+## Existing vanilla instrument palette and selected test trumpet — 2026-11-08
+
+User-provided verified list from installed Vintage Story 1.22.7 assets: `assets/game/sounds/voice/accordion.ogg`, `altoflute.ogg`, `clarinet.ogg`, `harmonica.ogg`, `oboe.ogg`, `sax.ogg`, `trumpet.ogg`, `tuba.ogg`. **Use built-in `game:sounds/voice/trumpet`** as the first *audible fart/sound-only diagnostic test* rather than downloading or making a custom recording. Earlier provisional category association: small squeaker=altoflute/clarinet/oboe, loose=harmonica/tuba, loud=sax/trumpet/accordion. No per-tier instrument finalization implied. First test must distinguish non-consuming `/gas sound` from real `/gas fart` that consumes gas. Exact Vintage Story sound API/runtime behavior is still untested.
+
+---
+
 ## Current governing decisions and verified test (2026-11-08 17:08 PST)
 
 **Verified:** DEBUG-only server Harmony EAT-PROBE logged actual completed direct-food consumption with satiety increases for violet web cap F093, rye grain F055 and spelt grain F058, each one native unit. No gas produced and other food/animal paths remain untested. Earlier unregistered CollectibleBehavior injection caused an item-deserialization startup crash; it was removed and must not return.
