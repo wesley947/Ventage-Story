@@ -1,3 +1,9 @@
+## Verified sound-only gas conservation — 2026-11-08
+
+**USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
+
+---
+
 ## First audible fart-prototype asset test — 2026-11-08
 
 Following git pull through `09bb9f2`, successful .NET 10 Debug build, saved known-good accumulator DLL backup, install and hash check, the user confirmed **`/gas sound` actually sounded the built-in Vintage Story trumpet** in their Creative world. The command is designed as sound-only, selecting random pitch via `World.PlaySoundAt`; real audible result is verified, but numerical gas amount unchanged is pending explicit `/gas status` check. `/gas fart` uses a deliberately provisional 60% depletion and has not been tested yet. Do not conflate this with client-only-to-unmodded-server multiplayer compatibility. Next action: gas status check followed by actual release check.
