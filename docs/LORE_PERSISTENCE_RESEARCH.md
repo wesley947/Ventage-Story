@@ -1,3 +1,9 @@
+## CURRENT RESEARCH STATUS — reconciled 2026-11-08 21:15 PST
+
+This is **source-grounded planning, not a tested implementation**. No Great Silence item assets have been built or saved/traded; vanilla item-stack reuse without mod remains to be proven **on a copy of a throwaway world**. First public release still needs some lore (D16) and a varied curated fart library (D60). Immediate development attention is audio research and safe Fart Lab audition; preserve this research for later asset work. [AIMAIN.md](../AIMAIN.md) contains current tested gameplay status.
+
+---
+
 # Lore Persistence Research — Embedded Vanilla Item-Stack Text
 
 **Last updated:** 2026-11-08  
