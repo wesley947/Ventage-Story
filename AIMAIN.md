@@ -1,3 +1,10 @@
+## Current engineering checkpoint — new digestive loop SOURCE ONLY (2026-11-08)
+
+**NOT YET COMPILED, INSTALLED OR GAME-TESTED:** New server-only `mod/lingamsdigestivesim/src/Simulation/PlayerDigestionModSystem.cs` was committed, and the known-good `DirectFoodIntakeHarmonyProbe.cs` was minimally extended with a success-only notification event. `PlayerGasStateModSystem.cs` now displays pending/active food counts in `/gas status`. In DEBUG only, a completed directly observed vanilla food bite queues its actual verified profile, resets that player's countdown to **30 real seconds** (never adds 30), and pending food is stored in the existing versioned player entity subtree. On 30 seconds of eating inactivity, grouped individual foods become active at the current world game hour. Each active food has a delay/production duration and stored `ProducedSoFar`; server 1-second ticks calculate only the positive unaccounted delta into the **same** persistent single gas reservoir (never clamp at 100%). Saving, disconnecting and reconnecting preserve pending countdown and active progress; the timer does not count disconnected time. This behavior is a test candidate, NOT yet verified. Animals, cooked meals, liquids, release, sound and UI are still not implemented.
+
+**Immediate next step:** user pulls GitHub `main`, compiles their existing untracked local project, shares warnings/errors. Do not deploy to main world until the build and dedicated creative-world test gates pass. Preserve existing EAT-PROBE backup and test one command at a time. Verify 30s reset, active meal closure, gas rise after game-time delay, restart at partial completion, and no duplicate gas before considering this milestone complete.
+
+---
 # AIMAIN.md — AI Entry Point
 
 > **For any ChatGPT or coding assistant continuing this project: read this file first.** The user should only need to say: "Read AIMAIN.md in my Ventage-Story GitHub repo and continue where we left off."
