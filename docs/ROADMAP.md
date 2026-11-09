@@ -2,10 +2,11 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** Verified Vintage Story 1.22.7 test-world load: 195 food profiles + 13 composites + 6 exclusions on server/client. Native collectible audit also successfully generated in-game; audited 158 strong native identity/nutrition mappings for 122 profiles. Secondary bindings asset and C# reader recompiled successfully and **verified in-game on both server and client** (158 bindings each; Nov 8, 16:10).  
-**Next step (2026-11-08 17:08 PST):** EAT-PROBE successfully logged direct consumption of violet web cap F093, rye grain F055 and spelt grain F058, one native unit each, with observed satiety increases. This verifies those direct-food paths, not meals, liquids or animals. Next engineering gate: save/reload a tiny versioned namespaced per-entity attribute. No persistent meal sessions, active digestion, gas reservoir, release or audio exists yet. One PowerShell command at a time.
+**Next step (2026-11-08 evening PST):** Player gas persistence is VERIFIED for one creative-test-world player using the server-only `PlayerGasStateModSystem`: first status initialized at 15.19%, repeated status did not reroll, 63.00% survived a full save/exit/restart, and 0.00% also survived without reinitialization. `gasUnits` and capacity are in a versioned server-side entity subtree. Diagnostic admin commands `/gas status` and `/gas set` work. **Next gameplay gate:** implement a minimum real gas-consuming fart release + basic audible sound; add sound-only diagnostic separately; then test deliberate crouch tiers. Do not claim player meal session, animals, sound, digestion or mod uninstall are implemented. One PowerShell command per response.
 
-- **Verified DEBUG Harmony EAT-PROBE:** DirectFoodIntakeHarmonyProbe.cs observes vanilla tryEatStop without modifying item behaviors, recipes, nutrition or inventory. Previous injected collectible behavior crashed during startup and remains prohibited; uninstall regression is outstanding.
-- **Current D53 design:** Only stomach delay, then intestinal production into one persistent reservoir. No burps, upper gas, modeled stomach or progressive gastric transfer. Sliding player 30-second real-time inactivity countdown resets after every successful bite and stamps the meal upon closure. Stored gas is conserved and removed only by actual flatulence.
+- **Confirmed installation:** latest source committed in `mod/lingamsdigestivesim/src/Simulation/PlayerGasStateModSystem.cs` (commit `a2295c4`), .NET 10 Debug build succeeded, copied DLL matched build SHA256; same creative test world loaded. All earlier EAT-PROBE results remain prior verification.
+- **Persistent zero is valid:** explicitly distinguish `StateKey` absence (first initialize at 15–20%) from an existing state with `gasUnits = 0`; this is proven across one game restart.
+- **Priorities:** build audible release mechanics and fun gameplay before Great Silence lore assets, retaining the complete lore planning documents for later.
 
 ## Release-blocking world safety requirement (2026-11-08)
 
@@ -35,6 +36,7 @@
 - [ ] Add a versioned, native JSON config file and basic logging.
 
 ### M2 — Entity data & lifecycle
+- [x] **Player persistence smoke test:** versioned namespaced `Entity.Attributes` state (15–20% on first use, admin `/gas status`, `/gas set`); in-game save/exit/restart verified 63.00% and 0.00% for one player. Animal persistence, unload, multiplayer and uninstall compatibility remain untested.
 - [ ] Confirm server-side per-entity persistence APIs using installed game and/or current source.
 - [ ] **Separate animal intake from player intake:** players use sliding 30-second inactivity meal batches; animals use direct observed feeding events plus low species-based background intestinal gas, so un-fed vanilla penned animals can still occasionally release without inventing food records or changing survival/husbandry.
 - [ ] Add one test attribute to a vanilla animal, save/reload, unload/reload and verify preservation.
