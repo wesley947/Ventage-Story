@@ -19,6 +19,10 @@ public static class DirectFoodIntakeHarmonyProbe
     private static FoodProfileRegistry? registry;
     private static ICoreServerAPI? serverApi;
 
+    // Success-only notification consumed by the separate DEBUG digestion test.
+    // The native method still runs unmodified; event subscribers cannot veto eating.
+    public static event Action<EntityPlayer, DigestiveFoodProfile>? FoodConsumed;
+
     private sealed record BeforeBite(string NativeCode, string ProfileId, string Key, int StackSize);
 
     public static Harmony? Install(ICoreServerAPI api, FoodProfileRegistry foodRegistry)
@@ -120,7 +124,7 @@ public static class DirectFoodIntakeHarmonyProbe
 
     // Only the original method can consume food. We merely compare the held
     // slot before and after and report a verified single-unit reduction.
-    private static void AfterEat(ItemSlot slot, BeforeBite? __state)
+    private static void AfterEat(ItemSlot slot, EntityAgent byEntity, BeforeBite? __state)
     {
         if (__state == null) return;
         try
@@ -141,6 +145,12 @@ public static class DirectFoodIntakeHarmonyProbe
             serverApi?.Logger.Notification(
                 "[lingamsdigestivesim] EAT-PROBE direct: {0} ({1}), code={2}, consumed=1 native unit. Diagnostic only; no gas generated.",
                 __state.Key, __state.ProfileId, __state.NativeCode);
+
+            // Notify only after vanilla demonstrably reduced the food stack.
+            // No modification to item registration, nutrition, or inventory.
+            if (byEntity is EntityPlayer eater && registry != null &&
+                registry.TryGetById(__state.ProfileId, out DigestiveFoodProfile profile))
+                FoodConsumed?.Invoke(eater, profile);
         }
         catch (Exception error)
         {
