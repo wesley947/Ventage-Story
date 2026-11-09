@@ -1,3 +1,9 @@
+## CURRENT LORE DELIVERY STATUS — reconciled 2026-11-08 21:15 PST
+
+The Great Silence outline and canon caveats below are retained as the authoritative **story design**, but **no lore assets are implemented yet**. User requirement **D16** still calls for at least some Great Silence collectible writings in the **first public release**; user decision **D60** separately requires a curated fart library first. Sound audition/dev-only Fart Lab is the immediate engineering focus, not lore abandonment. Item-stack vanilla persistence and multiplayer trade/removal behavior remain untested; see [LORE_PERSISTENCE_RESEARCH.md](LORE_PERSISTENCE_RESEARCH.md). Do not present hypothetical texts as vanilla canon.
+
+---
+
 # The Great Silence — Lore Index and Continuity Notes
 
 **Last updated:** 2026-11-08  
