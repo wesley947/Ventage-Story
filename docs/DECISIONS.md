@@ -1,3 +1,9 @@
+## Fart Lab separation — OPEN design option, NOT a decision (2026-11-08 evening)
+
+User suggested possibly implementing **Fart Lab as a standalone Vintage Story mod** that creates/auditions sounds and exports a versioned **JSON preset collection**. Ventage Story / Cabbage Carnage could then load and play that data **without requiring the editor mod to be installed**. The JSON contains bounded parameters/envelopes, not encoded audio; shared schema and runtime renderer required. **No commitment yet** to separate repository, final file format, public editor distribution or sound playback technique. See [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md). Do not call this D61 until the user settles on it. D60 first-public-release audio library requirement remains firm.
+
+---
+
 **CURRENT GOVERNING SUMMARY (2026-11-08, 21:15 PST):** Decisions **D44** (sliding 30-real-second player eating sessions), **D53** (delay-only stomach, one intestinal reservoir, no burps), **D55** (mod uninstall and vanilla world safety), **D57–D59** (conserved gas-consuming releases with finite pitch/flow variability and final low-gas squeak-pop) and **D60** (curated fart sound library required before the *first public release*) remain authoritative. **In-game verified already:** successful direct-food intake, saved pending/active player digestion, gas rising to 121% and stopping at completion, audible randomized-pitch trumpet, sound-only conservation and first manual 121→48.40% gas release. **Not implemented:** player crouch and automatic releases, advanced audio envelopes, animals, mixed meals/liquids, lore assets, production-safe non-Debug intake, uninstall/multiplayer release tests. See [AIMAIN.md](../AIMAIN.md) and [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md). **Historical entries below may describe earlier states or superseded ideas; do not execute their old next-step instructions.**
 
 ---
