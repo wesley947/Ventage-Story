@@ -1,3 +1,9 @@
+## Verified sound-only gas conservation — 2026-11-08
+
+**USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
+
+---
+
 ## FIRST TRUMPET AUDIBLE IN GAME — verified 2026-11-08
 
 **USER VERIFIED:** With GitHub `main` at commit `09bb9f2`, the user compiled the updated .NET 10 Debug DLL successfully, backed up the known-good accumulator DLL to `%LOCALAPPDATA%\lingamsdigestivesim_accumulator_verified.dll`, copied the compiled DLL into Vintage Story Mods, and checked that installed/build SHA256 hashes matched. The test world loaded, `/gas sound` was invoked, and **the player heard the built-in vanilla trumpet**. Thus server positional `PlaySoundAt` dispatch of `game:sounds/voice/trumpet` is audibly working in this singleplayer creative test world. **NOT YET VERIFIED:** whether `/gas sound` leaves gas unchanged (next `/gas status` check); `/gas fart` sound + 60% gas subtraction; multiplayer/unmodded-client hearing; pitch variation quality. **NEXT:** `/gas status` (expect previously recorded 121.00%, barring later ingestion) followed by `/gas fart` only after checking sound-only accounting. One step per turn.
