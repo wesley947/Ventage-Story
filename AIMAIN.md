@@ -6,7 +6,7 @@
 
 ## Identity and GitHub
 
-- GitHub: `wesley947/Ventage-Story` — spelling is deliberate. Default branch: **main**. At the beginning of this documentation audit, GitHub had **only one branch, main**. If a checkpoint branch is added later, update this fact and verify it.
+- GitHub: `wesley947/Ventage-Story` — spelling is deliberate. Default branch: **main**. We audited the remote and confirmed **all earlier work was directly on main**. On 2026-11-08 we created a separate **`checkpoint/verified-accumulator-trumpet-2026-11-08`** branch as a stable snapshot of the working game-code and reconciled documentation. **Two remote branches now:** main + that checkpoint. No experimental feature branch or separate Fart Lab repo exists yet.
 - Game: **Vintage Story 1.22.7**, C#/.NET 10. Stable internal ModID, asset namespace and persistent attribute key: **`lingamsdigestivesim`**. Do not rename with a public title.
 - Public title undecided; *Cabbage Carnage* and *Ventage Story* are working names, with *Lingam's* preferred creator attribution.
 - **Repository recovery gap:** GitHub contains C# code, assets, CSV, JSON generator and `Directory.Build.targets`, but the user's original **locally generated `.csproj`, `modinfo.json`, build scripts and template starter ModSystem are not tracked**. They work on the user's PC. Do not delete, replace or regenerate them; inspect `git status` first and commit an approved, sanitized package/build skeleton separately. A clean GitHub clone is not yet independently buildable.
