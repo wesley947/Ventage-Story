@@ -66,7 +66,7 @@ public sealed class PlayerDigestionModSystem : ModSystem
         base.Dispose();
     }
 
-    private sealed class PendingFood
+    public sealed class PendingFood
     {
         public string ProfileId { get; set; } = "";
         public double Quantity { get; set; }
@@ -75,7 +75,7 @@ public sealed class PlayerDigestionModSystem : ModSystem
         public double ProductionHours { get; set; }
     }
 
-    private sealed class ActiveFood
+    public sealed class ActiveFood
     {
         public string ProfileId { get; set; } = "";
         public double Quantity { get; set; }
@@ -86,7 +86,7 @@ public sealed class PlayerDigestionModSystem : ModSystem
         public double ProducedSoFar { get; set; }
     }
 
-    private sealed class DigestionState
+    public sealed class DigestionState
     {
         public int Version { get; set; } = DigestiveSchemaVersion;
         public double RemainingSeconds { get; set; }
