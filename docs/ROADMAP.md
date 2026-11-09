@@ -2,7 +2,7 @@
 
 **Last updated:** 2026-11-08  
 **Project stage:** Verified Vintage Story 1.22.7 test-world load: 195 food profiles + 13 composites + 6 exclusions on server/client. Native collectible audit also successfully generated in-game; audited 158 strong native identity/nutrition mappings for 122 profiles. Secondary bindings asset and C# reader recompiled successfully and **verified in-game on both server and client** (158 bindings each; Nov 8, 16:10).  
-**Next step:** Compile/test the freshly committed **DEBUG-only direct food intake probe** (first uncomplicated cabbage/carrot/peanut bite) in a separate test world; check server log for `EAT-PROBE enabled on ...` and subsequent `EAT-PROBE direct`. Requires Git pull, build, copy, launch and log inspection **one PowerShell command at a time**. This probe is untested; special foods/pies/meal portions remain later. See `docs/FOOD_REGISTRY_INTEGRATION.md`.
+**Next step (CRASH HOTFIX, 2026-11-08 16:36):** The new DEBUG direct-food probe caused/strongly correlates with a **client item-type deserialization crash** (`ItemTypeNet.ReadItemTypePacket`, `Dictionary.ContainsKey(null)`) after first launch with correct DLL. It appended an **unregistered custom CollectibleBehavior to server item types at StartServerSide**, making their behavior list inconsistent with client type registration. **Removed the attachment call and deleted the behavior implementation in GitHub.** User must pull, rebuild, copy new DLL and assets, verify hashes, then test world load **before any additional feature development**. One PowerShell command per turn. Work on safe, explicitly registered event/patch strategy only after researching API.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
@@ -47,7 +47,7 @@
 - [x] **Secondary binding file:** `config/foodcodebindings.json` and reader (158 codes to 122 profiles) compiled successfully, loaded and verified by client and server logs at 16:10 on Nov 8, 2026.
 - [ ] Audit actual vanilla game item/block codes for the 195 profiles, then connect ingestion event resolution to profile lookup (current JSON deliberately has no unverified itemCode bindings).
 - [ ] **Future mushroom potency (deferred):** Eventually give selected hallucinogenic mushroom foods, such as liberty caps, higher gas potential than ordinary mushrooms while preserving all native special effects. Verify exact edible codes and consumption amounts first; see `docs/FOOD_FRAMEWORK.md`.
-- [ ] **Direct-food intake probe:** DEBUG-only source committed (passive `CollectibleBehavior` + next-tick slot reduction check, logs profile+code and 1 native unit). **Not yet pulled/built/tested locally.** Does not generate gas, change nutrition, or cover pie/mixed meals. 
+- [ ] **Direct-food intake probe:** First DEBUG prototype **FAILED** after correctly installing DLL: game crashed during client item-type loading (Nov 8 16:36). Dangerous server-only post-registration `CollectibleBehaviors` modification **removed in hotfix**. Require reliable load test and a different API interception method before resuming. 
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
 
 - [ ] Verify actual successful-feeding pathways for animals and players; record limitations.
