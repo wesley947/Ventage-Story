@@ -1,3 +1,11 @@
+## Current governing decisions and verified test (2026-11-08 17:08 PST)
+
+**Verified:** DEBUG-only server Harmony EAT-PROBE logged actual completed direct-food consumption with satiety increases for violet web cap F093, rye grain F055 and spelt grain F058, each one native unit. No gas produced and other food/animal paths remain untested. Earlier unregistered CollectibleBehavior injection caused an item-deserialization startup crash; it was removed and must not return.
+
+**Supersession rule:** D53 overrides earlier D04/D05/D39/D40 and all historical upper/lower reservoirs, burping, gastric-transfer and future-burp scaffolding proposals. There is one intestinal gas reservoir, a pure food-specific stomach delay, and gradual gas production. D44 (sliding inactivity countdown resets to 30 real seconds per bite; meal starts at closure) overrides D43 (fixed window). D45–D50 govern different player/animal intake, strict gas conservation, soft 100% normal full pressure, overpressure release, movement opportunities and persistent per-entity state. Experimental example values are not approved balance. Preserve older numbered entries ONLY for rationale; do not implement their superseded proposals. Next engineering test: versioned per-entity persistence, before digestion/release.
+
+---
+
 # Decision Log
 
 **Last updated:** 2026-11-08. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
