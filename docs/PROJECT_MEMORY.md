@@ -1,3 +1,9 @@
+## First public release blocked on curated fart audio library — D60 (2026-11-08)
+
+**Explicit user decision:** Sound library quality/variety must be ready **before any first public release** (`0.1.0` or `1.0.0`); working digestion and the funny basic trumpet test alone are insufficient. **User-facing Fart Saver/editor remains discretionary**, not approved for release. Priority is **comprehensive investigation of actual Vintage Story 1.22.7 public audio manipulation APIs, source-sample audition, and production of a satisfying curated sound palette**. Detailed positive/negative capability matrix, public sources, tests and constraints are preserved in **`docs/AUDIO_API_AUDIT.md`**. In particular, native one-shot server sounds already work, but continuous pitch/volume/fade/low-pass/reverb needs client `ILoadedSound` control and custom timed envelopes; independent time-stretch/distortion is not in the listed public interface. No new audio code was committed in this documentation checkpoint. A small developer-only sound-lab harness may be the next code milestone; must never consume gas during preview, and public player editor access is not presumed.
+
+---
+
 ## Fart Lab / Fart Saver proposal — 2026-11-08/09
 
 ### Fart Lab advanced editor: four-node pitch trajectory plus ADSR (proposal)
