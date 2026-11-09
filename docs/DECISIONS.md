@@ -1,3 +1,9 @@
+## Built-in sound variation is part of the implementation — 2026-11-08
+
+**User instruction:** use **Vintage Story's built-in audio manipulation**, not merely fixed playback of the bundled instrument files. API 1.22.7 provides pitch (including randomization), volume, attenuation range and positional playback in `IWorldAccessor.PlaySoundAt`/`SoundAttributes`. Deeper optional CLIENT-side APIs (`IClientWorldAccessor.LoadSound`, `SoundParams`, `ILoadedSound`) offer dynamically adjustable pitch, volume, 3D positioning, low-pass filtering, reverb and fades. For the first test, use built-in `game:sounds/voice/trumpet`; prototype different pitch/volume combinations after basic sound test, then map gas pressure to audio behavior. Don't assume server-only API exposes client-only per-sound filtering/reverb. Sound manipulation design verified against official API docs; not yet compiled/played.
+
+---
+
 ## Existing vanilla instrument palette and selected test trumpet — 2026-11-08
 
 User-provided verified list from installed Vintage Story 1.22.7 assets: `assets/game/sounds/voice/accordion.ogg`, `altoflute.ogg`, `clarinet.ogg`, `harmonica.ogg`, `oboe.ogg`, `sax.ogg`, `trumpet.ogg`, `tuba.ogg`. **Use built-in `game:sounds/voice/trumpet`** as the first *audible fart/sound-only diagnostic test* rather than downloading or making a custom recording. Earlier provisional category association: small squeaker=altoflute/clarinet/oboe, loose=harmonica/tuba, loud=sax/trumpet/accordion. No per-tier instrument finalization implied. First test must distinguish non-consuming `/gas sound` from real `/gas fart` that consumes gas. Exact Vintage Story sound API/runtime behavior is still untested.
