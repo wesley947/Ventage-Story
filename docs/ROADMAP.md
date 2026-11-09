@@ -1,8 +1,8 @@
 # Development Roadmap
 
 **Last updated:** 2026-11-08  
-**Project stage:** Verified Vintage Story 1.22.7 test-world load: 195 food profiles + 13 composites + 6 exclusions on server/client. Native collectible audit also successfully generated in-game; audited 158 strong native identity/nutrition mappings for 122 profiles. Secondary bindings asset and C# reader committed but not yet recompiled/tested.  
-**Next step:** Pull GitHub main (one PowerShell command per turn), then compile and load the new secondary food-code binding file. Expect server/client logs to read `158 verified item-code bindings`. Then begin actual successful eating event/portion capture. See `docs/FOOD_CODE_AUDIT_REVIEW.md`.
+**Project stage:** Verified Vintage Story 1.22.7 test-world load: 195 food profiles + 13 composites + 6 exclusions on server/client. Native collectible audit also successfully generated in-game; audited 158 strong native identity/nutrition mappings for 122 profiles. Secondary bindings asset and C# reader recompiled successfully and **verified in-game on both server and client** (158 bindings each; Nov 8, 16:10).  
+**Next step:** Research and implement debug-only capture of **successful** player food consumption and exact actual stack/portion, without double-counting saturation events; first target direct edible items, then cheese/pies/pumpkin portions, then mixed-meal contents. See `docs/FOOD_FRAMEWORK.md`.
 
 ## Documented, not yet implemented
 - GitHub root `AIMAIN.md` directs future AI collaborators to the project files.
@@ -44,7 +44,7 @@
 - [ ] Survey raw, cooked and prepared vanilla foods and define preliminary profiles.
 - [x] Convert the 214-row reviewed food CSV into **195 runtime food JSON profiles, 13 composite recipe rules and 6 exclusions**; add a C# registry loader and MSBuild content-copy target. **Build/packaging and in-game client + server loading verified.** See `docs/FOOD_REGISTRY_INTEGRATION.md`.
 - [x] **Native collectible audit:** compiled, installed and generated CSV from the user's test world. 18,614 rows; 158 high-confidence exact code matches for 122 profiles, 73 profiles still need special handling. See `docs/FOOD_CODE_AUDIT_REVIEW.md`.
-- [ ] **Secondary binding file:** added `config/foodcodebindings.json` and loader (158 codes to 122 profiles); requires local pull/build/test before claiming it loads.
+- [x] **Secondary binding file:** `config/foodcodebindings.json` and reader (158 codes to 122 profiles) compiled successfully, loaded and verified by client and server logs at 16:10 on Nov 8, 2026.
 - [ ] Audit actual vanilla game item/block codes for the 195 profiles, then connect ingestion event resolution to profile lookup (current JSON deliberately has no unverified itemCode bindings).
 - [ ] **Future mushroom potency (deferred):** Eventually give selected hallucinogenic mushroom foods, such as liberty caps, higher gas potential than ordinary mushrooms while preserving all native special effects. Verify exact edible codes and consumption amounts first; see `docs/FOOD_FRAMEWORK.md`.
 - [ ] **Mixed meals:** verify reading ingredient item stacks from claypots, bowls, crocks and pies, calculate only the portion actually consumed, and combine per-ingredient delayed gas contributions; investigate neutral and reducing foods without erasing previous reservoirs.
