@@ -1,3 +1,9 @@
+## First sound asset selection — 2026-11-08
+
+For first actual sound test, **use the existing vanilla trumpet sample** `assets/game/sounds/voice/trumpet.ogg`, target asset ID `game:sounds/voice/trumpet`. Other built-in options: accordion, altoflute, clarinet, harmonica, oboe, sax and tuba. No need to source or ship custom audio. The user previously discussed a tentative sound-by-release-size palette. **Not yet coded or runtime verified.** Next engineering gate: sound-only command plus genuine gas-consuming manual `/gas fart`, then crouch trigger. Do not confuse selected sound asset with implementation or successful audio playback.
+
+---
+
 ## VERIFIED: no gas after finished digestion — 2026-11-08 evening PST
 
 **USER-VERIFIED FINAL ACCUMULATOR CHECK:** After a two-food active digestion test finished at **121.00%** gas with **zero pending or active contributions**, the user entered `/time add 2` (two further game hours) in the same Creative world and reported `/gas status` was **unchanged**. The completed food sources did not produce new gas after their retirement; accumulated gas remained stored, including the amount over 100% normal-full. Combined with earlier direct-food EAT-PROBE tests, pending meal closure and save/restart, partial digestion/restart, and full production, this is a **successful narrow player-direct-food accumulator validation**. Not covered: repeated-bite reset edge case, exact food-to-gas attribution, meals/liquids, animal production, player switching/multiplayer, mod disable/re-enable world safety. **Next gameplay milestone:** actual gas-consuming manual release plus simple audible placeholder fart sound and separate non-consuming sound diagnostics, followed by intentional crouch behavior; ensure no subtraction unless a genuine release occurs. Preserve one-step PowerShell workflow and tested DLL backup.
