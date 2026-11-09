@@ -1,3 +1,11 @@
+## First actual gas produced by food in Vintage Story — user verification 2026-11-08/09
+
+User compiled the new DEBUG player digestion engine successfully, copied its DLL after saving the old known-good persistent-reservoir DLL, and verified installed/compiled hashes matched. In their dedicated creative world, initial `/gas status` showed `Gas: 0.00%` and `No pending or active foods`. After eating **two different foods** (mentioned spelt and cooked legumes, though individual exact verified intake identities not shown in screenshot), `/gas status` showed `Pending: 2 food type(s), 23s remaining; active: 0 food contribution(s)`, followed later by `Pending: 0... active: 2 food contribution(s)` with zero gas. After sleeping (advanced game time) it displayed `Gas: 15.40% (15.40 / 100.00 units). Saved state version 1. No pending or active foods.` Hence the real observed full loop—direct food intake → 30s inactivity close → delayed gas production during elapsed game hours → reservoir storage → completed contribution cleanup—**PASSED in this one test**. Do not infer a precise food-to-gas breakdown from the 15.40 total or claim timer reset / partial production / restart-idempotence / animal digestion verified yet.
+
+**Next:** a save/exit/restart and `/gas status` check to ensure the earned 15.40 persists with no duplicate production, then an intermediate digestion progress test. Earlier tested 63% and 0% persistence remain confirmed in the previous storage-only DLL. Audio and actual releases are still not implemented.
+
+---
+
 ## Verified player gas persistence — 2026-11-08 evening PST
 
 **Implemented in GitHub commit `a2295c4`:** `mod/lingamsdigestivesim/src/Simulation/PlayerGasStateModSystem.cs`, a server-only `ModSystem` creating/reading a versioned namespaced subtree under each player's `Entity.Attributes`. Fields include `schemaVersion=1`, `normalCapacityUnits=100` (initial test baseline), `gasUnits` and `lastUpdateTotalHours`. Only absent subtree triggers randomized 15–20% initial gas. A valid saved 0 is never reinitialized. Malformed/future-schema saved values are not overwritten. Admin test commands `/gas status`, `/gas set <percentage>` are available; no eating integration, production, release, animal state, sound or UI yet.
