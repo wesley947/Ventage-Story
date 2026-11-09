@@ -15,7 +15,8 @@ The user has compiled, installed, hash-compared, and exercised the mod in a sepa
 
 ## Immediate next slice — safe non-consuming audio experimentation
 
-1. Review [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md) and source files before coding.
+1. **Design and test a portable shared fart library schema first (D61)**: versioned data-only JSON, stable preset ID, envelope parameters, explicit gas cost (initial normal-capacity-percent tiers 75/50/25/10 with multiple candidates at each tier), weight and strict validation. Cabbage Carnage's server filters by actual stored gas, randomly chooses an eligible preset and deducts exactly its cost; Fart Lab previews for free and exports a compatible JSON file. The separate Fart Lab mod is still a possibility, not decided. [Format draft](FART_PRESET_FORMAT.md).
+2. Review [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md) and source files before coding.
 2. Preserve the **known-good accumulated-gas + trumpet DLL** in a separate backup. Inspect the user's local `git status` before staging/creating files.
 3. Build a **small client-side sound harness** (possibly a standalone Fart Lab mod) that loads one of the eight *existing game-owned* instrument .ogg sounds and allows hands-on playback, stop, duration, pitch and volume changes through `ILoadedSound`. **Audio preview uses no gas, ever.**
 4. Incrementally add four-node time-indexed pitch automation, separate ADSR volume, tremolo, subtle pitch wobble and optional short end squeak/pop **after** verifying live API behavior.
