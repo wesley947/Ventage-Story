@@ -2,7 +2,7 @@
 
 **Last reconciled:** 2026-11-08, 21:15 PST. This file describes **current status and next actions**, not a running log. Earlier experiments and timestamped screenshots are preserved in [PROJECT_MEMORY.md](PROJECT_MEMORY.md); current facts summarized in [AIMAIN.md](../AIMAIN.md).
 
-**Current stage:** Working **Debug-build player-direct-food digestive accumulator**, persistent across restarts; audible vanilla trumpet diagnostic and manual 60%-of-current gas release. Not a public-release candidate. **Next focus: audio research and a developer-only sound audition harness.** See [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md).
+**Current stage:** Working **Debug-build player-direct-food digestive accumulator**, persistent across restarts; audible vanilla trumpet diagnostic and manual 60%-of-current gas release. Not a public-release candidate. **Next focus: shared JSON sound-preset format and compatibility contract (D61), then a developer-only sound audition harness.** See [AUDIO_API_AUDIT.md](AUDIO_API_AUDIT.md).
 
 ## Verified in-game milestones
 
