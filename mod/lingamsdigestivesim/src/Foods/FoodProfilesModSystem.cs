@@ -22,6 +22,7 @@ public sealed class FoodProfilesModSystem : ModSystem
         if (Registry != null)
         {
             VanillaFoodCodeAudit.Write(api, Registry);
+            DirectFoodIntakeProbeBehavior.Attach(api, Registry);
         }
 #endif
     }
