@@ -1,3 +1,9 @@
+## CURRENT SCOPE STATUS — reconciled 2026-11-08 21:15 PST
+
+Creature export remains a **deferred requirement/proposal**, with no implementation or actual creature persistence test completed. Player gas storage, food digestion and manual trumpet release have already passed narrowly scoped tests; this does **not** prove animal data support. The proposed export is opt-in and privacy-safe, never automatic transmission. Continue from [AIMAIN.md](../AIMAIN.md) and [ROADMAP.md](ROADMAP.md) when animal work resumes.
+
+---
+
 # Creature Exporter and Support Request Design
 
 **Last updated:** 2026-11-06  
