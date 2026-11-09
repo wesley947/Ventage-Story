@@ -1,3 +1,9 @@
+## D61 playback contract prerequisite (2026-11-08, 21:15 PST)
+
+**Before a substantial editor or audio engine**, define a **shared JSON preset schema** so whatever Fart Lab produces, the gameplay mod can load and execute with identical envelope and duration behavior. Each entry has an **explicit gas cost**, with multiple presets at example 75/50/25/10% of normal-full capacity and perhaps lower tiers. Real server-side releases filter to presets with cost no larger than current stored gas; randomly select among eligible sounds, debit the cost only on a real release. Preview must never consume gas. Define special final-residue squeak/pop and scalable overpressure mode so D47 remains satisfied. Versioning, default values, round-trip fixture and source/sample whitelist in [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md). Sound API features remain experimental until heard in game. A separate Fart Lab mod is under consideration, not approved as deployment fact.
+
+---
+
 ## Proposed authoring/runtime split (2026-11-08 evening PST)
 
 User suggested making **Fart Lab a separate Vintage Story editor mod**, exporting **versioned JSON sound recipes** into Ventage Story / Cabbage Carnage, rather than embedding the editor into the gameplay mod. This is an exploratory design, not yet built or finalized; the main mod should be able to load curated presets **without Fart Lab installed**. The proposed interchange structure, four-point normalized pitch envelope, ADSR, tremolo, optional finale, random selection weights and input-validation constraints are described in [FART_PRESET_FORMAT.md](FART_PRESET_FORMAT.md). JSON is **not rendered audio**; client audio engine must implement timed sound modifications and multiplayer fallback. D60 still blocks first public release until varied audio has been heard and approved.
