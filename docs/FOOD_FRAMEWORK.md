@@ -44,22 +44,22 @@ At game startup, build a compact index of registered **vanilla edible content**,
 
 **Accepted user clarification (2026-11-08):** Once the player's resettable 30-second intake session closes, it records one timestamp for the mixed meal. For each consumed ingredient, lookup its actual eaten amount and food profile, then create a **delayed intestinal-gas contribution** with `startHour = mealClosedHour + digestiveDelayGameHours`, `durationGameHours` and `totalGasPotential`. There is **no progressive stomach transit**, stomach reservoir or burping: “stomach” is the waiting period only. Contributions accumulate gas gradually into one persistent shared reservoir; completed contributions expire without removing gas already generated. Animal direct feeding uses equivalent delayed contributions; background animal production runs independently.
 
-## User-reviewed gas-profile values — draft revision (2026-11-08)
+## Gas-profile history and current runtime baselines (2026-11-08)
 
-The first-pass **214-row food-profile CSV** was shared for editing. User said the estimates were largely good, but specifically wanted **milk/cheese raised close to cabbage's 24 gas units/portion** (Seraph lactose-intolerance fiction), and **bell peppers raised**. Keep all unrelated numeric values unchanged. A revised CSV was created in the conversation as `Ventage_Story_Vanilla_Food_Gas_Profiles_REVISED.csv`; the user is to fine-tune locally and send it back. It is **not yet checked into the GitHub repository** and the values remain proposals until the user's reviewed file returns.
+The early table with higher dairy values (milk **20 per 0.1L**, cheese up to **24** per slice) was a **draft and is superseded**, not a current tuning specification. A subsequent 214-row reviewed CSV was converted into the currently committed runtime JSON with **195** profiles, 13 composite descriptions and six exclusions; see [FOOD_REGISTRY_INTEGRATION.md](FOOD_REGISTRY_INTEGRATION.md). Existing values are still provisional balance rather than final user-approved gameplay values.
 
-| Food (draft ID) | Before | Revised gas units / defined portion |
-| --- | ---: | ---: |
-| Cabbage F005 | 24 | 24 (unchanged) |
-| Milk F085 | 4.5 | 20 / 0.1 liter |
-| Cottage cheese F086 | 3.4 | 18 / 0.1 liter |
-| Cheddar cheese slice F087 | 16 | 22 / slice |
-| Blue cheese slice F088 | 18 | 24 / slice |
-| Waxed cheddar cheese slice F089 | 16 | 22 / slice |
-| Bell pepper F007 | 3.2 | 12 / item |
-| Pickled bell pepper F017 | 2.72 | 10.2 / item |
+| Food (profile ID) | Current baseline gas units / defined portion |
+| --- | ---: |
+| Cabbage F005 | 24 / item |
+| Milk F085 | 8 / 0.1 liter |
+| Cottage cheese F086 | 7 / 0.1 liter |
+| Cheddar cheese slice F087 | 16 / slice |
+| Blue cheese slice F088 | 18 / slice |
+| Waxed cheddar cheese slice F089 | 16 / slice |
+| Bell pepper F007 | 12 / item |
+| Pickled bell pepper F017 | 10.2 / item |
 
-**Critical unit warning:** A full **1-liter** serving of milk at 20 units per **0.1 L** creates **200 gas units**. This may be far more intense than the user envisions when comparing to one cabbage item (24 units). Preserve and surface the portion-unit distinction before committing values to code; don't silently normalize unlike volumes. User expressly asked for highly gassy Seraph dairy, but actual acceptable per-serving size remains for their review. Lactose intolerance explains milk; real aged cheeses have little lactose, so the very high cheese effects are intentional fictional Seraph sensitivity. Pickled bell pepper uses the original ~85% preservation multiplier. All food IDs/item codes still need validation against installed game.
+**Important quantity caution:** At the **current** milk baseline of 8 per 0.1 L, a whole liter would hypothetically produce **80 gas units**, not the **200** units implied by the rejected earlier draft. We still have **not verified actual liquid drinking serving sizes** or connected liquids to food intake; avoid assuming one whole fluid stack is a portion. Aged cheeses are naturally lower in lactose; the high cheese and egg gas effects, if any, reflect the mod's intentionally fictional Seraph sensitivities, not factual universal lactose intolerance. The JSON is the current source of numerical truth; recheck it before balancing.
 
 ## Historical next engineering slice (superseded by current tested direct-food integration)
 
