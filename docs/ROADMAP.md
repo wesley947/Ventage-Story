@@ -25,7 +25,7 @@
 3. [ ] Prototype **four-point pitch timeline**, separate ADSR amplitude, slow irregular tremolo, mild pitch wobble, bounded timing, clipping/stop and optional small high-pitched final pop/squeak. Graveled texture is a listening result, not an API guaranteed effect.
 4. [ ] Experiment with low-pass, reverb, loops/trim and layered samples; record which operations actually work, and whether pitch changes also alter effective duration. No claim of independent pitch-preserving time stretch or built-in distortion.
 5. [ ] Build a **curated named preset library** of varied short pops, squeakers, gravelly blasts, wavering releases and lower rumblers. Gas amount, flow, pitch and time are related **loosely with overlapping ranges** (D59); no infinite squeakers or deep-only short blasts.
-6. [ ] Consider **small developer-only Fart Lab** GUI and optionally named-sound save/cache only when helpful; **public player editor/Fart Saver distribution is undecided**.
+6. [ ] Evaluate a **standalone Fart Lab Vintage Story mod** as a sound authoring/audition tool, exporting a **versioned JSON sound-recipe collection** to the main gameplay mod. Main mod must load curated presets **without Fart Lab installed**; common schema/renderer and optional client capabilities need tests. **No separate-mod decision or implementation yet; public editor distribution undecided.** [Proposed JSON format](FART_PRESET_FORMAT.md).
 7. [ ] Test server one-shot fallback vs richer client-only live envelope and audibility to unmodded multiplayer clients. Do not conflate working singleplayer trumpet with deployment compatibility.
 
 ## Core gameplay hardening
