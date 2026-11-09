@@ -1,3 +1,9 @@
+## User screenshot: first actual gas release and conservation — 2026-11-08 evening
+
+Screenshot after successful Vintage Story test shows `/gas sound` used vanilla trumpet (pitch 1.04, vol 0.85) and a separate status remained at 121.00%. Then `/gas fart` reported **72.60 units expelled, 48.40 remaining (48.40%)**, pitch 0.88 and **test-only 60% fraction**. Follow-up `/gas status` confirmed **48.40%**, no active or pending foods. This **verifies actual manual release accounting and retention in current session**, following earlier food generation and full/partial digestion save tests. **Do not claim the release trumpet was audibly heard unless user separately confirms.** The previous `/gas sound` audible test passed. Further tests: empty reservoir makes no sound/no depletion, persistence after restart, then intentional crouch control/tier-specific amounts/pitch.
+
+---
+
 ## Verified sound-only gas conservation — 2026-11-08
 
 **USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
