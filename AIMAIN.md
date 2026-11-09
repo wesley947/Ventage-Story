@@ -38,7 +38,7 @@
 
 ## Current next engineering task
 
-**Build a small client-side, developer-only sound audition harness** to experimentally confirm `ILoadedSound` initial playback, smooth live pitch and volume adjustment, stop/fades and controllable duration. No gas consumption. Then audition samples, four pitch points/ADSR, tremolo, random gravel and quick end pops, curate a strong sound library. [Audio API Audit](docs/AUDIO_API_AUDIT.md) is the next specification. Avoid writing a giant GUI until the live audio controls work. Source code has **NOT** yet been added for Fart Lab.
+**First agree on the shared D61 JSON preset format and validation fixtures**, then build a small client-side, developer-only sound audition harness to experimentally confirm `ILoadedSound` initial playback, smooth live pitch and volume adjustment, stop/fades and controllable duration. No gas consumption. Then audition samples, four pitch points/ADSR, tremolo, random gravel and quick end pops, curate a strong sound library. [Audio API Audit](docs/AUDIO_API_AUDIT.md) is the next specification. Avoid writing a giant GUI until the live audio controls work. Source code has **NOT** yet been added for Fart Lab.
 
 **User workflow:** Always **one Windows PowerShell command per message**, wait for output. Before installing changed DLLs, back up working mod; build locally with the known .NET 10 command and compare hashes. GitHub commits are not local installation or proof of successful gameplay. Treat the user's locally generated template files as precious.
 
