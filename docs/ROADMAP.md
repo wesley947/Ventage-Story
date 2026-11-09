@@ -1,3 +1,11 @@
+## Verified first automatic gas cycle — 2026-11-08/09
+
+**In-game verified (one Creative test-world player):** New digestive module compiled cleanly, installed with matching SHA256 DLL hashes, game loaded, status read correctly. Two distinct direct food types appeared in a **23s remaining** pending session with 0% gas. After 30s inactivity, status showed **two active contributions** and zero pending. After sleeping (calendar time advanced), gas automatically became **15.40% (15.40/100)** and there were **no active/pending foods**. The full direct-food path and completed digestion/gas production have been demonstrated for this small meal. This does not yet prove 30s reset on subsequent food, exact ingredient profiles, partial accrual, restart conservation, or general food support.
+
+**Next:** save/exit/restart and check that 15.40% is still there without replay; then deliberate intermediate-progress and multiple-meal tests before considering persistence across digestion verified. Release/sound/animal paths remain absent.
+
+---
+
 # Development Roadmap
 
 **Last updated:** 2026-11-08  
