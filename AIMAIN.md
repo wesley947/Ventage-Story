@@ -7,7 +7,7 @@
 - Repository: `wesley947/Ventage-Story` (repository spelling is intentional; do not rename it without asking).
 - Project: a Vintage Story digestive-gas simulation mod, with **Lingam's** as the intended public naming/creator brand. **Public display title remains undecided.** Previous names included *Cabbage Carnage* and *Ventage Story*.
 - Target: Vintage Story 1.22.x, C#/.NET 10.
-- Current stage (2026-11-08 17:08 PST): 195 food profiles, 13 composite meal rules, 6 exclusions and 158 verified native item-code bindings load. The DEBUG server-only Harmony EAT-PROBE has now PASSED actual consumption tests: violet web cap (F093), rye grain (F055), and spelt grain (F058), each logged as one native unit, with user-observed satiety increases. This verifies those three direct food paths, not meals, liquids or animal intake. No gas generated. Earlier server-only collectible-behavior injection caused startup crash; it was removed and must not return. No persistent meal state, running digestion, gas accumulator, release mechanic or audio yet. Next engineering gate: a tiny namespaced per-entity persistence save/reload test. Approved Mod ID lingamsdigestivesim; repo spelling Ventage-Story intentional.
+- Current stage (2026-11-08 evening PST): **PLAYER GAS PERSISTENCE VERIFIED IN GAME.** New server-only `src/Simulation/PlayerGasStateModSystem.cs` compiled successfully and installed with matching DLL hashes; the user's creative test world loaded. `/gas status` initialized a first-time player at 15.19% (within approved 15–20% range), repeated status did not reroll, `/gas set 63` survived a complete save/exit/restart at exactly 63.00%, and `/gas set 0` also survived a complete restart at exactly 0.00% (no accidental reinitialization). Version 1 per-player server entity Attributes and admin-only `/gas status`/`/gas set` work for this tested player. This does NOT yet verify multiple players, animals, uninstall/reinstall compatibility, active meal persistence, digestion, releases, sounds or saved world copies. DEBUG direct-food EAT-PROBE still verified for violet web cap F093, rye F055 and spelt F058. Next: a minimal real gas-release and sound test, then crouch behavior; food-dependent replenishment comes afterward. Repo is `wesley947/Ventage-Story`, internal Mod ID `lingamsdigestivesim`.
 - Keep permanent technical identifiers based on approved `lingamsdigestivesim`, not on any provisional public display name. The public name may change without changing saved-data namespaces or item codes.
 
 ## On every new chat
@@ -37,19 +37,19 @@
 | `docs/CREATURE_EXPORT_SPEC.md` | Design for opt-in, privacy-safe export of modded creature metadata to support GitHub issue requests without chasing animals. |
 | `docs/SOUND_CREDITS.md` | Eventually record sound sources, creators, licenses, and edits. |
 
-**Documentation status (2026-11-08):** All files listed in this table have been created and committed to GitHub. The C# mod shell, food catalog and direct-food diagnostic have been implemented and tested. The digestive simulation, gas reservoir, releases and audio are not yet implemented.
+**Documentation status (2026-11-08):** All files listed in this table have been created and committed to GitHub. The C# mod shell, food catalog, direct-food diagnostic and **basic persistent player gas reservoir with admin testing commands** have been implemented and tested. Food-driven digestion, live gas generation, releases, animal reservoirs and audio are not yet implemented.
 
 ## Current essential design decisions (bootstrap summary)
 
 - Use Vintage Story's per-entity persistent attribute system rather than an external database. Verify 1.22 APIs before implementation.
-- Keep gas **production, accumulation in upper/lower reservoirs, and release** distinct.
-- Multiple meals overlap additively. A new meal never resets existing meal progress or either gas reservoir. Store only active contributions and account for remaining potential before merging/removing records.
+- Keep gas **production, accumulation in a single intestinal reservoir, and actual release** distinct (D53; no burps or upper reservoir).
+- Multiple meals overlap additively. A new meal never resets existing meal progress or the single gas reservoir. Store only active contributions and account for remaining potential before merging/removing records.
 - Catalog all vanilla raw, cooked, and prepared foods; gas potential/delay/duration depend on food and species. Low spontaneous background gas is allowed for eligible animals even without a tracked trigger food.
 - Support terrestrial animals and players; exclude flying animals/birds and nonbiological creatures initially. Species profiles should support optional modded animal entity codes without hard dependencies. The complete vanilla catalog is pending.
 - Movement, jumping, and fear may increase the **chance of releasing already stored gas**, but fear releases should remain rare; quiet animals can accumulate for larger releases. No gas means no release.
 - Allow at most one delayed, optional post-death release from remaining gas; final details require testing.
 - Prevent a 30–40 goat enclosure from becoming an audio cacophony with cooldowns and herd audio limits, without corrupting the actual gas simulation.
-- Start with common placeholder fart/belch sounds. Add tagged sound types and species-specific libraries near release or later. Record contributor licensing/credit.
+- Start with common placeholder fart sounds (no burping). Add tagged sound types and species-specific libraries near release or later. Record contributor licensing/credit.
 - Build ordinary native config first; investigate optional in-game settings UI. Simulation settings are server-authoritative; personal audio settings may be client-specific.
 - Provide remote diagnostics for loaded creatures without chasing or targeting them, plus an anonymized species/behavior JSON export for animal-support requests.
 - Creative mode is convenient for calm-animal testing; survival is needed for realistic fear-flight behavior.
@@ -67,6 +67,12 @@
 5. Do not promise automatic/background updates; docs change only when a commit is actually performed.
 
 Small iterative changes do not require an interruption on every message.
+
+## Player gas persistence verified — 2026-11-08 evening PST
+
+A server-only player gas persistence mod system was committed in `mod/lingamsdigestivesim/src/Simulation/PlayerGasStateModSystem.cs` (commit `a2295c4`), compiled using .NET 10 and installed with matching SHA256 hashes. In a dedicated creative test world: first `/gas status` returned **15.19%**, a second status returned the same; `/gas set 63` remained **63.00% after save/exit/restart**; `/gas set 0` remained **0.00% after save/exit/restart**, confirming that zero is not mistaken for missing mod data. Saved entity data uses a versioned `lingamsdigestivesim` subtree of server-side `Entity.Attributes` with `gasUnits`, `normalCapacityUnits`, and `lastUpdateTotalHours`. 100 units is a provisional player normal-full baseline. These tests confirm **one player's** state preservation only. Do not claim animal state, cross-player separation, uninstall safety, pending sessions, digestion or sounds are verified.
+
+**Next engineering milestone:** generate an actual fart event that subtracts only existing gas and plays a basic sound, with debug sound-only testing separate from gas-consuming release. First test simple manual command, then controlled deliberate crouch and the three-tier large/medium/squeaker behavior. First-time entities should begin with 15–20% gas, but only when no prior mod state exists. Food-based generation and the 30-second intake session follow. Lore implementation deferred until the mechanics are working and fun; retain lore documents. Preserve one-command-at-a-time PowerShell workflow and the known-good EAT-PROBE.
 
 ## Current checkpoint (2026-11-08, after EAT-PROBE testing)
 
