@@ -1,3 +1,9 @@
+## First manual gas-consuming event passed — 2026-11-08 evening
+
+**PASS in user's Creative test world:** `/gas fart` consumed **72.60 units** from **121.00%** stored gas (temporary 60% release fraction), leaving **48.40%**, corroborated by an immediate independent `/gas status` read. No pending/active foods at the time. The event reported native trumpet sound dispatched with pitch **0.88**, but audible playback *during `/gas fart`* remains unconfirmed by the user; `/gas sound` was heard and independently confirmed to leave 121% unchanged. **Next:** ask whether trumpet was heard for real release, test at 0 gas for silence/no event, then test remaining-reservoir save/reload; follow with crouch-driven release and variable sound envelopes. No animal or passive release in this code.
+
+---
+
 ## Verified sound-only gas conservation — 2026-11-08
 
 **USER-VERIFIED:** In the singleplayer Creative test world, `/gas sound` played the built-in trumpet audibly, and a subsequent `/gas status` still reported **121.00%**. This establishes that the sound-only diagnostic did **not** consume stored gas in this test. **Next:** test `/gas fart` (currently intentionally provisional fixed 60% expulsion; expect 72.60 units released from 121.00, leaving **48.40%**, plus trumpet sound). Do not call the gas-consuming release tested yet. One in-game command at a time.
