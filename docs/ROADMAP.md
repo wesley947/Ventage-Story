@@ -1,3 +1,9 @@
+## Sound manipulation capability confirmed for upcoming trumpet test — 2026-11-08
+
+Use built-in `game:sounds/voice/trumpet` for the first test, but allow varied **pitch / pitch randomization, volume and audible range** via server positional sound API. Later variations may use client `ILoadedSound` for dynamically changing pitch/volume, reverb, low-pass and fades, but do not introduce unnecessary client networking in the first smoke test. Official 1.22.7 API docs: https://apidocs.vintagestory.at/api/Vintagestory.API.Common.IWorldAccessor.html and https://apidocs.vintagestory.at/api/Vintagestory.API.Client.ILoadedSound.html . Next gate remains sound-only command then gas-consuming release, both to be built and game-tested.
+
+---
+
 ## First sound asset selection — 2026-11-08
 
 For first actual sound test, **use the existing vanilla trumpet sample** `assets/game/sounds/voice/trumpet.ogg`, target asset ID `game:sounds/voice/trumpet`. Other built-in options: accordion, altoflute, clarinet, harmonica, oboe, sax and tuba. No need to source or ship custom audio. The user previously discussed a tentative sound-by-release-size palette. **Not yet coded or runtime verified.** Next engineering gate: sound-only command plus genuine gas-consuming manual `/gas fart`, then crouch trigger. Do not confuse selected sound asset with implementation or successful audio playback.
