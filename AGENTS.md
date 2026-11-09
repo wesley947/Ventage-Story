@@ -33,7 +33,7 @@ This repository contains an **implemented and user-tested Debug prototype** of a
 
 ## Source-control safety checkpoint
 
-- At the 2026-11-08 GitHub audit, only `main` existed; working prototype changes had been committed there. After creating a safe checkpoint branch, **future experimental features should use a separate feature branch**, then be reviewed before merging. Never force push or rewrite verified history without explicit user approval.
+- GitHub audit showed **only `main` originally**, so earlier prototype work all landed there. On 2026-11-08 we created a named safety branch **`checkpoint/verified-accumulator-trumpet-2026-11-08`** from the reconciled working prototype. Current remote branches: **`main` + checkpoint** (unless newer changes occurred). Future experimental features should use a separate feature branch or, if Fart Lab becomes independent, possibly its own repository after explicit design agreement. Never force push or rewrite verified history without user approval.
 - Current GitHub tree does **not** include the user's locally generated `.csproj`, `modinfo.json`, starter ModSystem or local build scripts. Treat those files as important; investigate `git status` and contents before proposing new tracked copies, and never overwrite them to make a clean GitHub clone appear buildable.
 - Always distinguish actual tested Debug gameplay from untested Release build, multiplayer or disable/re-enable behavior. Do not ship with DEBUG-only ingestion or inadequate fart sounds.
 
