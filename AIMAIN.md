@@ -60,7 +60,7 @@
 
 **User workflow:** Always **one Windows PowerShell command per message**, wait for output. Before installing changed DLLs, back up working mod; build locally with the known .NET 10 command and compare hashes. GitHub commits are not local installation or proof of successful gameplay. Treat the user's locally generated template files as precious.
 
-## Documentation map — the 15 audited Markdown files
+## Documentation map — the 16 audited Markdown files
 
 | File | Purpose |
 | --- | --- |
@@ -71,6 +71,7 @@
 | [docs/PROJECT_MEMORY.md](docs/PROJECT_MEMORY.md) | Full chronological research, experiments, failures and successful tests. |
 | [docs/IMPLEMENTATION_PLAN.md](docs/IMPLEMENTATION_PLAN.md) | Engineering test gates and historical stage plans. |
 | [docs/AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md) | Exact supported/unproven audio controls and audition plan. |
+| [docs/CLIENT_ONLY_AUDIO_FEASIBILITY.md](docs/CLIENT_ONLY_AUDIO_FEASIBILITY.md) | Strict D63: which vanilla client actions genuinely create remote sound on an unmodified server, and which do not. |
 | [docs/FART_PRESET_FORMAT.md](docs/FART_PRESET_FORMAT.md) | Proposed portable JSON sound recipe format for optional standalone Fart Lab. |
 | [docs/SOUND_CREDITS.md](docs/SOUND_CREDITS.md) | Native voice samples, licensing and eventual credits. |
 | [docs/FOOD_FRAMEWORK.md](docs/FOOD_FRAMEWORK.md) | Food identity/amount capture and partial meal research. |
