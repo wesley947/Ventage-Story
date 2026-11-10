@@ -1,3 +1,9 @@
+## D63 expanded vanilla event research — 2026-11-09
+
+The single-modified-client + vanilla-server + vanilla-listener requirement was researched against client/server `EntityPlayer`, `EntityTalkUtil`, player `CharacterSystem`, `EntityBehaviorExtraSkinnable`, vanilla `ItemFlute`, animation-sound metadata/lifecycle, resonator and entity activity `PlaySoundAction`, and `IClientNetworkAPI`. **Real examples:** `/emote` server→vanilla client native dynamic musical voices; **bone flute held item** `World.PlaySoundAt` in both app sides (native elkcall fixed pitch 0.75/volume 0.5/range 32) is server-routed without a sound mod but requires real item/cooldown. **Limits:** reselecting Seraph voice/pitch is server-permission gated; animation sound can be authored in game entity configuration but isn't a generic client-to-vanilla-server request; raw network sender does not imply a server handler for arbitrary audio path/pitch. For precise positive/negative evidence and test plan see [CLIENT_ONLY_AUDIO_FEASIBILITY.md](CLIENT_ONLY_AUDIO_FEASIBILITY.md). Core remote custom fart remains unproven; do not imply Fart Lab JSON can work in D63 deployment.
+
+---
+
 ## D63 RELEASE FEASIBILITY STOP-GATE — no server mod, no other client mod (2026-11-09)
 
 User explicitly clarified goal: ONE modded **client only**, joins an **unmodified vanilla server**, with all other players **unmodified**, yet they hear actual custom farts nearby. This **supersedes the server-installable D62 playback plan as an acceptable release architecture**. The current trumpet source is server-only (`ShouldLoad(Server)`, `serverApi.World.PlaySoundAt(...)`) and worked in singleplayer integrated server only. It does not establish vanilla-server remote broadcast.
