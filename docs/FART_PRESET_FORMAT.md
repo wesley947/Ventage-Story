@@ -1,3 +1,9 @@
+## D63 format limitation: a JSON fart library cannot bypass vanilla server handlers (2026-11-09)
+
+Source review now confirms several vanilla sound-event opportunities (emotes with prebuilt client voice modulation, actual held bone flute native elkcall, other legitimate item/block audio); none provides an exposed arbitrary client→vanilla-server→vanilla-listener JSON sound renderer. Server-side `PlaySoundAt` works only with code on server, and client-only `ILoadedSound` stays local. **Therefore a shared versioned Fart Lab JSON format can be built for local audition but cannot yet fulfill D63 remote audible arbitrary farts.** Preserve D61 format design as *conditional* until the actual D63 listening/quality feasibility test. See [CLIENT_ONLY_AUDIO_FEASIBILITY.md](CLIENT_ONLY_AUDIO_FEASIBILITY.md).
+
+---
+
 ## D63 DELIVERY GATE — arbitrary JSON sounds cannot yet reach vanilla clients through vanilla server (2026-11-09)
 
 **Stop-gap requirement:** User's intended deployment is **CLIENT ONLY**, on an **unmodified server**, and **unmodified other clients** must hear the farts. Our existing server-native one-shots and proposed server-event JSON timeline are **NOT sufficient**, since an unmodified server cannot recognize and rebroadcast those custom client messages. Vanilla `/emote` is an existing accepted client→server command; clients can hear their built-in emote voice events, but they have fixed event types, no arbitrary game-owned sound-path/pitch/volume fields, and no general custom JSON renderer. This means the versioned library remains a speculative authoring format unless we verify a **supported client-only method** for a vanilla server to distribute suitable audio requests. Fart Lab can audition locally, but *that is not the user's core goal*. Do NOT build a full composer or promise arbitrary remote sounds until this protocol feasibility is resolved; don't silently shift to D62 server-installed architecture.
