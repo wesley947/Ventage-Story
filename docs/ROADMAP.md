@@ -1,3 +1,9 @@
+## D62 SERVER-AUDIBLE FARTS ARE THE PRIMARY AUDIO TARGET (2026-11-09)
+
+**Priority refinement after inspecting actual C# and Vintage Story API:** Our working trumpet command was dispatched by **server-only** `PlayerGasStateModSystem` using `serverApi.World.PlaySoundAt` and was audible in singleplayer. The first-release curated sound library must use **server-initiated native sounds audible on ordinary clients** as its baseline, with game-owned instrument samples and initial pitch/volume/position/range. Rich continuous `ILoadedSound` client pitch/ADSR synthesis cannot be relied on for unmodded listeners. Revise D61 shared format to describe **a bounded timeline of native one-shot events** and optional client-rich enhancements; Fart Lab must preview the actual server-playable subset. Candidate first experiment: from a server-side-only setup, send two sequential native voice sounds at different initial pitches with safe millisecond offsets; hear the result on an **unmodded second client**. Investigate local `modinfo.json` packaging/`side`/`requiredOnClient`, which is untracked on GitHub; do not claim the current build is server-only-installable until confirmed. Keep gas cost filters (D61) and audio-first public release gate (D60). A mod installed **only on one client, on an unmodified server**, cannot assume it can play arbitrary positional sounds to other clients.
+
+---
+
 # Development roadmap — Lingam's Vintage Story digestive-gas mod
 
 **Last reconciled:** 2026-11-08, 21:15 PST. This file describes **current status and next actions**, not a running log. Earlier experiments and timestamped screenshots are preserved in [PROJECT_MEMORY.md](PROJECT_MEMORY.md); current facts summarized in [AIMAIN.md](../AIMAIN.md).
