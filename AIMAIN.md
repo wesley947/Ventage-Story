@@ -1,3 +1,9 @@
+## D62 AUDIO BROADCAST CLARIFICATION (2026-11-09)
+
+**Verified in repository:** `PlayerGasStateModSystem.ShouldLoad` is **server-only** and both `/gas sound` and `/gas fart` dispatch through `serverApi.World.PlaySoundAt(game:sounds/voice/trumpet, entity, null, pitch, 20f, volume)`. User's trumpet was **server-initiated and rendered by game audio**, not synthesized by our client mod. Singleplayer playback and varied starting pitch are user-tested. **Main objective is nearby players without the mod hearing native fart sounds**, so D61 sound libraries and any Fart Lab must use a **server-reproducible, game-owned, one-shot or bounded timed-sequence representation** as their primary playback plan. Server can choose recording, initial pitch/volume, 3D position and range, sound type, recipients, and schedule distinct events; it **cannot directly reshape, stop or fade a remote client's already-playing sound** using `PlaySoundAt`. The earlier proposal that a client-side four-node pitch/ADSR sound will automatically reach unmodded listeners is false; such envelopes require mod-capable clients or a vetted server-compatible approximation. See [AUDIO_API_AUDIT.md](docs/AUDIO_API_AUDIT.md). **Deployment caution:** the mod must run on the game server for arbitrary native world sound broadcast to unmodded clients; `modinfo.json` side/client requirement and real two-player testing are still outstanding.
+
+---
+
 # AIMAIN.md — authoritative project handoff
 
 > **Read this first in a new chat**, then inspect the real source and GitHub branch. User cue: "Read AIMAIN.md in my Ventage-Story GitHub repository and continue." This document states **what is true now**, not every past checkpoint. Historical tests and superseded experiments remain in [Project Memory](docs/PROJECT_MEMORY.md) and [Decisions](docs/DECISIONS.md).
