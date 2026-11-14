@@ -1,3 +1,9 @@
+## D63 evidence from released 1.22.7 binaries — 2026-11-14
+
+[Server audio transport audit](SERVER_AUDIO_TRANSPORT.md) records the actual one-shot packet and vanilla playback handler, the emote and talk split, and synchronized animation sound definitions. The released engine inspection found no supported generic arbitrary-sound request from one client to an unmodified server. D63 remains in force. A lightweight server-cooperative sound prototype is a design option, with no release or deployment change approved in this checkpoint.
+
+---
+
 ## D63 evidence update — vanilla emote voice and bone flute exist; arbitrary broadcast not demonstrated (2026-11-09)
 
 In-depth `vsapi` and `vssurvivalmod` public-source review found two legitimate remote vanilla-listener paths without our server module: **vanilla `/emote`** events whose fixed talk patterns use the player's selected Seraph voice, and **normal held bone-flute use** whose vanilla `ItemFlute.OnHeldInteractStart` calls `World.PlaySoundAt(sounds/instrument/elkcall, ...)` on both app sides. `/emote shrug` uses built-in rising `Talk` envelope 0.9→1.5; `rage`/Complain produces repeated short pitch changes; `laugh` uses repeated high notes. Voice type/pitch have server-validated character selection (7 instruments, 5 pitch levels), so don't assume they can be changed for each fart. The bone flute requires the genuine item and 4s cooldown, pitch 0.75 and 32-block attenuation range; it isn't a generic sound request. Client-authored animation sound metadata, raw entity packets, custom channels, resonator music and third-party instruments did not reveal a supported way for a lone modified client to broadcast an arbitrary sound. **These are documented protocol/code possibilities, not tests of other unmodded listeners; the D63 acceptance gate is still open.** See [CLIENT_ONLY_AUDIO_FEASIBILITY.md](CLIENT_ONLY_AUDIO_FEASIBILITY.md).

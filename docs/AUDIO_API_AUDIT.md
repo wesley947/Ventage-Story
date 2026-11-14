@@ -1,3 +1,9 @@
+## Shipped 1.22.7 implementation evidence — 2026-11-14
+
+See the [server audio transport audit](SERVER_AUDIO_TRANSPORT.md) for the inspected one-shot packet, client asset lookup, emote vs. talk handling, synchronized animation sound metadata, the `SoundAttributes.Type` overload detail, and measured source clip durations. It also distinguishes static verification from the dedicated-server listening check.
+
+---
+
 ## D62 deeper answer: YES, vanilla voice packets generate live modulated notes on listeners — 2026-11-10
 
 **User's accurate objection:** Vanilla player/trader/villager voices are not merely one-shot fixed-pitch samples. The **server can send a known voice behavior and *each unmodified client* renders its own smoothly modulated musical sound using `ILoadedSound`**. Verified directly in public upstream source:

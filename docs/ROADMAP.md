@@ -1,3 +1,9 @@
+## Current audio checkpoint — 2026-11-14
+
+The [released 1.22.7 transport audit](SERVER_AUDIO_TRANSPORT.md) is complete. D63 remains the release criterion. Next audio work is to audition a short stock squeak, a layered puff, and a tuba-based rumble under the chosen deployment. If testing the server-cooperative design, use the existing native sound path and a one-shot admin command before expanding the editor or adding a looping beacon.
+
+---
+
 ## D63 deeper transport audit — 2026-11-09
 
 **Found concrete vanilla paths:** (1) `/emote` on vanilla server broadcasts recognized `Emote` event; recipients run `EntityTalkUtil` with existing Seraph voice samples and pitch envelopes (e.g. shrug low-to-high, laugh repetitions, rage complain). (2) **Bone flute** in vanilla `ItemFlute.OnHeldInteractStart` triggers `World.PlaySoundAt(sounds/instrument/elkcall)` from both client and server, with source-player double-play suppression and fixed pitch 0.75, 32-block range, volume 0.5; **requires real held bone flute and 4s cooldown**. (3) Other legitimate block/tool/footstep events play real nearby sounds but sample choice follows server-validated item/action. **Rejected:** character voice preset isn't freely switchable each release (server checks `allowSelect` in character system), arbitrary `AnimationSound` authored only on client isn't accepted by vanilla server, resonator requires actual recognized music item, custom network channels and raw entity packets have no generic vanilla sound handler. **Next small feasibility test:** lone modded client / vanilla server / vanilla listener; trigger `/emote shrug`, `rage`, `laugh` with legitimate low tuba/accordion voice, then compare actual acoustic quality and potential bone-flute sound. Review [client-only audio audit](CLIENT_ONLY_AUDIO_FEASIBILITY.md). Do not call any remote sound arbitrary Fart Lab playback verified. Public mod decision still gated on truly farty sound for remote players.
