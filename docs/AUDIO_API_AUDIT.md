@@ -1,3 +1,7 @@
+## D64 release trigger decision — 2026-11-14
+
+Manual fart requests in public builds require the client component. The server component validates and plays the effect through the existing native sound path for nearby listeners. Console and chat playback triggers are for test builds. See [D64](DECISIONS.md#d64--require-the-client-mod-to-request-a-manual-fart).
+
 ## Shipped 1.22.7 implementation evidence — 2026-11-14
 
 See the [server audio transport audit](SERVER_AUDIO_TRANSPORT.md) for the inspected one-shot packet, client asset lookup, emote vs. talk handling, synchronized animation sound metadata, the `SoundAttributes.Type` overload detail, and measured source clip durations. It also distinguishes static verification from the dedicated-server listening check.

@@ -1,6 +1,6 @@
 ## Current audio checkpoint — 2026-11-14
 
-The [released 1.22.7 transport audit](SERVER_AUDIO_TRANSPORT.md) is complete. D63 remains the release criterion. Next audio work is to audition a short stock squeak, a layered puff, and a tuba-based rumble under the chosen deployment. If testing the server-cooperative design, use the existing native sound path and a one-shot admin command before expanding the editor or adding a looping beacon.
+The [released 1.22.7 transport audit](SERVER_AUDIO_TRANSPORT.md) is complete. Next, audition a short stock squeak, a layered puff, and a tuba-based rumble on a server with the mod and a vanilla listener. Use the existing native sound path and a one-shot admin command for the audition. Before public release, add the modded-client request, remove direct console and chat fart triggers from the release build, and verify that the release build rejects direct console and chat triggers while a vanilla listener can join and hear a modded player’s manual release. See [D64](DECISIONS.md#d64--require-the-client-mod-to-request-a-manual-fart).
 
 ---
 

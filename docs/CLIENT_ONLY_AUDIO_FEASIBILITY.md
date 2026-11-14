@@ -1,8 +1,12 @@
 # Client-only audio on vanilla server: feasibility audit
 
+## Current deployment decision — 2026-11-14
+
+[D64](DECISIONS.md#d64--require-the-client-mod-to-request-a-manual-fart) adopts the client-and-server trigger with vanilla listeners. The following D63 audit describes the prior fully vanilla-server requirement and its technical limits.
+
 ## Released engine follow-up — 2026-11-14
 
-The shipped 1.22.7 binary review in [Server audio transport](SERVER_AUDIO_TRANSPORT.md) addresses the implementation inspection below. The native arbitrary one-shot packet is server-to-client. The inspected vanilla client-to-server paths offer built-in actions but no supported generic sound request. The server can send frame-cued stock sounds in entity animation metadata when it controls that definition. D63 and the listening question for stock emotes remain open as release criteria.
+The shipped 1.22.7 binary review in [Server audio transport](SERVER_AUDIO_TRANSPORT.md) addresses the implementation inspection below. The native arbitrary one-shot packet is server-to-client. The inspected vanilla client-to-server paths offer built-in actions but no supported generic sound request. The server can send frame-cued stock sounds in entity animation metadata when it controls that definition. Stock-emote listening quality remains untested.
 
 **Audited:** 2026-11-09. **Hard user requirement (D63):** exactly one player has the client-only Cabbage Carnage mod; the server has no Cabbage Carnage/Fart Lab code and every other nearby player is unmodded; nevertheless those other players hear the sound. Do NOT weaken this requirement to a mod installed on the server, even when clients are unmodded.
 

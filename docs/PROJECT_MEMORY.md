@@ -1,3 +1,9 @@
+## D64 release trigger decision — 2026-11-14
+
+The user wants console fart triggers for testing and the Cabbage Carnage client mod to request manual farts in the public build. The server component validates the request and sends the existing stock sound events to nearby clients, including vanilla listeners. See [D64](DECISIONS.md#d64--require-the-client-mod-to-request-a-manual-fart).
+
+---
+
 ## Audio transport verified against the shipped game — 2026-11-14
 
 Reviewed the matched 1.22.7 server/client engine binaries and original mono client audio. Confirmed packet 18 one-shot fields, local clip lookup, player emote allowlist versus compiled voice map, and server transfer of entity animation sound definitions. OpenAL changes sample rate when pitch changes. Verified short squish, cloth rip, bellows and tuba candidates. [Server audio transport audit](SERVER_AUDIO_TRANSPORT.md). No gameplay change or multiplayer listening result.
@@ -163,7 +169,7 @@ A DEBUG-only server-side `DirectFoodIntakeProbeBehavior` was committed to `src/F
 
 # Project Memory — Vintage Story Digestive-Gas Mod
 
-**Last updated:** 2026-11-08  
+**Last updated:** 2026-11-14
 **Status:** Official-template shell compiled and loaded in the user's Creative test world; new JSON food registry/loader now committed on GitHub but untested locally. No release. Approved internal Mod ID: `lingamsdigestivesim`; public display title remains undecided.
 
 ## Food registry integration milestone (2026-11-08)

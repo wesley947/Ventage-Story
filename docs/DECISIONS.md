@@ -1,6 +1,14 @@
+## D64 — Require the client mod to request a manual fart
+
+**Decided 2026-11-14.** Keep direct console and chat triggers for development and auditioning. After testing, remove their registration from the public build, including any sound preview or beacon that can broadcast a fart. A player initiates a manual release through the Cabbage Carnage client, which sends a release request to the Cabbage Carnage server component. The server uses the authenticated sender supplied by the channel, checks eligibility and available gas, and chooses the stock-sound preset and world position. The client request carries intent only. Nearby vanilla listeners receive normal positional sound events and can join without the client component. Automatic server-driven releases use the server playback path.
+
+D64 supersedes D63 as the deployment decision for this feature. Keep the D63 research as the record of what an untouched server supports. The client channel is the supported trigger and is not attestation that the sender runs an unmodified copy of the client mod. No protocol or gameplay changes were made in this checkpoint.
+
+---
+
 ## D63 evidence from released 1.22.7 binaries — 2026-11-14
 
-[Server audio transport audit](SERVER_AUDIO_TRANSPORT.md) records the actual one-shot packet and vanilla playback handler, the emote and talk split, and synchronized animation sound definitions. The released engine inspection found no supported generic arbitrary-sound request from one client to an unmodified server. D63 remains in force. A lightweight server-cooperative sound prototype is a design option, with no release or deployment change approved in this checkpoint.
+[Server audio transport audit](SERVER_AUDIO_TRANSPORT.md) records the actual one-shot packet and vanilla playback handler, the emote and talk split, and synchronized animation sound definitions. The released engine inspection found no supported generic arbitrary-sound request from one client to an unmodified server. At that checkpoint D63 remained in force. A lightweight server-cooperative sound prototype is a design option, with no release or deployment change approved in this checkpoint.
 
 ---
 
@@ -54,7 +62,7 @@ User-provided verified list from installed Vintage Story 1.22.7 assets: `assets/
 
 # Decision Log
 
-**Last updated:** 2026-11-08. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
+**Last updated:** 2026-11-14. This log distinguishes confirmed direction, proposed mechanisms and open issues. Dates are approximate within the planning discussion.
 
 | ID | Decision | Status / rationale |
 | --- | --- | --- |

@@ -1,6 +1,12 @@
+## D64 manual fart input and multiplayer deployment — 2026-11-14
+
+Keep fart and sound commands available during development. For public builds, players need the Cabbage Carnage client component to request a manual release from a server or host running the server component. Nearby listeners can use vanilla clients. The client sends a release request through a registered mod channel. The server checks the requesting player and gas state, chooses the effect and origin, and plays it through native positional sound calls. Release builds omit direct console and chat triggers for fart playback. See [D64](docs/DECISIONS.md#d64--require-the-client-mod-to-request-a-manual-fart).
+
+---
+
 ## Released 1.22.7 sound transport checkpoint — 2026-11-14
 
-[Server audio transport audit](docs/SERVER_AUDIO_TRANSPORT.md) traces the shipped server and stock client. Native positional sound dispatch sends stock asset, position, initial pitch, volume, range, and category. Entity talk uses fixed client routines. Entity animation definitions can carry frame sound cues to a clean client. The inspected vanilla server provides no supported arbitrary client sound request. D63 remains the tracked release requirement. The suggested server-cooperative prototype reuses `/gas sound` and auditions a few short mono stock layers. Remote playback and acoustic quality have yet to be auditioned.
+[Server audio transport audit](docs/SERVER_AUDIO_TRANSPORT.md) traces the shipped server and stock client. Native positional sound dispatch sends stock asset, position, initial pitch, volume, range, and category. Entity talk uses fixed client routines. Entity animation definitions can carry frame sound cues to a clean client. The inspected vanilla server provides no supported arbitrary client sound request. D63 describes the earlier vanilla-server requirement. The suggested server-cooperative prototype reuses `/gas sound` and auditions a few short mono stock layers. Remote playback and acoustic quality have yet to be auditioned.
 
 ---
 
